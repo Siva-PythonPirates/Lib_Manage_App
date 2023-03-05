@@ -78,7 +78,7 @@ class _BooksState extends State<Books> {
                     ),
                   ),
                   const Text(
-                    ' “That\'s the thing about books. They let you travel without moving your feet”',
+                    '         “Books make you travel without moving your feet”',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -118,8 +118,8 @@ class _BooksState extends State<Books> {
                                   height: 100,
                                   width: 80,
                                   color: Colors.deepPurple[300],
-                                  child: Image(
-                                    image: NetworkImage(books[index]['image'] ?? ""),
+                                  child: const Image(
+                                    image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                     fit: BoxFit.fill,
                                   ),
                                 ),

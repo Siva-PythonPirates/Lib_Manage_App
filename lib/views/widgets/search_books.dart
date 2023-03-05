@@ -64,9 +64,7 @@ class BookCustomDelegate extends SearchDelegate {
                         width: 80,
                         color: Colors.deepPurple[300],
                         child: const Image(
-                          image: NetworkImage(
-                              "https://edit.org/images/cat/book-covers-big-2019101610.jpg" ??
-                                  ""),
+                          image: NetworkImage("https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -80,8 +78,7 @@ class BookCustomDelegate extends SearchDelegate {
                                 child: Text(
                                   book['title'] ?? "TITLE",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
