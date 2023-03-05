@@ -1,7 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/journals_page.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:lib_management/views/reset_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,10 +20,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/images/login_bg.jpg'),
+              fit: BoxFit.cover),
         ),
         child: _pageOptions[selectedPage],
       ),
@@ -34,39 +36,28 @@ class _HomePageState extends State<HomePage> {
               selectedPage = index;
             });
           },
-          backgroundColor: const Color.fromRGBO(34, 4, 88, 1),
+          backgroundColor: bgColor,
           height: 50,
-          items: const [
+          items: [
             Icon(
               Icons.book_online,
               size: 30,
+              color: bgColor,
             ),
             Icon(
               Icons.recent_actors_rounded,
               size: 30,
+              color: bgColor,
             ),
             Icon(
               Icons.person,
               size: 30,
+              color: bgColor,
             ),
             // label: 'Books'),
           ],
         ),
       ),
     );
-    //     selectedItemColor: Colors.white,
-    //     showSelectedLabels: true,
-    //     showUnselectedLabels: false,
-    //     elevation: 5.0,
-    //     unselectedItemColor: Colors.white60,
-    //     currentIndex: selectedPage,
-    //     backgroundColor: Colors.black,
-    //     onTap: (index) {
-    //       setState(() {
-    //         selectedPage = index;
-    //       });
-    //     },
-    //   ),
-    // ));
   }
 }

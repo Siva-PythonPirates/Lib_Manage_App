@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/views/widgets/search_books.dart';
+
+import '../services/app_services.dart';
 
 class Books extends StatefulWidget {
   const Books({Key? key}) : super(key: key);
@@ -13,7 +16,9 @@ class _BooksState extends State<Books> {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/images/login_bg.jpg'),
+              fit: BoxFit.cover),
         ),
         child: Column(
           children: [
@@ -54,7 +59,7 @@ class _BooksState extends State<Books> {
                           onTap: () {
                             showSearch(
                               context: context,
-                              delegate: CustomDelecate(),
+                              delegate: BookCustomDelegate(),
                             );
                           },
                           child: Container(
@@ -82,7 +87,7 @@ class _BooksState extends State<Books> {
             Expanded(
               child: ListView.builder(
                   padding: const EdgeInsets.all(8),
-                  itemCount: 10,
+                  itemCount: books.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -96,46 +101,63 @@ class _BooksState extends State<Books> {
                           onTap: () {},
                           // splashColor: Colors.black,
                           child: SizedBox(
-                              height: 100,
                               child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 100,
-                                      color: Colors.deepPurple[300],
-                                      child: const Center(
-                                        child: Text('Book image'),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        children: [
-                                          const Center(
-                                            child: Text(
-                                              'BOOK TITLE',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(fontWeight: FontWeight.bold),
-                                            ),
+                            padding: const EdgeInsets.all(10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(left: 8),
+                                  height: 100,
+                                  width: 80,
+                                  color: Colors.deepPurple[300],
+                                  child: const Image(
+                                    image: NetworkImage(
+                                        "https://edit.org/images/cat/book-covers-big-2019101610.jpg" ??
+                                            ""),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: 200,
+                                        child: Center(
+                                          child: Text(
+                                            books[index]['title'] ??
+                                                "BOOK TITLE",
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
                                           ),
-                                          Row(
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
+                                        child: SizedBox(
+                                          width: 200,
+                                          child: Column(
                                             // mainAxisAlignment: MainAxisAlignment.center,
-                                            children: const [
+                                            children: [
                                               Text(
-                                                'AUTHOR: xxx  ',
+                                                'AUTHOR: ${books[index]['author'] ?? "XXX"}',
+                                                textAlign: TextAlign.center,
                                               ),
                                               Text(
-                                                'DEPT: yyy',
+                                                'DEPT: ${books[index]['department'] ?? "XXX"}',
                                               ),
                                             ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          )),
                         ),
                       ),
                     );
@@ -144,175 +166,6 @@ class _BooksState extends State<Books> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomDelecate extends SearchDelegate {
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = '';
-        },
-        icon: const Icon(Icons.clear),
-      ),
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        close(context, null);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: 3,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: InkWell(
-              // splashColor: Colors.black,
-              onTap: () {},
-              // splashColor: Colors.black,
-              child: SizedBox(
-                height: 100,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        color: Colors.deepPurple[300],
-                        child: const Center(
-                          child: Text('Book image'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            const Center(
-                              child: Text(
-                                'BOOK TITLE',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'AUTHOR: xxx  ',
-                                ),
-                                Text(
-                                  'DEPT: yyy',
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: InkWell(
-              // splashColor: Colors.black,
-              onTap: () {},
-
-              // splashColor: Colors.black,
-              child: SizedBox(
-                height: 100,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 100,
-                        color: Colors.deepPurple[300],
-                        child: const Center(
-                          child: Text('Book image'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            const Center(
-                              child: Text(
-                                'BOOK TITLE',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Row(
-                              // mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'AUTHOR: xxx  ',
-                                ),
-                                Text(
-                                  'DEPT: yyy',
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

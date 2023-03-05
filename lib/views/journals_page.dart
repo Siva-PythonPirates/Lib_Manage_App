@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/views/widgets/search_button.dart';
 
 class Journals extends StatefulWidget {
   const Journals({Key? key}) : super(key: key);
@@ -9,30 +10,14 @@ class Journals extends StatefulWidget {
 }
 
 class _JournalsState extends State<Journals> {
-  List<String> journals = [
-    "IEEE",
-    "ASME - American society of Mechanical Engineers",
-    "ASCE - American Society of Civil Engineers",
-    "Elsevier (Science Direct)- Biotechnology (Back File)",
-    "J-GATE- Engineering & Technology",
-    "J-GATE- Management Sciences",
-    "EBSCO–Business Source Elite"
-  ];
-  List<String> journalLinks = [
-    "https://ieeexplore.ieee.org/Xplore/home.jsp",
-    "https://asmedigitalcollection.asme.org/journals",
-    "https://ascelibrary.org/",
-    "https://www.sciencedirect.com/",
-    "https://jgateplus.com/home/",
-    "https://jgateplus.com/home/",
-    "https://search.ebscohost.com/"
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/images/login_bg.jpg'),
+              fit: BoxFit.cover),
         ),
         child: Column(
           children: [
@@ -43,8 +28,6 @@ class _JournalsState extends State<Journals> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-
                       children: [
                         Container(
                           alignment: Alignment.bottomLeft,
@@ -61,7 +44,7 @@ class _JournalsState extends State<Journals> {
                         const Expanded(
                           child: Center(
                             child: Text(
-                              'E-Journels',
+                              'E-Journals',
                               style: TextStyle(
                                 fontSize: 30,
                                 color: Colors.white,
@@ -71,7 +54,9 @@ class _JournalsState extends State<Journals> {
                         ),
                         InkWell(
                           onTap: () {
-                            showSearch(context: context, delegate: CustomDelegate());
+                            showSearch(
+                                context: context,
+                                delegate: JournalCustomDelegate());
                           },
                           child: Container(
                             color: Colors.deepPurple.withOpacity(0.5),
@@ -133,96 +118,6 @@ class _JournalsState extends State<Journals> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomDelegate extends SearchDelegate {
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-    return [
-      IconButton(
-        onPressed: () {
-          query = '';
-        },
-        icon: const Icon(Icons.clear),
-      ),
-    ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        close(context, null);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            // splashColor: Colors.black,
-            onTap: () async {
-              await launchURLto(
-                "https://ascelibrary.org/",
-              );
-            },
-            // splashColor: Colors.black,
-            child: const Padding(
-              padding: EdgeInsets.all(15),
-              child: Text(
-                'Journel',
-                style: TextStyle(
-                  color: Colors.black,
-                  // decoration: TextDecoration.underline,
-                ),
-                textAlign: TextAlign.start,
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: 10,
-      itemBuilder: (BuildContext context, int index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: InkWell(
-            // splashColor: Colors.black,
-            onTap: () async {
-              await launchURLto(
-                "https://ascelibrary.org/",
-              );
-            },
-            // splashColor: Colors.black,
-            child: const Padding(
-              padding: EdgeInsets.all(15),
-              child: Text(
-                'Journel',
-                style: TextStyle(
-                  color: Colors.black,
-                  // decoration: TextDecoration.underline,
-                ),
-                textAlign: TextAlign.start,
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }
