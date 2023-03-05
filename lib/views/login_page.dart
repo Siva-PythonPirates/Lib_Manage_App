@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/widgets/mail_textfield.dart';
+import 'package:lib_management/views/reset_password.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -174,7 +175,14 @@ class _LoginState extends State<Login> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Reset()),
+                              (Route<dynamic> route) => false,
+                            );
+                          },
                           child: Text(
                             'Forgot Password? Change it here',
                             style: TextStyle(
