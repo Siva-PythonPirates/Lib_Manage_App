@@ -20,14 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/login_bg.jpg'),
-              fit: BoxFit.cover),
-        ),
-        child: _pageOptions[selectedPage],
-      ),
+      body: _pageOptions[selectedPage],
       bottomNavigationBar: SizedBox(
         height: 70,
         child: CurvedNavigationBar(

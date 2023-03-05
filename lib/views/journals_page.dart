@@ -15,9 +15,11 @@ class _JournalsState extends State<Journals> {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
+          // color: Colors.transparent,
           image: DecorationImage(
-              image: AssetImage('assets/images/login_bg.jpg'),
-              fit: BoxFit.cover),
+            image: AssetImage('assets/images/login_bg.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           children: [
@@ -34,10 +36,12 @@ class _JournalsState extends State<Journals> {
                           width: 50,
                           height: 50,
                           color: Colors.deepPurple.withOpacity(0.5),
-                          child: const Center(
-                            child: Text(
-                              'logo',
-                              style: TextStyle(color: Colors.white),
+                          child: const Expanded(
+                            child: Center(
+                              child: Text(
+                                'logo',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
                         ),
@@ -54,12 +58,13 @@ class _JournalsState extends State<Journals> {
                         ),
                         InkWell(
                           onTap: () {
-                            showSearch(
-                                context: context,
-                                delegate: JournalCustomDelegate());
+                            showSearch(context: context, delegate: JournalCustomDelegate());
                           },
                           child: Container(
-                            color: Colors.deepPurple.withOpacity(0.5),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                             width: 50,
                             height: 50,
                             child: const Icon(
@@ -72,9 +77,9 @@ class _JournalsState extends State<Journals> {
                     ),
                   ),
                   const Text(
-                    "Click on the link to access the concerned journal (for use in REC Campus only)",
+                    '"Books are a uniquely portable magic"',
                     style: TextStyle(
-                      color: Colors.white54,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -82,31 +87,56 @@ class _JournalsState extends State<Journals> {
             ),
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(10),
                 itemCount: journals.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 131, 40, 192),
+                            blurRadius: 8,
+                            spreadRadius: 8,
+                            // offset: Offset(5, 5),
+                          ),
+                        ],
                         borderRadius: BorderRadius.circular(15),
                         color: const Color.fromRGBO(255, 255, 255, 1),
                       ),
                       child: InkWell(
                         // splashColor: Colors.black,
+
                         onTap: () async {
                           await launchURLto(journalLinks[index]);
                         },
                         // splashColor: Colors.black,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Text(
-                            journals[index],
-                            style: const TextStyle(
-                              color: Colors.black,
-                              // decoration: TextDecoration.underline,
-                            ),
-                            textAlign: TextAlign.start,
+                        child: SizedBox(
+                          // height: 200,
+
+                          child: Column(
+                            children: [
+                              const Image(
+                                width: double.infinity,
+                                height: 150,
+                                image: NetworkImage(
+                                  'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Text(
+                                  journals[index],
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    // decoration: TextDecoration.underline,
+                                  ),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

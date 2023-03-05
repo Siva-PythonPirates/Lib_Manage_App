@@ -16,9 +16,7 @@ class _BooksState extends State<Books> {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/login_bg.jpg'),
-              fit: BoxFit.cover),
+          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
         ),
         child: Column(
           children: [
@@ -62,8 +60,12 @@ class _BooksState extends State<Books> {
                               delegate: BookCustomDelegate(),
                             );
                           },
+                          // borderRadius: BorderRadius.circular(10),
                           child: Container(
-                            color: Colors.deepPurple.withOpacity(0.5),
+                            decoration: BoxDecoration(
+                              color: Colors.deepPurple.withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
                             width: 50,
                             height: 50,
                             child: const Icon(
@@ -76,7 +78,7 @@ class _BooksState extends State<Books> {
                     ),
                   ),
                   const Text(
-                    ' "Books Books Books, I don\'t like it. I avoid. But Books like me. I can\'t avoid" -U know who said',
+                    ' “That\'s the thing about books. They let you travel without moving your feet”',
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -90,52 +92,53 @@ class _BooksState extends State<Books> {
                   itemCount: books.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: const Color.fromRGBO(255, 255, 255, 1),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 131, 40, 192),
+                              blurRadius: 5,
+                              spreadRadius: 6,
+                            ),
+                          ],
                         ),
                         child: InkWell(
                           // splashColor: Colors.black,
                           onTap: () {},
                           // splashColor: Colors.black,
-                          child: SizedBox(
-                              child: Padding(
+                          child: Padding(
                             padding: const EdgeInsets.all(10),
                             child: Row(
                               children: [
                                 Container(
-                                  margin: const EdgeInsets.only(left: 8),
+                                  margin: const EdgeInsets.only(left: 7),
                                   height: 100,
                                   width: 80,
                                   color: Colors.deepPurple[300],
-                                  child: const Image(
-                                    image: NetworkImage(
-                                        "https://edit.org/images/cat/book-covers-big-2019101610.jpg" ??
-                                            ""),
+                                  child: Image(
+                                    image: NetworkImage(books[index]['image'] ?? ""),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
                                       SizedBox(
                                         width: 200,
                                         child: Center(
                                           child: Text(
-                                            books[index]['title'] ??
-                                                "BOOK TITLE",
+                                            books[index]['title'] ?? "BOOK TITLE",
                                             textAlign: TextAlign.center,
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                            style: const TextStyle(fontWeight: FontWeight.bold),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 8.0),
+                                        padding: const EdgeInsets.only(top: 8.0),
                                         child: SizedBox(
                                           width: 200,
                                           child: Column(
@@ -157,7 +160,7 @@ class _BooksState extends State<Books> {
                                 )
                               ],
                             ),
-                          )),
+                          ),
                         ),
                       ),
                     );
