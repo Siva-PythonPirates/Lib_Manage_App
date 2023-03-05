@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/widgets/search_button.dart';
+import '../views/widgets/carousel.dart';
 
 class Journals extends StatefulWidget {
   const Journals({Key? key}) : super(key: key);
@@ -76,12 +77,7 @@ class _JournalsState extends State<Journals> {
                       ],
                     ),
                   ),
-                  const Text(
-                    '"Books are a uniquely portable magic"',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                  const CustomCarousel(),
                 ],
               ),
             ),
@@ -96,9 +92,9 @@ class _JournalsState extends State<Journals> {
                       decoration: BoxDecoration(
                         boxShadow: const [
                           BoxShadow(
-                            color: Color.fromARGB(255, 131, 40, 192),
+                            color: Color.fromARGB(255, 118, 23, 182),
                             blurRadius: 8,
-                            spreadRadius: 8,
+                            spreadRadius: 9,
                             // offset: Offset(5, 5),
                           ),
                         ],
@@ -106,15 +102,10 @@ class _JournalsState extends State<Journals> {
                         color: const Color.fromRGBO(255, 255, 255, 1),
                       ),
                       child: InkWell(
-                        // splashColor: Colors.black,
-
                         onTap: () async {
                           await launchURLto(journalLinks[index]);
                         },
-                        // splashColor: Colors.black,
                         child: SizedBox(
-                          // height: 200,
-
                           child: Column(
                             children: [
                               const Image(
@@ -130,7 +121,7 @@ class _JournalsState extends State<Journals> {
                                 child: Text(
                                   journals[index],
                                   style: const TextStyle(
-                                    color: Colors.black,
+                                    color: Colors.black, fontWeight: FontWeight.bold,
                                     // decoration: TextDecoration.underline,
                                   ),
                                   textAlign: TextAlign.start,

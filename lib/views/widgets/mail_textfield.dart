@@ -18,6 +18,8 @@ class _MailFieldState extends State<MailField> {
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
           hintText: 'Enter your e-mail address',
+          labelText: 'Enter e-mail',
+          labelStyle: TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderSide: BorderSide(width: 2, color: Colors.white),
           ),

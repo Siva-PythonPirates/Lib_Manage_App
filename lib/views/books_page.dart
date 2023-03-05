@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
-
+import '../views/widgets/carousel.dart';
 import '../services/app_services.dart';
 
 class Books extends StatefulWidget {
@@ -27,8 +27,6 @@ class _BooksState extends State<Books> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-
                       children: [
                         Container(
                           alignment: Alignment.bottomLeft,
@@ -77,94 +75,90 @@ class _BooksState extends State<Books> {
                       ],
                     ),
                   ),
-                  const Text(
-                    '         “Books make you travel without moving your feet”',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                  const CustomCarousel(),
                 ],
               ),
             ),
             Expanded(
               child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  itemCount: books.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 131, 40, 192),
-                              blurRadius: 5,
-                              spreadRadius: 6,
-                            ),
-                          ],
-                        ),
-                        child: InkWell(
-                          // splashColor: Colors.black,
-                          onTap: () {},
-                          // splashColor: Colors.black,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(left: 7),
-                                  height: 100,
-                                  width: 80,
-                                  color: Colors.deepPurple[300],
-                                  child: const Image(
-                                    image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                    fit: BoxFit.fill,
-                                  ),
+                padding: const EdgeInsets.all(8),
+                itemCount: books.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: const Color.fromRGBO(255, 255, 255, 1),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 118, 23, 182),
+                            blurRadius: 5,
+                            spreadRadius: 7,
+                          ),
+                        ],
+                      ),
+                      child: InkWell(
+                        // splashColor: Colors.black,
+                        onTap: () {},
+                        // splashColor: Colors.black,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(left: 7),
+                                height: 100,
+                                width: 80,
+                                color: Colors.deepPurple[300],
+                                child: const Image(
+                                  image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        width: 200,
-                                        child: Center(
-                                          child: Text(
-                                            books[index]['title'] ?? "BOOK TITLE",
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(fontWeight: FontWeight.bold),
-                                          ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      width: 200,
+                                      child: Center(
+                                        child: Text(
+                                          books[index]['title'] ?? "BOOK TITLE",
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
-                                        child: SizedBox(
-                                          width: 200,
-                                          child: Column(
-                                            // mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'AUTHOR: ${books[index]['author'] ?? "XXX"}',
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              Text(
-                                                'DEPT: ${books[index]['department'] ?? "XXX"}',
-                                              ),
-                                            ],
-                                          ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: SizedBox(
+                                        width: 200,
+                                        child: Column(
+                                          // mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'AUTHOR: ${books[index]['author'] ?? "XXX"}',
+                                              textAlign: TextAlign.center,
+                                            ),
+                                            Text(
+                                              'DEPT: ${books[index]['department'] ?? "XXX"}',
+                                            ),
+                                          ],
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
-                    );
-                  }),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

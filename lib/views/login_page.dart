@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 70, 20, 20),
+              padding: const EdgeInsets.fromLTRB(20.0, 100, 20, 20),
               child: Container(
                 height: 90,
                 decoration: BoxDecoration(
@@ -52,11 +52,16 @@ class _LoginState extends State<Login> {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text(
-                    '"Knowledge is Power" - Arjun',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text(
+                      '" There is no friend as loyal \nas a book "',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -73,7 +78,7 @@ class _LoginState extends State<Login> {
                           children: [
                             MailField(controller: mail),
                             const SizedBox(
-                              height: 20.0,
+                              height: 35.0,
                             ),
                             TextFormField(
                               controller: password,
@@ -81,6 +86,10 @@ class _LoginState extends State<Login> {
                               obscureText: p,
                               keyboardType: TextInputType.visiblePassword,
                               decoration: InputDecoration(
+                                labelText: 'Enter Password',
+                                labelStyle: const TextStyle(
+                                  color: Colors.white,
+                                ),
                                 enabledBorder: const OutlineInputBorder(
                                   borderSide: BorderSide(
                                     width: 2,
@@ -185,26 +194,6 @@ class _LoginState extends State<Login> {
                             const Divider(
                               color: Colors.white,
                               thickness: 1.5,
-                            ),
-                            Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  TextButton(
-                                      onPressed: () {
-                                        // Navigator.push(context, MaterialPageRoute(builder: (context) => const Reset()));
-                                      },
-                                      child: const Text(
-                                        'Forgot Password? Change it here',
-                                        style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      )),
-                                ],
-                              ),
                             ),
                           ],
                         ),
