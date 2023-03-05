@@ -163,13 +163,13 @@ class _LoginState extends State<Login> {
                                           MaterialPageRoute(builder: (context) => const HomePage()),
                                           (Route<dynamic> route) => false,
                                         );
-                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                          content: Text(
-                                            "Logged in Successfully",
-                                            style: TextStyle(color: Colors.black),
-                                          ),
-                                          backgroundColor: Colors.white,
-                                        ));
+                                        // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                        //   content: Text(
+                                        //     "Logged in Successfully",
+                                        //     style: TextStyle(color: Colors.black),
+                                        //   ),
+                                        //   backgroundColor: Colors.white,
+                                        // ));
                                       } on Exception catch (e) {
                                         print(e);
                                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -209,7 +209,9 @@ class _LoginState extends State<Login> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        // Navigator.push(context, MaterialPageRoute(builder: (context) => const Reset()));
+                                      },
                                       child: const Text(
                                         'Forgot Password? Change it here',
                                         style: TextStyle(
