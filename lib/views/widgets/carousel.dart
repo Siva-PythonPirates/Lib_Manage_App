@@ -46,11 +46,8 @@ class _CustomCarouselState extends State<CustomCarousel> {
       }).toList(),
       options: CarouselOptions(
         height: 90,
-        // aspectRatio: 16 / 9,
-        // viewportFraction: 0.8,
         initialPage: 0,
         enableInfiniteScroll: true,
-        // reverse: false,
         autoPlay: true,
         autoPlayInterval: const Duration(seconds: 4),
         autoPlayAnimationDuration: const Duration(milliseconds: 800),
