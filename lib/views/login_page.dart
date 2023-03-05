@@ -21,161 +21,211 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0),
+      // backgroundColor: Colors.black,
+      body: SafeArea(
+        child: DecoratedBox(
+          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover)),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Center(
-                child: FittedBox(
-                  child: Text(
-                    'REC-Library',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 50.0,
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  height: 90,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.deepPurple[100],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'College logo with name',
+                      style: TextStyle(fontSize: 20),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 36.0,
-              ),
-              MailField(controller: mail),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextFormField(
-                controller: password,
-                style: const TextStyle(color: Colors.white),
-                obscureText: p,
-                keyboardType: TextInputType.visiblePassword,
-                decoration: InputDecoration(
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
-                  ),
-                  disabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
-                  ),
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(width: 2, color: Colors.white),
-                  ),
-                  hintText: 'Enter your Password',
-                  hintStyle: const TextStyle(color: Colors.white),
-                  prefixIcon: const Icon(
-                    Icons.lock_outline_rounded,
-                    color: Colors.white,
-                  ),
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          if (p == false) {
-                            p = true;
-                          } else {
-                            p = false;
-                          }
-                          if (using == openeye) {
-                            using = closeeye;
-                          } else {
-                            using = openeye;
-                          }
-                        });
-                      },
-                      icon: Icon(
-                        using,
-                        color: Colors.white,
-                      )),
-                ),
-              ),
-              const SizedBox(
-                height: 40.0,
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 54.0,
-                child: ElevatedButton(
-                  style:
-                      ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all(const StadiumBorder())),
-                  onPressed: () {
-                    bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
-                    if (mail.text == '' || password.text == '') {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text(
-                          "Fill all the fields properly",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                        backgroundColor: Colors.white,
-                      ));
-                    } else {
-                      if (emailValid == true) {
-                        try {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (context) => const HomePage()),
-                            (Route<dynamic> route) => false,
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                            content: Text(
-                              "Logged in Successfully",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                            backgroundColor: Colors.white,
-                          ));
-                        } on Exception catch (e) {
-                          print(e);
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text(
-                              e.toString(),
-                              style: const TextStyle(color: Colors.black),
-                            ),
-                            backgroundColor: Colors.white,
-                          ));
-                        }
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text(
-                            "Enter a valid Mail-Id",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          backgroundColor: Colors.white,
-                        ));
-                      }
-                    }
-                  },
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(color: Colors.black, fontSize: 25.0),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 30.0,
-              ),
-              const Divider(
-                color: Colors.white,
-                thickness: 1.5,
-              ),
-              Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+              Expanded(
+                child: Column(
                   children: [
-                    TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Forgot Password? Change it here',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        )),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Text(
+                      '"Knowledge is Power" - Arjun',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            // const Center(
+                            //   child: FittedBox(
+                            //     child: Text(
+                            //       'REC-Library',
+                            //       style: TextStyle(
+                            //         fontWeight: FontWeight.bold,
+                            //         color: Colors.white,
+                            //         fontSize: 50.0,
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            // const SizedBox(
+                            //   height: 36.0,
+                            // ),
+
+                            MailField(controller: mail),
+                            const SizedBox(
+                              height: 20.0,
+                            ),
+                            TextFormField(
+                              controller: password,
+                              style: const TextStyle(color: Colors.white),
+                              obscureText: p,
+                              keyboardType: TextInputType.visiblePassword,
+                              decoration: InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2,
+                                    color: Colors.white,
+                                  ), //<-- SEE HERE
+                                ),
+                                disabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                                ),
+                                focusedBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                                ),
+                                border: const OutlineInputBorder(
+                                  borderSide: BorderSide(width: 2, color: Colors.white),
+                                ),
+                                hintText: 'Enter your Password',
+                                hintStyle: const TextStyle(color: Colors.white),
+                                prefixIcon: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
+                                suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        if (p == false) {
+                                          p = true;
+                                        } else {
+                                          p = false;
+                                        }
+                                        if (using == openeye) {
+                                          using = closeeye;
+                                        } else {
+                                          using = openeye;
+                                        }
+                                      });
+                                    },
+                                    icon: Icon(
+                                      using,
+                                      color: Colors.white,
+                                    )),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 40.0,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 54.0,
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                                    shape: MaterialStateProperty.all(const StadiumBorder())),
+                                onPressed: () {
+                                  bool emailValid =
+                                      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
+                                  if (mail.text == '' || password.text == '') {
+                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                      content: Text(
+                                        "Fill all the fields properly",
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                    ));
+                                  } else {
+                                    if (emailValid == true) {
+                                      try {
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(builder: (context) => const HomePage()),
+                                          (Route<dynamic> route) => false,
+                                        );
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                          content: Text(
+                                            "Logged in Successfully",
+                                            style: TextStyle(color: Colors.black),
+                                          ),
+                                          backgroundColor: Colors.white,
+                                        ));
+                                      } on Exception catch (e) {
+                                        print(e);
+                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                          content: Text(
+                                            e.toString(),
+                                            style: const TextStyle(color: Colors.black),
+                                          ),
+                                          backgroundColor: Colors.white,
+                                        ));
+                                      }
+                                    } else {
+                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                        content: Text(
+                                          "Enter a valid Mail-Id",
+                                          style: TextStyle(color: Colors.black),
+                                        ),
+                                        backgroundColor: Colors.white,
+                                      ));
+                                    }
+                                  }
+                                },
+                                child: const Text(
+                                  'Login',
+                                  style: TextStyle(color: Colors.black, fontSize: 25.0),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 30.0,
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                              thickness: 1.5,
+                            ),
+                            Center(
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextButton(
+                                      onPressed: () {},
+                                      child: const Text(
+                                        'Forgot Password? Change it here',
+                                        style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
