@@ -11,6 +11,7 @@ class Reset extends StatefulWidget {
 
 class _ResetState extends State<Reset> {
   bool p = true;
+  bool cp = true;
   var openeye = Icons.remove_red_eye;
   var closeeye = Icons.visibility_off;
   var using = Icons.remove_red_eye;
@@ -24,6 +25,11 @@ class _ResetState extends State<Reset> {
     return Scaffold(
         backgroundColor: Colors.black,
         body: Container(
+          decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("/assets/bgimage.jpeg"),
+          fit: BoxFit.cover,
+          ),
+        ),
           child: Center(
               child: Padding(
             padding: EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0),
@@ -99,7 +105,7 @@ class _ResetState extends State<Reset> {
                   TextFormField(
                     controller: password,
                     style: TextStyle(color: Colors.white),
-                    obscureText: p,
+                    obscureText: cp,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -126,10 +132,10 @@ class _ResetState extends State<Reset> {
                       suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              if (p == false) {
-                                p = true;
+                              if (cp == false) {
+                                cp = true;
                               } else {
-                                p = false;
+                                cp = false;
                               }
                               if (using == openeye) {
                                 using = closeeye;

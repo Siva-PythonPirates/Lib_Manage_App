@@ -25,6 +25,11 @@ class _LoginState extends State<Login> {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("/assets/bgimage.jpeg"),
+          fit: BoxFit.cover,
+          ),
+        ),
         child: Center(
           child: Padding(
             padding: EdgeInsets.fromLTRB(30.0, 50.0, 30.0, 0),
