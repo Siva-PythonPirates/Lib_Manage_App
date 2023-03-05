@@ -13,7 +13,7 @@ class _BooksState extends State<Books> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Books"),
+        title: const Text("Books"),
       ),
     );
   }

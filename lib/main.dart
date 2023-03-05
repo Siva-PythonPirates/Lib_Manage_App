@@ -3,7 +3,9 @@ import 'package:lib_management/views/login_page.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: Login(),
+    debugShowCheckedModeBanner: false,
+    title: 'REC Library',
   ));
 }

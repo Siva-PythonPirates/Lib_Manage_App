@@ -32,18 +32,15 @@ class _JournalsState extends State<Journals> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("E-Journals"),
+        title: const Text("E-Journals"),
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
+          const Padding(
+            padding: EdgeInsets.all(16.0),
             child: Text(
               "Click on the link to access the concerned journal (for use in REC Campus only)",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ),
           Expanded(
@@ -60,7 +57,7 @@ class _JournalsState extends State<Journals> {
                       },
                       child: Text(
                         journals[index],
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.black,
                           decoration: TextDecoration.underline,
                         ),

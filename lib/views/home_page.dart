@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedPage = 0;
 
-  final _pageOptions = [Journals(), Books()];
+  final _pageOptions = [const Journals(), const Books()];
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
           child: BottomNavigationBar(
-            items: [
+            items: const [
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.book_online,
