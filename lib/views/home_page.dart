@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/journals_page.dart';
-import 'package:lib_management/views/reset_page.dart';
+import 'package:lib_management/views/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedPage = 0;
 
-  final _pageOptions = [const Journals(), const Books(), const Reset()];
+  final _pageOptions = [const Journals(), const Books(), const ProfilePage()];
 
   @override
   Widget build(BuildContext context) {
