@@ -9,6 +9,11 @@ launchURLto(String url) async {
   }
 }
 
+double getSize(BuildContext context, double size) {
+  double sizeFinal = (MediaQuery.of(context).size.width / (7.8 * 50)) * size;
+  return sizeFinal;
+}
+
 Color bgColor = const Color.fromRGBO(34, 4, 88, 1);
 List<String> journals = [
   "IEEE",

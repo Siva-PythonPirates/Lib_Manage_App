@@ -18,18 +18,23 @@ class ProfilePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.width * 2,
                 width: MediaQuery.of(context).size.width * 1.5,
                 decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/login_bg.jpg'),
+                      fit: BoxFit.cover),
                   shape: BoxShape.circle,
                 ),
                 child: Center(
                   child: Column(
-                    children: const [
+                    children: [
                       SizedBox(
-                        height: 500,
+                        height: getSize(context, 500),
                       ),
                       Text(
                         "Peaky Blinders",
-                        style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.normal),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: getSize(context, 40),
+                            fontWeight: FontWeight.normal),
                       ),
                     ],
                   ),
@@ -39,14 +44,17 @@ class ProfilePage extends StatelessWidget {
             top: MediaQuery.of(context).size.width / 2.2,
             left: MediaQuery.of(context).size.width / 3.2,
             child: Container(
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(border: Border.all(color: bgColor, width: 5), shape: BoxShape.circle, color: Colors.white),
+              height: getSize(context, 150),
+              width: getSize(context, 150),
+              decoration: BoxDecoration(
+                  border: Border.all(color: bgColor, width: 5),
+                  shape: BoxShape.circle,
+                  color: Colors.white),
               child: Center(
                 child: Icon(
                   Icons.person,
                   color: bgColor,
-                  size: 120,
+                  size: getSize(context, 120),
                 ),
               ),
             ),
@@ -59,101 +67,124 @@ class ProfilePage extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: Icon(
                         Icons.person,
                         color: bgColor,
-                        size: 40,
+                        size: getSize(context, 40),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "Peaky Blinders",
-                        style: TextStyle(color: bgColor, fontSize: 20, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                            color: bgColor,
+                            fontSize: getSize(context, 20),
+                            fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  margin:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
                   width: MediaQuery.of(context).size.width,
-                  height: 1,
+                  height: getSize(context, 1),
                   color: bgColor,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: Icon(
                         Icons.mail,
                         color: bgColor,
-                        size: 40,
+                        size: getSize(context, 40),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(getSize(context, 8)),
                       child: Text(
                         "210701@gmail.com",
-                        style: TextStyle(color: bgColor, fontSize: 20, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                            color: bgColor,
+                            fontSize: getSize(context, 20),
+                            fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  margin: EdgeInsets.symmetric(
+                      vertical: getSize(context, 8), horizontal: 0),
                   width: MediaQuery.of(context).size.width,
-                  height: 1,
+                  height: getSize(context, 1),
                   color: bgColor,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.remove_red_eye,
                             color: bgColor,
-                            size: 40,
+                            size: getSize(context, 40),
                           )),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(getSize(context, 8)),
                       child: Text(
                         "Password",
-                        style: TextStyle(color: bgColor, fontSize: 20, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                            color: bgColor,
+                            fontSize: getSize(context, 20),
+                            fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  margin: EdgeInsets.symmetric(
+                      vertical: getSize(context, 8), horizontal: 0),
                   width: MediaQuery.of(context).size.width,
-                  height: 1,
+                  height: getSize(context, 1),
                   color: bgColor,
                 ),
               ],
             ),
           ),
           Positioned(
-            bottom: 80,
-            left: MediaQuery.of(context).size.width / 5,
+            bottom: getSize(context, 40),
+            left: MediaQuery.of(context).size.width / 5.2,
             child: ElevatedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(bgColor), shape: MaterialStateProperty.all(const StadiumBorder())),
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(bgColor),
+                  shape: MaterialStateProperty.all(const StadiumBorder())),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const Reset()),
                 );
               },
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
+              child: Padding(
+                padding: EdgeInsets.all(getSize(context, 16)),
                 child: Text(
                   "Change Password",
-                  style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: getSize(context, 20),
+                      fontWeight: FontWeight.normal),
                 ),
               ),
             ),

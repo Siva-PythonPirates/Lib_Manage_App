@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: _pageOptions[selectedPage],
       bottomNavigationBar: SizedBox(
-        height: 70,
+        height: getSize(context, 70),
         child: CurvedNavigationBar(
           onTap: (index) {
             setState(() {
@@ -32,21 +32,21 @@ class _HomePageState extends State<HomePage> {
           color: Colors.pink[200]!,
           backgroundColor: bgColor,
           buttonBackgroundColor: Colors.white,
-          height: 50,
+          height: getSize(context, 50),
           items: [
             Icon(
               Icons.book_online,
-              size: 30,
+              size: getSize(context, getSize(context, 30)),
               color: bgColor,
             ),
             Icon(
               Icons.recent_actors_rounded,
-              size: 30,
+              size: getSize(context, getSize(context, 30)),
               color: bgColor,
             ),
             Icon(
               Icons.person,
-              size: 30,
+              size: getSize(context, getSize(context, 30)),
               color: bgColor,
             ),
           ],

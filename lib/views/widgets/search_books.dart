@@ -34,15 +34,15 @@ class BookCustomDelegate extends SearchDelegate {
         book['author']!.toLowerCase().contains(query.toLowerCase()) ||
         book['department']!.toLowerCase().contains(query.toLowerCase()));
     return ListView.builder(
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.all(getSize(context, 8)),
       itemCount: results.length,
       itemBuilder: (BuildContext context, int index) {
         final book = results.elementAt(index);
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(getSize(context, 8)),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(getSize(context, 10)),
               color: const Color.fromRGBO(255, 255, 255, 1),
               boxShadow: const [
                 BoxShadow(
@@ -55,35 +55,37 @@ class BookCustomDelegate extends SearchDelegate {
               onTap: () {},
               child: SizedBox(
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(getSize(context, 10)),
                   child: Row(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(left: 8),
-                        height: 100,
-                        width: 80,
+                        margin: EdgeInsets.only(left: getSize(context, 8)),
+                        height: getSize(context, 100),
+                        width: getSize(context, 80),
                         color: Colors.deepPurple[300],
                         child: const Image(
-                          image: NetworkImage("https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
+                          image: NetworkImage(
+                              "https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
                           fit: BoxFit.fill,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(getSize(context, 10)),
                         child: Column(
                           children: [
                             SizedBox(
-                              width: 200,
+                              width: getSize(context, 200),
                               child: Center(
                                 child: Text(
                                   book['title'] ?? "TITLE",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: 200,
+                              width: getSize(context, 200),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

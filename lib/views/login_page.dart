@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/widgets/mail_textfield.dart';
 
@@ -20,7 +21,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -31,17 +32,21 @@ class _LoginState extends State<Login> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 100, 20, 20),
+              padding: EdgeInsets.fromLTRB(
+                  getSize(context, 20),
+                  getSize(context, 10),
+                  getSize(context, 20),
+                  getSize(context, 20)),
               child: Container(
-                height: 90,
+                height: getSize(context, 90),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(getSize(context, 10)),
                   color: Colors.deepPurple[100],
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'College logo with name',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: getSize(context, 20)),
                   ),
                 ),
               ),
@@ -49,23 +54,23 @@ class _LoginState extends State<Login> {
             Expanded(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: getSize(context, 30),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
                       '" There is no friend as loyal \nas a book "',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: getSize(context, 20),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: getSize(context, 30),
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -77,8 +82,8 @@ class _LoginState extends State<Login> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             MailField(controller: mail),
-                            const SizedBox(
-                              height: 35.0,
+                            SizedBox(
+                              height: getSize(context, 35),
                             ),
                             TextFormField(
                               controller: password,
@@ -97,13 +102,18 @@ class _LoginState extends State<Login> {
                                   ),
                                 ),
                                 disabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                                  borderSide: BorderSide(
+                                      width: 2,
+                                      color: Colors.white54), //<-- SEE HERE
                                 ),
                                 focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                                  borderSide: BorderSide(
+                                      width: 4,
+                                      color: Colors.white54), //<-- SEE HERE
                                 ),
                                 border: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2, color: Colors.white),
+                                  borderSide:
+                                      BorderSide(width: 2, color: Colors.white),
                                 ),
                                 hintText: 'Enter your Password',
                                 hintStyle: const TextStyle(color: Colors.white),
@@ -132,21 +142,25 @@ class _LoginState extends State<Login> {
                                     )),
                               ),
                             ),
-                            const SizedBox(
-                              height: 40.0,
+                            SizedBox(
+                              height: getSize(context, 45),
                             ),
                             SizedBox(
                               width: double.infinity,
-                              height: 54.0,
+                              height: getSize(context, 54),
                               child: ElevatedButton(
                                 style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                                    shape: MaterialStateProperty.all(const StadiumBorder())),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.white),
+                                    shape: MaterialStateProperty.all(
+                                        const StadiumBorder())),
                                 onPressed: () {
-                                  bool emailValid =
-                                      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
+                                  bool emailValid = RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(mail.text);
                                   if (mail.text == '' || password.text == '') {
-                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
                                       content: Text(
                                         "Fill all the fields properly",
                                         style: TextStyle(color: Colors.black),
@@ -158,21 +172,26 @@ class _LoginState extends State<Login> {
                                       try {
                                         Navigator.pushAndRemoveUntil(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const HomePage()),
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage()),
                                           (Route<dynamic> route) => false,
                                         );
                                       } on Exception catch (e) {
                                         print(e);
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
                                           content: Text(
                                             e.toString(),
-                                            style: const TextStyle(color: Colors.black),
+                                            style: const TextStyle(
+                                                color: Colors.black),
                                           ),
                                           backgroundColor: Colors.white,
                                         ));
                                       }
                                     } else {
-                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
                                         content: Text(
                                           "Enter a valid Mail-Id",
                                           style: TextStyle(color: Colors.black),
@@ -182,14 +201,16 @@ class _LoginState extends State<Login> {
                                     }
                                   }
                                 },
-                                child: const Text(
+                                child: Text(
                                   'Login',
-                                  style: TextStyle(color: Colors.black, fontSize: 25.0),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: getSize(context, 25)),
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 30.0,
+                            SizedBox(
+                              height: getSize(context, 45),
                             ),
                             const Divider(
                               color: Colors.white,
