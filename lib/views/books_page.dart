@@ -16,7 +16,10 @@ class _BooksState extends State<Books> {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+            image: AssetImage('assets/images/login_bg.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Column(
           children: [
