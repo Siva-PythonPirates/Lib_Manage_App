@@ -86,22 +86,22 @@ class _BooksState extends State<Books> {
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromRGBO(255, 255, 255, 1),
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 118, 23, 182),
-                            blurRadius: 5,
-                            spreadRadius: 7,
-                          ),
-                        ],
-                      ),
-                      child: InkWell(
-                        // splashColor: Colors.black,
-                        onTap: () {},
-                        // splashColor: Colors.black,
+                    child: InkWell(
+                      // splashColor: Colors.black,
+                      onTap: () {},
+                      // splashColor: Colors.black,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromRGBO(255, 255, 255, 1),
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 118, 23, 182),
+                              blurRadius: 5,
+                              spreadRadius: 7,
+                            ),
+                          ],
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(10),
                           child: Row(

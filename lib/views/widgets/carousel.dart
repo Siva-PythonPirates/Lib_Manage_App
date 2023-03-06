@@ -26,7 +26,10 @@ class _CustomCarouselState extends State<CustomCarousel> {
             return Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 5.0),
-              decoration: BoxDecoration(color: Colors.pink[200], borderRadius: BorderRadius.circular(10), boxShadow: const []),
+              decoration: BoxDecoration(
+                color: Colors.pink[200],
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Center(
