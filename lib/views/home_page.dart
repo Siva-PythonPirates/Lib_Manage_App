@@ -13,26 +13,56 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int selectedPage = 0;
+  // int selectedPage = 0;
+
+  int bottomSelectedIndex = 0;
 
   final _pageOptions = [const Journals(), const Books(), const ProfilePage()];
+
+  PageController pageController = PageController(
+    initialPage: 0,
+    keepPage: true,
+  );
+
+  void pageChanged(int index) {
+    setState(() {
+      bottomSelectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageOptions[selectedPage],
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (index) {
+          pageChanged(index);
+        },
+        children: const <Widget>[
+          Journals(),
+          Books(),
+          ProfilePage(),
+        ],
+      ),
       bottomNavigationBar: SizedBox(
         height: getSize(context, 70),
         child: CurvedNavigationBar(
+          index: bottomSelectedIndex,
           onTap: (index) {
             setState(() {
-              selectedPage = index;
+              // selectedPage = index;
+              bottomSelectedIndex = index;
+              pageController.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
             });
           },
           color: Colors.pink[200]!,
           backgroundColor: bgColor,
           buttonBackgroundColor: Colors.white,
-          height: getSize(context, 50),
+          height: getSize(context, 55),
           items: [
             Icon(
               Icons.book_online,

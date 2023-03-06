@@ -78,6 +78,129 @@ class _JournalsState extends State<Journals> {
               ),
             ),
             const CustomCarousel(),
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                getSize(context, 20),
+                0,
+                getSize(context, 20),
+                getSize(context, 20),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        // elevation: 50,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                              getSize(context, 30),
+                            ),
+                            topRight: Radius.circular(
+                              getSize(context, 30),
+                            ),
+                          ),
+                        ),
+                        builder: (context) {
+                          return SizedBox(
+                            height: getSize(context, 150),
+                            child: Padding(
+                              padding: EdgeInsets.all(
+                                getSize(context, 20),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: const Center(
+                                        child: Text(
+                                          'Sort Alphabetically A-Z',
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {},
+                                      child: const Center(
+                                        child: Text('Sort Alphabetically desending Z-A'),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: getSize(context, 100),
+                      height: getSize(context, 35),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.white,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.sort,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            '  Sort',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: getSize(context, 40),
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Container(
+                      width: getSize(context, 100),
+                      height: getSize(context, 35),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: Colors.white,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.filter,
+                            color: Colors.white,
+                          ),
+                          Text(
+                            '  Filter',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 padding: EdgeInsets.all(getSize(context, 10)),
@@ -85,48 +208,46 @@ class _JournalsState extends State<Journals> {
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: EdgeInsets.fromLTRB(getSize(context, 10), getSize(context, 10), getSize(context, 10), getSize(context, 20)),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 118, 23, 182),
-                            blurRadius: 8,
-                            spreadRadius: 9,
-                            // offset: Offset(5, 5),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(getSize(context, 15)),
-                        color: const Color.fromRGBO(255, 255, 255, 1),
-                      ),
-                      child: InkWell(
-                        onTap: () async {
-                          await launchURLto(journalLinks[index]);
-                        },
-                        child: SizedBox(
-                          child: Column(
-                            children: [
-                              Image(
-                                width: double.infinity,
-                                height: getSize(context, 140),
-                                image: const NetworkImage(
-                                  'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
-                                ),
-                                fit: BoxFit.cover,
+                    child: InkWell(
+                      onTap: () async {
+                        await launchURLto(journalLinks[index]);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 118, 23, 182),
+                              blurRadius: 8,
+                              spreadRadius: 9,
+                              // offset: Offset(5, 5),
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(getSize(context, 15)),
+                          color: const Color.fromRGBO(255, 255, 255, 1),
+                        ),
+                        child: Column(
+                          children: [
+                            Image(
+                              width: double.infinity,
+                              height: getSize(context, 140),
+                              image: const NetworkImage(
+                                'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(getSize(context, 12)),
-                                child: Text(
-                                  journals[index],
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    // decoration: TextDecoration.underline,
-                                  ),
-                                  textAlign: TextAlign.start,
+                              fit: BoxFit.cover,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(getSize(context, 12)),
+                              child: Text(
+                                journals[index],
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  // decoration: TextDecoration.underline,
                                 ),
+                                textAlign: TextAlign.start,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
