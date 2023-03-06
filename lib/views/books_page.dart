@@ -24,11 +24,12 @@ class _BooksState extends State<Books> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(getSize(context, 16)),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding:
+                        EdgeInsets.symmetric(vertical: getSize(context, 20)),
                     child: Row(
                       children: [
                         Container(
@@ -43,12 +44,12 @@ class _BooksState extends State<Books> {
                             ),
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Center(
                             child: Text(
                               'Books',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: getSize(context, 30),
                                 color: Colors.white,
                               ),
                             ),
@@ -65,7 +66,8 @@ class _BooksState extends State<Books> {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.deepPurple.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius:
+                                  BorderRadius.circular(getSize(context, 15)),
                             ),
                             width: getSize(context, 50),
                             height: getSize(context, 50),
@@ -84,14 +86,19 @@ class _BooksState extends State<Books> {
             ),
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.all(getSize(context, 8)),
                 itemCount: books.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
+                    padding: EdgeInsets.fromLTRB(
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 15)),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius:
+                            BorderRadius.circular(getSize(context, 10)),
                         color: const Color.fromRGBO(255, 255, 255, 1),
                         boxShadow: const [
                           BoxShadow(
@@ -106,11 +113,12 @@ class _BooksState extends State<Books> {
                         onTap: () {},
                         // splashColor: Colors.black,
                         child: Padding(
-                          padding: const EdgeInsets.all(10),
+                          padding: EdgeInsets.all(getSize(context, 10)),
                           child: Row(
                             children: [
                               Container(
-                                margin: const EdgeInsets.only(left: 7),
+                                margin:
+                                    EdgeInsets.only(left: getSize(context, 8)),
                                 height: getSize(context, 100),
                                 width: getSize(context, 80),
                                 color: Colors.deepPurple[300],
@@ -121,7 +129,7 @@ class _BooksState extends State<Books> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: EdgeInsets.all(getSize(context, 8)),
                                 child: Column(
                                   children: [
                                     SizedBox(
@@ -136,7 +144,8 @@ class _BooksState extends State<Books> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
+                                      padding: EdgeInsets.only(
+                                          top: getSize(context, 8)),
                                       child: SizedBox(
                                         width: getSize(context, 200),
                                         child: Column(

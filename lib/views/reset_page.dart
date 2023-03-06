@@ -25,7 +25,7 @@ class _ResetState extends State<Reset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -41,19 +41,20 @@ class _ResetState extends State<Reset> {
                   fit: BoxFit.cover)),
           child: Center(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 100, 30.0, 0),
+              padding: EdgeInsets.fromLTRB(getSize(context, 30),
+                  getSize(context, 100), getSize(context, 30), 0),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Center(
+                    Center(
                       child: Text(
                         'Change Password',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          fontSize: 30.0,
+                          fontSize: getSize(context, 30),
                         ),
                       ),
                     ),
@@ -228,7 +229,8 @@ class _ResetState extends State<Reset> {
                         },
                         child: Text(
                           'Reset Password',
-                          style: TextStyle(color: bgColor, fontSize: 25.0),
+                          style: TextStyle(
+                              color: bgColor, fontSize: getSize(context, 25)),
                         ),
                       ),
                     ),

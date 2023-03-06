@@ -26,11 +26,12 @@ class _JournalsState extends State<Journals> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(getSize(context, 16)),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    padding:
+                        EdgeInsets.symmetric(vertical: getSize(context, 20)),
                     child: Row(
                       children: [
                         Container(
@@ -45,12 +46,12 @@ class _JournalsState extends State<Journals> {
                             ),
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
                           child: Center(
                             child: Text(
                               'E-Journals',
                               style: TextStyle(
-                                fontSize: 30,
+                                fontSize: getSize(context, 30),
                                 color: Colors.white,
                               ),
                             ),
@@ -65,7 +66,8 @@ class _JournalsState extends State<Journals> {
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.deepPurple.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius:
+                                  BorderRadius.circular(getSize(context, 15)),
                             ),
                             width: getSize(context, 50),
                             height: getSize(context, 50),
@@ -84,11 +86,15 @@ class _JournalsState extends State<Journals> {
             ),
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(getSize(context, 10)),
                 itemCount: journals.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+                    padding: EdgeInsets.fromLTRB(
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 20)),
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         boxShadow: const [
@@ -99,7 +105,8 @@ class _JournalsState extends State<Journals> {
                             // offset: Offset(5, 5),
                           ),
                         ],
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius:
+                            BorderRadius.circular(getSize(context, 15)),
                         color: const Color.fromRGBO(255, 255, 255, 1),
                       ),
                       child: InkWell(
@@ -118,7 +125,7 @@ class _JournalsState extends State<Journals> {
                                 fit: BoxFit.cover,
                               ),
                               Padding(
-                                padding: const EdgeInsets.all(15),
+                                padding: EdgeInsets.all(getSize(context, 15)),
                                 child: Text(
                                   journals[index],
                                   style: const TextStyle(

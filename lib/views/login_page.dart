@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -32,17 +32,21 @@ class _LoginState extends State<Login> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(20.0, 100, 20, 20),
+              padding: EdgeInsets.fromLTRB(
+                  getSize(context, 20),
+                  getSize(context, 10),
+                  getSize(context, 20),
+                  getSize(context, 20)),
               child: Container(
                 height: getSize(context, 90),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(getSize(context, 10)),
                   color: Colors.deepPurple[100],
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'College logo with name',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: getSize(context, 20)),
                   ),
                 ),
               ),
@@ -53,14 +57,14 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: getSize(context, 30),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
                       '" There is no friend as loyal \nas a book "',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: getSize(context, 20),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -197,10 +201,11 @@ class _LoginState extends State<Login> {
                                     }
                                   }
                                 },
-                                child: const Text(
+                                child: Text(
                                   'Login',
                                   style: TextStyle(
-                                      color: Colors.black, fontSize: 25.0),
+                                      color: Colors.black,
+                                      fontSize: getSize(context, 25)),
                                 ),
                               ),
                             ),
