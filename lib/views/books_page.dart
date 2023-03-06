@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
 
 import '../services/app_services.dart';
@@ -110,7 +111,17 @@ class _BooksState extends State<Books> {
                       ),
                       child: InkWell(
                         // splashColor: Colors.black,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookDetails(
+                                book: books[index],
+                              ),
+                            ),
+                          );
+                        },
+
                         // splashColor: Colors.black,
                         child: Padding(
                           padding: EdgeInsets.all(getSize(context, 10)),
