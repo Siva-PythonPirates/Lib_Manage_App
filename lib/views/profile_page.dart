@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
                         "Peaky Blinders",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 40,
+                            fontSize: getSize(context, 40),
                             fontWeight: FontWeight.normal),
                       ),
                     ],
@@ -67,8 +67,9 @@ class ProfilePage extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: Icon(
                         Icons.person,
                         color: bgColor,
@@ -81,7 +82,7 @@ class ProfilePage extends StatelessWidget {
                         "Peaky Blinders",
                         style: TextStyle(
                             color: bgColor,
-                            fontSize: 20,
+                            fontSize: getSize(context, 20),
                             fontWeight: FontWeight.w400),
                       ),
                     )
@@ -98,29 +99,30 @@ class ProfilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: Icon(
                         Icons.mail,
                         color: bgColor,
-                        size: 40,
+                        size: getSize(context, 40),
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(getSize(context, 8)),
                       child: Text(
                         "210701@gmail.com",
                         style: TextStyle(
                             color: bgColor,
-                            fontSize: 20,
+                            fontSize: getSize(context, 20),
                             fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  margin: EdgeInsets.symmetric(
+                      vertical: getSize(context, 8), horizontal: 0),
                   width: MediaQuery.of(context).size.width,
                   height: getSize(context, 1),
                   color: bgColor,
@@ -129,8 +131,9 @@ class ProfilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 24),
+                      padding: EdgeInsets.symmetric(
+                          vertical: getSize(context, 8),
+                          horizontal: getSize(context, 24)),
                       child: IconButton(
                           onPressed: () {},
                           icon: Icon(
@@ -140,20 +143,20 @@ class ProfilePage extends StatelessWidget {
                           )),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(getSize(context, 8)),
                       child: Text(
                         "Password",
                         style: TextStyle(
                             color: bgColor,
-                            fontSize: 20,
+                            fontSize: getSize(context, 20),
                             fontWeight: FontWeight.w400),
                       ),
                     )
                   ],
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  margin: EdgeInsets.symmetric(
+                      vertical: getSize(context, 8), horizontal: 0),
                   width: MediaQuery.of(context).size.width,
                   height: getSize(context, 1),
                   color: bgColor,
@@ -162,8 +165,8 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: getSize(context, 80),
-            left: MediaQuery.of(context).size.width / 5,
+            bottom: getSize(context, 40),
+            left: MediaQuery.of(context).size.width / 5.2,
             child: ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(bgColor),
@@ -175,12 +178,12 @@ class ProfilePage extends StatelessWidget {
                 );
               },
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(getSize(context, 16)),
                 child: Text(
                   "Change Password",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20,
+                      fontSize: getSize(context, 20),
                       fontWeight: FontWeight.normal),
                 ),
               ),

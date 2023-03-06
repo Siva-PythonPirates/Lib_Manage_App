@@ -43,10 +43,10 @@ class JournalCustomDelegate extends SearchDelegate {
       itemBuilder: (BuildContext context, int index) {
         final journalIndex = journals.indexOf(filteredJournals[index]);
         return Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(getSize(context, 8)),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(getSize(context, 15)),
               color: const Color.fromRGBO(255, 255, 255, 1),
             ),
             child: InkWell(
