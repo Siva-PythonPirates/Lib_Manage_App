@@ -35,7 +35,10 @@ class _ResetState extends State<Reset> {
           }
         },
         child: Container(
-          decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover)),
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/login_bg.jpg'),
+                  fit: BoxFit.cover)),
           child: Center(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(30.0, 100, 30.0, 0),
@@ -54,12 +57,12 @@ class _ResetState extends State<Reset> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 56,
+                    SizedBox(
+                      height: getSize(context, 56),
                     ),
                     MailField(controller: mail),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: getSize(context, 20),
                     ),
                     TextFormField(
                       controller: password,
@@ -72,13 +75,16 @@ class _ResetState extends State<Reset> {
                         // labelText: 'Enter e-mail',
                         labelStyle: const TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.white), //<-- SEE HERE
                         ),
                         disabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.white54), //<-- SEE HERE
                         ),
                         focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 4, color: Colors.white54), //<-- SEE HERE
                         ),
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(width: 2, color: Colors.white),
@@ -110,8 +116,8 @@ class _ResetState extends State<Reset> {
                             )),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
+                    SizedBox(
+                      height: getSize(context, 20),
                     ),
                     TextFormField(
                       controller: password2,
@@ -122,13 +128,16 @@ class _ResetState extends State<Reset> {
                         labelText: 'Confirm Password',
                         labelStyle: const TextStyle(color: Colors.white),
                         enabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.white), //<-- SEE HERE
                         ),
                         disabledBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 2, color: Colors.white54), //<-- SEE HERE
                         ),
                         focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                          borderSide: BorderSide(
+                              width: 4, color: Colors.white54), //<-- SEE HERE
                         ),
                         border: const OutlineInputBorder(
                           borderSide: BorderSide(width: 2, color: Colors.white),
@@ -160,17 +169,22 @@ class _ResetState extends State<Reset> {
                             )),
                       ),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    SizedBox(
+                      height: getSize(context, 40),
                     ),
                     SizedBox(
                       width: double.infinity,
-                      height: 54.0,
+                      height: getSize(context, 54),
                       child: ElevatedButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all(const StadiumBorder())),
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.white),
+                            shape: MaterialStateProperty.all(
+                                const StadiumBorder())),
                         onPressed: () {
-                          bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
+                          bool emailValid = RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(mail.text);
                           if (mail.text == '' || password.text == '') {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
@@ -180,16 +194,19 @@ class _ResetState extends State<Reset> {
                               backgroundColor: Colors.white,
                             ));
                           } else {
-                            if (emailValid == true && password.text == password2.text) {
+                            if (emailValid == true &&
+                                password.text == password2.text) {
                               try {
                                 Navigator.pushAndRemoveUntil(
                                   context,
-                                  MaterialPageRoute(builder: (context) => const HomePage()),
+                                  MaterialPageRoute(
+                                      builder: (context) => const HomePage()),
                                   (Route<dynamic> route) => false,
                                 );
                               } on Exception catch (e) {
                                 print(e);
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
                                   content: Text(
                                     "Passwords don't match",
                                     style: TextStyle(color: bgColor),
@@ -198,7 +215,8 @@ class _ResetState extends State<Reset> {
                                 ));
                               }
                             } else {
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
                                 content: Text(
                                   "Enter a valid Mail-Id or Check if passwords match",
                                   style: TextStyle(color: bgColor),
@@ -214,15 +232,15 @@ class _ResetState extends State<Reset> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
+                    SizedBox(
+                      height: getSize(context, 30),
                     ),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
                       child: SizedBox(
-                        width: 200,
+                        width: getSize(context, 200),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [

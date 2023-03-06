@@ -60,11 +60,12 @@ class BookCustomDelegate extends SearchDelegate {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(left: 8),
-                        height: 100,
-                        width: 80,
+                        height: getSize(context, 100),
+                        width: getSize(context, 80),
                         color: Colors.deepPurple[300],
                         child: const Image(
-                          image: NetworkImage("https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
+                          image: NetworkImage(
+                              "https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -73,17 +74,18 @@ class BookCustomDelegate extends SearchDelegate {
                         child: Column(
                           children: [
                             SizedBox(
-                              width: 200,
+                              width: getSize(context, 200),
                               child: Center(
                                 child: Text(
                                   book['title'] ?? "TITLE",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
                             SizedBox(
-                              width: 200,
+                              width: getSize(context, 200),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [

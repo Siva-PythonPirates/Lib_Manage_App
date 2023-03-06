@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/widgets/mail_textfield.dart';
 
@@ -33,7 +34,7 @@ class _LoginState extends State<Login> {
             Padding(
               padding: const EdgeInsets.fromLTRB(20.0, 100, 20, 20),
               child: Container(
-                height: 90,
+                height: getSize(context, 90),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Colors.deepPurple[100],
@@ -49,8 +50,8 @@ class _LoginState extends State<Login> {
             Expanded(
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: getSize(context, 30),
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
@@ -64,8 +65,8 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: getSize(context, 30),
                   ),
                   Expanded(
                     child: SingleChildScrollView(
@@ -77,8 +78,8 @@ class _LoginState extends State<Login> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             MailField(controller: mail),
-                            const SizedBox(
-                              height: 35.0,
+                            SizedBox(
+                              height: getSize(context, 35),
                             ),
                             TextFormField(
                               controller: password,
@@ -97,13 +98,18 @@ class _LoginState extends State<Login> {
                                   ),
                                 ),
                                 disabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                                  borderSide: BorderSide(
+                                      width: 2,
+                                      color: Colors.white54), //<-- SEE HERE
                                 ),
                                 focusedBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                                  borderSide: BorderSide(
+                                      width: 4,
+                                      color: Colors.white54), //<-- SEE HERE
                                 ),
                                 border: const OutlineInputBorder(
-                                  borderSide: BorderSide(width: 2, color: Colors.white),
+                                  borderSide:
+                                      BorderSide(width: 2, color: Colors.white),
                                 ),
                                 hintText: 'Enter your Password',
                                 hintStyle: const TextStyle(color: Colors.white),
@@ -132,21 +138,25 @@ class _LoginState extends State<Login> {
                                     )),
                               ),
                             ),
-                            const SizedBox(
-                              height: 40.0,
+                            SizedBox(
+                              height: getSize(context, 45),
                             ),
                             SizedBox(
                               width: double.infinity,
-                              height: 54.0,
+                              height: getSize(context, 54),
                               child: ElevatedButton(
                                 style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(Colors.white),
-                                    shape: MaterialStateProperty.all(const StadiumBorder())),
+                                    backgroundColor:
+                                        MaterialStateProperty.all(Colors.white),
+                                    shape: MaterialStateProperty.all(
+                                        const StadiumBorder())),
                                 onPressed: () {
-                                  bool emailValid =
-                                      RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
+                                  bool emailValid = RegExp(
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(mail.text);
                                   if (mail.text == '' || password.text == '') {
-                                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(const SnackBar(
                                       content: Text(
                                         "Fill all the fields properly",
                                         style: TextStyle(color: Colors.black),
@@ -158,21 +168,26 @@ class _LoginState extends State<Login> {
                                       try {
                                         Navigator.pushAndRemoveUntil(
                                           context,
-                                          MaterialPageRoute(builder: (context) => const HomePage()),
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage()),
                                           (Route<dynamic> route) => false,
                                         );
                                       } on Exception catch (e) {
                                         print(e);
-                                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
                                           content: Text(
                                             e.toString(),
-                                            style: const TextStyle(color: Colors.black),
+                                            style: const TextStyle(
+                                                color: Colors.black),
                                           ),
                                           backgroundColor: Colors.white,
                                         ));
                                       }
                                     } else {
-                                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(const SnackBar(
                                         content: Text(
                                           "Enter a valid Mail-Id",
                                           style: TextStyle(color: Colors.black),
@@ -184,12 +199,13 @@ class _LoginState extends State<Login> {
                                 },
                                 child: const Text(
                                   'Login',
-                                  style: TextStyle(color: Colors.black, fontSize: 25.0),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 25.0),
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 30.0,
+                            SizedBox(
+                              height: getSize(context, 45),
                             ),
                             const Divider(
                               color: Colors.white,

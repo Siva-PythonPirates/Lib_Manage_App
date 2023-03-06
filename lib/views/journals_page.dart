@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/widgets/search_button.dart';
+
 import '../views/widgets/carousel.dart';
 
 class Journals extends StatefulWidget {
@@ -34,15 +35,13 @@ class _JournalsState extends State<Journals> {
                       children: [
                         Container(
                           alignment: Alignment.bottomLeft,
-                          width: 50,
-                          height: 50,
+                          width: getSize(context, 50),
+                          height: getSize(context, 50),
                           color: Colors.deepPurple.withOpacity(0.5),
-                          child: const Expanded(
-                            child: Center(
-                              child: Text(
-                                'logo',
-                                style: TextStyle(color: Colors.white),
-                              ),
+                          child: Center(
+                            child: Text(
+                              'logo',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -59,15 +58,17 @@ class _JournalsState extends State<Journals> {
                         ),
                         InkWell(
                           onTap: () {
-                            showSearch(context: context, delegate: JournalCustomDelegate());
+                            showSearch(
+                                context: context,
+                                delegate: JournalCustomDelegate());
                           },
                           child: Container(
                             decoration: BoxDecoration(
                               color: Colors.deepPurple.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            width: 50,
-                            height: 50,
+                            width: getSize(context, 50),
+                            height: getSize(context, 50),
                             child: const Icon(
                               Icons.search,
                               color: Colors.white,
@@ -108,9 +109,9 @@ class _JournalsState extends State<Journals> {
                         child: SizedBox(
                           child: Column(
                             children: [
-                              const Image(
+                              Image(
                                 width: double.infinity,
-                                height: 150,
+                                height: getSize(context, 150),
                                 image: NetworkImage(
                                   'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
                                 ),
@@ -121,7 +122,8 @@ class _JournalsState extends State<Journals> {
                                 child: Text(
                                   journals[index],
                                   style: const TextStyle(
-                                    color: Colors.black, fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
                                     // decoration: TextDecoration.underline,
                                   ),
                                   textAlign: TextAlign.start,

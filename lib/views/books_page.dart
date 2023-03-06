@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
-import '../views/widgets/carousel.dart';
+
 import '../services/app_services.dart';
+import '../views/widgets/carousel.dart';
 
 class Books extends StatefulWidget {
   const Books({Key? key}) : super(key: key);
@@ -16,7 +17,9 @@ class _BooksState extends State<Books> {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/images/login_bg.jpg'),
+              fit: BoxFit.cover),
         ),
         child: Column(
           children: [
@@ -30,8 +33,8 @@ class _BooksState extends State<Books> {
                       children: [
                         Container(
                           alignment: Alignment.bottomLeft,
-                          width: 50,
-                          height: 50,
+                          width: getSize(context, 50),
+                          height: getSize(context, 50),
                           color: Colors.deepPurple.withOpacity(0.5),
                           child: const Center(
                             child: Text(
@@ -64,8 +67,8 @@ class _BooksState extends State<Books> {
                               color: Colors.deepPurple.withOpacity(0.5),
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            width: 50,
-                            height: 50,
+                            width: getSize(context, 50),
+                            height: getSize(context, 50),
                             child: const Icon(
                               Icons.search,
                               color: Colors.white,
@@ -108,11 +111,12 @@ class _BooksState extends State<Books> {
                             children: [
                               Container(
                                 margin: const EdgeInsets.only(left: 7),
-                                height: 100,
-                                width: 80,
+                                height: getSize(context, 100),
+                                width: getSize(context, 80),
                                 color: Colors.deepPurple[300],
                                 child: const Image(
-                                  image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                  image: NetworkImage(
+                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                   fit: BoxFit.fill,
                                 ),
                               ),
@@ -121,19 +125,20 @@ class _BooksState extends State<Books> {
                                 child: Column(
                                   children: [
                                     SizedBox(
-                                      width: 200,
+                                      width: getSize(context, 200),
                                       child: Center(
                                         child: Text(
                                           books[index]['title'] ?? "BOOK TITLE",
                                           textAlign: TextAlign.center,
-                                          style: const TextStyle(fontWeight: FontWeight.bold),
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
                                       child: SizedBox(
-                                        width: 200,
+                                        width: getSize(context, 200),
                                         child: Column(
                                           // mainAxisAlignment: MainAxisAlignment.center,
                                           children: [

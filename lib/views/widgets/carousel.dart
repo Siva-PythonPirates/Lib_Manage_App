@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services.dart';
 
 class CustomCarousel extends StatefulWidget {
   const CustomCarousel({super.key});
@@ -26,7 +27,10 @@ class _CustomCarouselState extends State<CustomCarousel> {
             return Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 5.0),
-              decoration: BoxDecoration(color: Colors.pink[200], borderRadius: BorderRadius.circular(10), boxShadow: const []),
+              decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const []),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Center(
@@ -45,7 +49,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
         );
       }).toList(),
       options: CarouselOptions(
-        height: 90,
+        height: getSize(context, 90),
         initialPage: 0,
         enableInfiniteScroll: true,
         autoPlay: true,
