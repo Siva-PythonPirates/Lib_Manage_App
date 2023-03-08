@@ -34,230 +34,232 @@ class _ResetState extends State<Reset> {
             currentFocus.unfocus();
           }
         },
-        child: Stack(children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
-            ),
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(getSize(context, 30), 0, getSize(context, 30), 0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width / 1.8,
-                      ),
-                      MailField(controller: mail),
-                      SizedBox(
-                        height: getSize(context, 20),
-                      ),
-                      TextFormField(
-                        controller: password,
-                        style: const TextStyle(color: Colors.white),
-                        obscureText: p,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          labelText: 'New Password',
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(getSize(context, 30), 0, getSize(context, 30), 0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.width / 1.8,
+                        ),
+                        MailField(controller: mail),
+                        SizedBox(
+                          height: getSize(context, 20),
+                        ),
+                        TextFormField(
+                          controller: password,
+                          style: const TextStyle(color: Colors.white),
+                          obscureText: p,
+                          keyboardType: TextInputType.visiblePassword,
+                          decoration: InputDecoration(
+                            labelText: 'New Password',
 
-                          // labelText: 'Enter e-mail',
-                          labelStyle: const TextStyle(color: Colors.white),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
+                            // labelText: 'Enter e-mail',
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
+                            ),
+                            disabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                            ),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white),
+                            ),
+                            hintText: 'Change Password',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(
+                              Icons.lock_outline_rounded,
+                              color: Colors.white,
+                            ),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (p == false) {
+                                      p = true;
+                                    } else {
+                                      p = false;
+                                    }
+                                    if (using == openeye) {
+                                      using = closeeye;
+                                    } else {
+                                      using = openeye;
+                                    }
+                                  });
+                                },
+                                icon: Icon(
+                                  using,
+                                  color: Colors.white,
+                                )),
                           ),
-                          disabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
-                          ),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white),
-                          ),
-                          hintText: 'Change Password',
-                          hintStyle: const TextStyle(color: Colors.white),
-                          prefixIcon: const Icon(
-                            Icons.lock_outline_rounded,
-                            color: Colors.white,
-                          ),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (p == false) {
-                                    p = true;
-                                  } else {
-                                    p = false;
-                                  }
-                                  if (using == openeye) {
-                                    using = closeeye;
-                                  } else {
-                                    using = openeye;
-                                  }
-                                });
-                              },
-                              icon: Icon(
-                                using,
-                                color: Colors.white,
-                              )),
                         ),
-                      ),
-                      SizedBox(
-                        height: getSize(context, 20),
-                      ),
-                      TextFormField(
-                        controller: password2,
-                        style: const TextStyle(color: Colors.white),
-                        obscureText: cp,
-                        keyboardType: TextInputType.visiblePassword,
-                        decoration: InputDecoration(
-                          labelText: 'Confirm Password',
-                          labelStyle: const TextStyle(color: Colors.white),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
-                          ),
-                          disabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
-                          ),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide(width: 2, color: Colors.white),
-                          ),
-                          hintText: 'Confirm Password',
-                          hintStyle: const TextStyle(color: Colors.white),
-                          prefixIcon: const Icon(
-                            Icons.lock_outline_rounded,
-                            color: Colors.white,
-                          ),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (cp == false) {
-                                    cp = true;
-                                  } else {
-                                    cp = false;
-                                  }
-                                  if (using1 == openeye) {
-                                    using1 = closeeye;
-                                  } else {
-                                    using1 = openeye;
-                                  }
-                                });
-                              },
-                              icon: Icon(
-                                using1,
-                                color: Colors.white,
-                              )),
+                        SizedBox(
+                          height: getSize(context, 20),
                         ),
-                      ),
-                      SizedBox(
-                        height: getSize(context, 40),
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: getSize(context, 54),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all(const StadiumBorder())),
-                          onPressed: () {
-                            bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
-                            if (mail.text == '' || password.text == '') {
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(
-                                  "Fill all the fields properly",
-                                  style: TextStyle(color: bgColor),
-                                ),
-                                backgroundColor: Colors.white,
-                              ));
-                            } else {
-                              if (emailValid == true && password.text == password2.text) {
-                                try {
-                                  Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const HomePage()),
-                                    (Route<dynamic> route) => false,
-                                  );
-                                } on Exception catch (e) {
-                                  print(e);
+                        TextFormField(
+                          controller: password2,
+                          style: const TextStyle(color: Colors.white),
+                          obscureText: cp,
+                          keyboardType: TextInputType.visiblePassword,
+                          decoration: InputDecoration(
+                            labelText: 'Confirm Password',
+                            labelStyle: const TextStyle(color: Colors.white),
+                            enabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
+                            ),
+                            disabledBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
+                            ),
+                            focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
+                            ),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide(width: 2, color: Colors.white),
+                            ),
+                            hintText: 'Confirm Password',
+                            hintStyle: const TextStyle(color: Colors.white),
+                            prefixIcon: const Icon(
+                              Icons.lock_outline_rounded,
+                              color: Colors.white,
+                            ),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (cp == false) {
+                                      cp = true;
+                                    } else {
+                                      cp = false;
+                                    }
+                                    if (using1 == openeye) {
+                                      using1 = closeeye;
+                                    } else {
+                                      using1 = openeye;
+                                    }
+                                  });
+                                },
+                                icon: Icon(
+                                  using1,
+                                  color: Colors.white,
+                                )),
+                          ),
+                        ),
+                        SizedBox(
+                          height: getSize(context, 40),
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: getSize(context, 54),
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all(const StadiumBorder())),
+                            onPressed: () {
+                              bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
+                              if (mail.text == '' || password.text == '') {
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                  content: Text(
+                                    "Fill all the fields properly",
+                                    style: TextStyle(color: bgColor),
+                                  ),
+                                  backgroundColor: Colors.white,
+                                ));
+                              } else {
+                                if (emailValid == true && password.text == password2.text) {
+                                  try {
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const HomePage()),
+                                      (Route<dynamic> route) => false,
+                                    );
+                                  } on Exception catch (e) {
+                                    print(e);
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                      content: Text(
+                                        "Passwords don't match",
+                                        style: TextStyle(color: bgColor),
+                                      ),
+                                      backgroundColor: Colors.white,
+                                    ));
+                                  }
+                                } else {
                                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                     content: Text(
-                                      "Passwords don't match",
+                                      "Enter a valid Mail-Id or Check if passwords match",
                                       style: TextStyle(color: bgColor),
                                     ),
                                     backgroundColor: Colors.white,
                                   ));
                                 }
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(
-                                    "Enter a valid Mail-Id or Check if passwords match",
-                                    style: TextStyle(color: bgColor),
-                                  ),
-                                  backgroundColor: Colors.white,
-                                ));
                               }
-                            }
+                            },
+                            child: Text(
+                              'Reset Password',
+                              style: TextStyle(color: bgColor, fontSize: getSize(context, 25)),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: getSize(context, 30),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
                           },
-                          child: Text(
-                            'Reset Password',
-                            style: TextStyle(color: bgColor, fontSize: getSize(context, 25)),
+                          child: SizedBox(
+                            width: getSize(context, 200),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  '  Go Back',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: getSize(context, 30),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: SizedBox(
-                          width: getSize(context, 200),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.arrow_back,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                '  Go Back',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Positioned(
-            top: -MediaQuery.of(context).size.width - 120,
-            left: -MediaQuery.of(context).size.width / 4,
-            child: Container(
-              height: MediaQuery.of(context).size.width * 2,
-              width: MediaQuery.of(context).size.width * 1.5,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Text(
-                  'College logo with name',
-                  style: TextStyle(
-                    fontSize: getSize(context, 20),
+            Positioned(
+              top: -MediaQuery.of(context).size.width - 120,
+              left: -MediaQuery.of(context).size.width / 4,
+              child: Container(
+                height: MediaQuery.of(context).size.width * 2,
+                width: MediaQuery.of(context).size.width * 1.5,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    'College logo with name',
+                    style: TextStyle(
+                      fontSize: getSize(context, 20),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

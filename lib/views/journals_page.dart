@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
-import 'package:lib_management/views/widgets/filter_widget.dart';
+import 'package:lib_management/views/widgets/journal_filter_widget.dart';
 import 'package:lib_management/views/widgets/search_button.dart';
 
 import '../views/widgets/carousel.dart';
@@ -13,9 +13,14 @@ class Journals extends StatefulWidget {
 }
 
 class _JournalsState extends State<Journals> {
+  Future<void> dummy() async {}
+
+  int selectedSortOpt = 0;
+
+  // List<String> filterOptions = [];
+
   @override
   Widget build(BuildContext context) {
-    int selectedSortOpt = 0;
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -109,7 +114,7 @@ class _JournalsState extends State<Journals> {
                         ),
                         builder: (context) {
                           return SizedBox(
-                            height: getSize(context, 150),
+                            height: getSize(context, 180),
                             child: Padding(
                               padding: EdgeInsets.all(
                                 getSize(context, 20),
@@ -135,7 +140,7 @@ class _JournalsState extends State<Journals> {
                                           'Sort Alphabetically A-Z',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: (selectedSortOpt == 1) ? Colors.deepOrange : Colors.black,
+                                            color: (selectedSortOpt == 1) ? Colors.blue : Colors.black,
                                             // color:
                                           ),
                                         ),
@@ -162,7 +167,32 @@ class _JournalsState extends State<Journals> {
                                           'Sort Alphabetically desending Z-A',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: (selectedSortOpt == 2) ? Colors.deepOrange : Colors.black,
+                                            color: (selectedSortOpt == 2) ? Colors.blue : Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        resetJournalSort();
+
+                                        setState(() {
+                                          journal;
+                                          selectedSortOpt = 0;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Center(
+                                        child: Text(
+                                          'Restore Defaults',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red,
                                           ),
                                         ),
                                       ),
@@ -254,7 +284,7 @@ class _JournalsState extends State<Journals> {
                                             child: ListView.builder(
                                               itemCount: journalFilterOptions.length,
                                               itemBuilder: (context, index) {
-                                                return FilterWidget(index);
+                                                return JournalFilterWidget(index);
 
                                                 // return padding
                                               },
@@ -271,7 +301,13 @@ class _JournalsState extends State<Journals> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          resetJournalFilter();
+                                          setState(() {
+                                            journal;
+                                          });
+                                          Navigator.pop(context);
+                                        },
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
                                         ),
@@ -283,7 +319,13 @@ class _JournalsState extends State<Journals> {
                                         ),
                                       ),
                                       ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          ApplyJournalFilter();
+                                          setState(() {
+                                            journal;
+                                          });
+                                          Navigator.pop(context);
+                                        },
                                         child: const Text('Apply Filters'),
                                       )
                                     ],
@@ -325,76 +367,87 @@ class _JournalsState extends State<Journals> {
               ),
             ),
             Expanded(
-              child: Scrollbar(
-                child: ListView.builder(
-                  padding: EdgeInsets.all(getSize(context, 10)),
-                  itemCount: journals.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(getSize(context, 10), getSize(context, 10), getSize(context, 10), getSize(context, 20)),
-                      child: InkWell(
-                        onTap: () async {
-                          await launchURLto(journal[index]['link']!);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 118, 23, 182),
-                                blurRadius: 8,
-                                spreadRadius: 9,
-                                // offset: Offset(5, 5),
-                              ),
-                            ],
-                            borderRadius: BorderRadius.circular(getSize(context, 15)),
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                width: double.infinity,
-                                height: getSize(context, 140),
-                                child: Image(
-                                  // width: double.infinity,
-                                  // height: getSize(context, 140),
-                                  frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                                    return child;
-                                  },
-                                  loadingBuilder: ((context, child, loadingProgress) {
-                                    if (loadingProgress == null) {
+              child: RefreshIndicator(
+                onRefresh: () {
+                  if (tempjournal.isNotEmpty) journal = tempjournal;
+                  journalFilterSelected = [];
+                  filteredJournal = [];
+                  setState(() {
+                    journal;
+                  });
+                  return dummy();
+                },
+                child: Scrollbar(
+                  child: ListView.builder(
+                    padding: EdgeInsets.all(getSize(context, 10)),
+                    itemCount: journal.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(getSize(context, 10), getSize(context, 10), getSize(context, 10), getSize(context, 20)),
+                        child: InkWell(
+                          onTap: () async {
+                            await launchURLto(journal[index]['link']!);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 118, 23, 182),
+                                  blurRadius: 8,
+                                  spreadRadius: 9,
+                                  // offset: Offset(5, 5),
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(getSize(context, 15)),
+                              color: const Color.fromRGBO(255, 255, 255, 1),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  height: getSize(context, 140),
+                                  child: Image(
+                                    // width: double.infinity,
+                                    // height: getSize(context, 140),
+                                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                                       return child;
-                                    } else {
-                                      return const Expanded(
-                                        child: Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                      );
-                                    }
-                                  }),
-                                  image: const NetworkImage(
-                                    'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+                                    },
+                                    loadingBuilder: ((context, child, loadingProgress) {
+                                      if (loadingProgress == null) {
+                                        return child;
+                                      } else {
+                                        return const Expanded(
+                                          child: Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                        );
+                                      }
+                                    }),
+                                    image: const NetworkImage(
+                                      'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+                                    ),
+                                    fit: BoxFit.cover,
                                   ),
-                                  fit: BoxFit.cover,
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(getSize(context, 12)),
-                                child: Text(
-                                  journal[index]['title']!,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    // decoration: TextDecoration.underline,
+                                Padding(
+                                  padding: EdgeInsets.all(getSize(context, 12)),
+                                  child: Text(
+                                    journal[index]['title']!,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      // decoration: TextDecoration.underline,
+                                    ),
+                                    textAlign: TextAlign.start,
                                   ),
-                                  textAlign: TextAlign.start,
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

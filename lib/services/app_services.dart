@@ -25,34 +25,6 @@ List<String> journals = [
   "EBSCO–Business Source Elite"
 ];
 
-List<String> journalFilterOptions = [
-  'IEEE',
-  'ASME',
-  'ASCE',
-  'Elsevier',
-  'J-GATE',
-  'EBSCO',
-];
-
-void sortJournalAsc() {
-  journal.sort(
-    (a, b) {
-      return a['title']!.compareTo(b['title']!);
-    },
-  );
-}
-
-void sortJournalDesc() {
-  sortJournalAsc();
-
-  journal = journal.reversed.toList();
-}
-
-List<String> booksFilterCategory = [
-  'Department',
-  'Author',
-];
-
 List<Map<String, String>> journal = [
   {'title': 'IEEE', 'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp'},
   {'title': 'ASME - American society of Mechanical Engineers', 'link': 'https://asmedigitalcollection.asme.org/journals'},
@@ -72,6 +44,106 @@ List<String> journalLinks = [
   "https://jgateplus.com/home/",
   "https://search.ebscohost.com/"
 ];
+
+void sortJournalAsc() {
+  if (tempjournal.isEmpty) {
+    createtempjournal();
+  }
+  journal.sort(
+    (a, b) {
+      return a['title']!.compareTo(b['title']!);
+    },
+  );
+}
+
+void sortJournalDesc() {
+  sortJournalAsc();
+
+  journal = journal.reversed.toList();
+}
+
+void resetJournalSort() {
+  journal = tempjournal;
+}
+
+List<String> journalFilterOptions = [
+  'IEEE',
+  'ASME',
+  'ASCE',
+  'Elsevier',
+  'J-GATE',
+  'EBSCO',
+];
+
+List<String> journalFilterSelected = [];
+
+List<Map<String, String>> tempjournal = [];
+
+List<Map<String, String>> filteredJournal = [];
+
+void createtempjournal() {
+  for (var i in journal) {
+    tempjournal.add(i);
+  }
+}
+
+void ApplyJournalFilter() {
+  if (tempjournal.isEmpty) {
+    createtempjournal();
+  }
+  filteredJournal = [];
+  if (journalFilterSelected.isNotEmpty) {
+    for (var query in journalFilterSelected) {
+      print(query);
+
+      filteredJournal = [...filteredJournal, ...tempjournal.where((element) => element['title']!.contains(query)).toList()];
+    }
+    journal = filteredJournal;
+    print(journal);
+  }
+}
+
+void resetJournalFilter() {
+  journal = tempjournal;
+  journalFilterSelected = [];
+  filteredJournal = [];
+}
+
+//         BOOK SORING AND FILTERING            //
+
+List<String> booksFilterCategory = [
+  'Department',
+  'Author',
+];
+
+List<String> booksFilterCategoryDeptOptions = [
+  'Science',
+  'Economics',
+  'Language and writing',
+  'philosophy',
+  'psycholology',
+  'Political Science',
+];
+
+List<String> booksFilterCategoryAuthorOptions = [
+  'Plato',
+  'Thomas',
+  'Adam Smith',
+  'Stephen Hawking',
+  'Charles Darvin',
+  'William Strunk',
+  'E.B.White',
+  'Gregory',
+  'Richard',
+  'Sigmund Freud',
+  'Jean',
+];
+
+List<List<String>> booksFilterCatOptions = [
+  [...booksFilterCategoryDeptOptions],
+  [...booksFilterCategoryAuthorOptions],
+];
+
 List<Map<String, String>> books = [
   {
     'title': 'The Structure of Scientific Revolutions',

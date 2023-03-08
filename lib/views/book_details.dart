@@ -12,21 +12,29 @@ class BookDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(book['title'] ?? 'BOOK TITLE'),
-        textTheme: Theme.of(context).textTheme.copyWith(
-              headline6: TextStyle(color: Colors.black),
-            ),
         backgroundColor: Colors.pink[200],
+        toolbarTextStyle: Theme.of(context)
+            .textTheme
+            .copyWith(
+              headline6: TextStyle(color: Colors.black),
+            )
+            .bodyText2,
+        titleTextStyle: Theme.of(context)
+            .textTheme
+            .copyWith(
+              headline6: TextStyle(color: Colors.black),
+            )
+            .headline6,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/login_bg.jpg"),
             fit: BoxFit.cover,
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: screenSize.width * 0.2, vertical: 16),
+          padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.2, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -41,35 +49,35 @@ class BookDetails extends StatelessWidget {
               const SizedBox(height: 16),
               Text(
                 'Title: ${book['title'] ?? 'BOOK TITLE'}',
-                style: Theme.of(context).textTheme.headline6?.copyWith(
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Colors.white,
                     ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Author: ${book['author'] ?? 'XXX'}',
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.white,
                     ),
               ),
               const SizedBox(height: 8),
               Text(
                 'Department: ${book['department'] ?? 'XXX'}',
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.white,
                     ),
               ),
               const SizedBox(height: 16),
               Text(
                 'Description:',
-                style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.white,
                     ),
               ),
               const SizedBox(height: 8),
               Text(
                 book['description'] ?? 'No description available',
-                style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Colors.white,
                     ),
               ),
