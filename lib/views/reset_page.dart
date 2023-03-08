@@ -25,7 +25,7 @@ class _ResetState extends State<Reset> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -37,13 +37,11 @@ class _ResetState extends State<Reset> {
         child: Stack(children: [
           Container(
             decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/login_bg.jpg'),
-                    fit: BoxFit.cover)),
+              image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+            ),
             child: Center(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    getSize(context, 30), 0, getSize(context, 30), 0),
+                padding: EdgeInsets.fromLTRB(getSize(context, 30), 0, getSize(context, 30), 0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -67,20 +65,16 @@ class _ResetState extends State<Reset> {
                           // labelText: 'Enter e-mail',
                           labelStyle: const TextStyle(color: Colors.white),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2, color: Colors.white), //<-- SEE HERE
+                            borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
                           ),
                           disabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2, color: Colors.white54), //<-- SEE HERE
+                            borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
                           ),
                           focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 4, color: Colors.white54), //<-- SEE HERE
+                            borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
                           ),
                           border: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.white),
+                            borderSide: BorderSide(width: 2, color: Colors.white),
                           ),
                           hintText: 'Change Password',
                           hintStyle: const TextStyle(color: Colors.white),
@@ -121,20 +115,16 @@ class _ResetState extends State<Reset> {
                           labelText: 'Confirm Password',
                           labelStyle: const TextStyle(color: Colors.white),
                           enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2, color: Colors.white), //<-- SEE HERE
+                            borderSide: BorderSide(width: 2, color: Colors.white), //<-- SEE HERE
                           ),
                           disabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 2, color: Colors.white54), //<-- SEE HERE
+                            borderSide: BorderSide(width: 2, color: Colors.white54), //<-- SEE HERE
                           ),
                           focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                                width: 4, color: Colors.white54), //<-- SEE HERE
+                            borderSide: BorderSide(width: 4, color: Colors.white54), //<-- SEE HERE
                           ),
                           border: const OutlineInputBorder(
-                            borderSide:
-                                BorderSide(width: 2, color: Colors.white),
+                            borderSide: BorderSide(width: 2, color: Colors.white),
                           ),
                           hintText: 'Confirm Password',
                           hintStyle: const TextStyle(color: Colors.white),
@@ -171,17 +161,11 @@ class _ResetState extends State<Reset> {
                         height: getSize(context, 54),
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                              shape: MaterialStateProperty.all(
-                                  const StadiumBorder())),
+                              backgroundColor: MaterialStateProperty.all(Colors.white), shape: MaterialStateProperty.all(const StadiumBorder())),
                           onPressed: () {
-                            bool emailValid = RegExp(
-                                    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                .hasMatch(mail.text);
+                            bool emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
                             if (mail.text == '' || password.text == '') {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
                                   "Fill all the fields properly",
                                   style: TextStyle(color: bgColor),
@@ -189,19 +173,16 @@ class _ResetState extends State<Reset> {
                                 backgroundColor: Colors.white,
                               ));
                             } else {
-                              if (emailValid == true &&
-                                  password.text == password2.text) {
+                              if (emailValid == true && password.text == password2.text) {
                                 try {
                                   Navigator.pushAndRemoveUntil(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const HomePage()),
+                                    MaterialPageRoute(builder: (context) => const HomePage()),
                                     (Route<dynamic> route) => false,
                                   );
                                 } on Exception catch (e) {
                                   print(e);
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(SnackBar(
+                                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                     content: Text(
                                       "Passwords don't match",
                                       style: TextStyle(color: bgColor),
@@ -210,8 +191,7 @@ class _ResetState extends State<Reset> {
                                   ));
                                 }
                               } else {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                   content: Text(
                                     "Enter a valid Mail-Id or Check if passwords match",
                                     style: TextStyle(color: bgColor),
@@ -223,8 +203,7 @@ class _ResetState extends State<Reset> {
                           },
                           child: Text(
                             'Reset Password',
-                            style: TextStyle(
-                                color: bgColor, fontSize: getSize(context, 25)),
+                            style: TextStyle(color: bgColor, fontSize: getSize(context, 25)),
                           ),
                         ),
                       ),
@@ -259,22 +238,25 @@ class _ResetState extends State<Reset> {
             ),
           ),
           Positioned(
-              top: -MediaQuery.of(context).size.width - 20,
-              left: -MediaQuery.of(context).size.width / 4,
-              child: Container(
-                height: MediaQuery.of(context).size.width * 2,
-                width: MediaQuery.of(context).size.width * 1.5,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Text(
-                    'College logo with name',
-                    style: TextStyle(fontSize: getSize(context, 20)),
+            top: -MediaQuery.of(context).size.width - 120,
+            left: -MediaQuery.of(context).size.width / 4,
+            child: Container(
+              height: MediaQuery.of(context).size.width * 2,
+              width: MediaQuery.of(context).size.width * 1.5,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  'College logo with name',
+                  style: TextStyle(
+                    fontSize: getSize(context, 20),
                   ),
                 ),
-              )),
+              ),
+            ),
+          ),
         ]),
       ),
     );

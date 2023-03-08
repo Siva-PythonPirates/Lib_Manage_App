@@ -24,6 +24,45 @@ List<String> journals = [
   "J-GATE- Management Sciences",
   "EBSCO–Business Source Elite"
 ];
+
+List<String> journalFilterOptions = [
+  'IEEE',
+  'ASME',
+  'ASCE',
+  'Elsevier',
+  'J-GATE',
+  'EBSCO',
+];
+
+void sortJournalAsc() {
+  journal.sort(
+    (a, b) {
+      return a['title']!.compareTo(b['title']!);
+    },
+  );
+}
+
+void sortJournalDesc() {
+  sortJournalAsc();
+
+  journal = journal.reversed.toList();
+}
+
+List<String> booksFilterCategory = [
+  'Department',
+  'Author',
+];
+
+List<Map<String, String>> journal = [
+  {'title': 'IEEE', 'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp'},
+  {'title': 'ASME - American society of Mechanical Engineers', 'link': 'https://asmedigitalcollection.asme.org/journals'},
+  {'title': 'ASCE - American Society of Civil Engineers', 'link': 'https://ascelibrary.org/'},
+  {'title': 'Elsevier (Science Direct)- Biotechnology (Back File)', 'link': 'https://www.sciencedirect.com/'},
+  {'title': 'J-GATE- Engineering & Technology', 'link': 'https://jgateplus.com/home/'},
+  {'title': 'J-GATE- Management Sciences', 'link': 'https://jgateplus.com/home/'},
+  {'title': 'EBSCO–Business Source Elite', 'link': 'https://search.ebscohost.com/'},
+];
+
 List<String> journalLinks = [
   "https://ieeexplore.ieee.org/Xplore/home.jsp",
   "https://asmedigitalcollection.asme.org/journals",
@@ -95,3 +134,42 @@ List<Map<String, String>> books = [
     'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
   },
 ];
+
+void sortBooksTitle() {
+  books.sort(
+    (a, b) {
+      return a['title']!.compareTo(b['title']!);
+    },
+  );
+}
+
+void sortBooksTitleDesc() {
+  sortBooksTitle();
+  books = books.reversed.toList();
+}
+
+void sortBooksAuthor() {
+  books.sort(
+    (a, b) {
+      return a['author']!.compareTo(b['author']!);
+    },
+  );
+}
+
+void sortBooksAuthorDesc() {
+  sortBooksAuthor();
+  books = books.reversed.toList();
+}
+
+void sortBooksDept() {
+  books.sort(
+    (a, b) {
+      return a['department']!.compareTo(b['department']!);
+    },
+  );
+}
+
+void sortBooksDeptDesc() {
+  sortBooksDept();
+  books = books.reversed.toList();
+}

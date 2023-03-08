@@ -13,6 +13,8 @@ class Books extends StatefulWidget {
 }
 
 class _BooksState extends State<Books> {
+  int selectedSortOpt = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,9 +123,22 @@ class _BooksState extends State<Books> {
                                 children: [
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Title A-Z'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksTitle();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 1;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Title A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 1) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -132,9 +147,22 @@ class _BooksState extends State<Books> {
                                   ),
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Title desending Z-A'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksTitleDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 2;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Title desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 2) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -143,9 +171,22 @@ class _BooksState extends State<Books> {
                                   ),
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Author A-Z'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksAuthor();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 3;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Author A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 3) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -154,9 +195,22 @@ class _BooksState extends State<Books> {
                                   ),
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Author desending Z-A'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksAuthorDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 4;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Author desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 4) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -165,9 +219,22 @@ class _BooksState extends State<Books> {
                                   ),
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Dept A-Z'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksDept();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 5;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Dept A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 5) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -176,9 +243,22 @@ class _BooksState extends State<Books> {
                                   ),
                                   Expanded(
                                     child: InkWell(
-                                      onTap: () {},
-                                      child: const Center(
-                                        child: Text('Sort by Dept desending Z-A'),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        sortBooksDeptDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 6;
+                                        });
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Dept desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 6) ? Colors.deepOrange : Colors.black,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -250,100 +330,113 @@ class _BooksState extends State<Books> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.all(getSize(context, 8)),
-                itemCount: books.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      getSize(context, 10),
-                      getSize(context, 10),
-                      getSize(context, 10),
-                      getSize(context, 15),
-                    ),
-                    child: InkWell(
-                      // splashColor: Colors.black,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BookDetails(
-                              book: books[index],
-                            ),
-                          ),
-                        );
-                      },
-                      // splashColor: Colors.black,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            getSize(context, 10),
-                          ),
-                          color: const Color.fromRGBO(255, 255, 255, 1),
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 118, 23, 182),
-                              blurRadius: 5,
-                              spreadRadius: 7,
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(getSize(context, 10)),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: getSize(context, 8)),
-                                height: getSize(context, 100),
-                                width: getSize(context, 80),
-                                color: Colors.deepPurple[300],
-                                child: const Image(
-                                  image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                  fit: BoxFit.fill,
-                                ),
+              child: Scrollbar(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(getSize(context, 8)),
+                  itemCount: books.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 10),
+                        getSize(context, 15),
+                      ),
+                      child: InkWell(
+                        // splashColor: Colors.black,
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookDetails(
+                                book: books[index],
                               ),
-                              Padding(
-                                padding: EdgeInsets.all(getSize(context, 8)),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      width: getSize(context, 200),
-                                      child: Center(
-                                        child: Text(
-                                          books[index]['title'] ?? "BOOK TITLE",
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: getSize(context, 8)),
-                                      child: SizedBox(
-                                        width: getSize(context, 200),
-                                        child: Column(
-                                          // mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'AUTHOR: ${books[index]['author'] ?? "XXX"}',
-                                              textAlign: TextAlign.center,
-                                            ),
-                                            Text(
-                                              'DEPT: ${books[index]['department'] ?? "XXX"}',
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
+                            ),
+                          );
+                        },
+                        // splashColor: Colors.black,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              getSize(context, 10),
+                            ),
+                            color: const Color.fromRGBO(255, 255, 255, 1),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 118, 23, 182),
+                                blurRadius: 5,
+                                spreadRadius: 7,
+                              ),
                             ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(getSize(context, 10)),
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: getSize(context, 8)),
+                                  height: getSize(context, 100),
+                                  width: getSize(context, 80),
+                                  color: Colors.white,
+                                  child: Image(
+                                    loadingBuilder: ((context, child, loadingProgress) {
+                                      if (loadingProgress == null) {
+                                        return child;
+                                      } else {
+                                        return const Expanded(
+                                          child: Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                        );
+                                      }
+                                    }),
+                                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.all(getSize(context, 8)),
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: getSize(context, 200),
+                                        child: Center(
+                                          child: Text(
+                                            books[index]['title'] ?? "BOOK TITLE",
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: getSize(context, 8)),
+                                        child: SizedBox(
+                                          width: getSize(context, 200),
+                                          child: Column(
+                                            // mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'AUTHOR: ${books[index]['author'] ?? "XXX"}',
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              Text(
+                                                'DEPT: ${books[index]['department'] ?? "XXX"}',
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
           ],

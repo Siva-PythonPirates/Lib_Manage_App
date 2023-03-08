@@ -38,8 +38,8 @@ class _CustomCarouselState extends State<CustomCarousel> {
                     child: Text(
                       quotes[i],
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14.0,
+                      style: TextStyle(
+                        fontSize: getSize(context, 13),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -50,7 +50,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
           );
         }).toList(),
         options: CarouselOptions(
-          height: getSize(context, 80),
+          height: getSize(context, 70),
           initialPage: 0,
           enableInfiniteScroll: true,
           autoPlay: true,

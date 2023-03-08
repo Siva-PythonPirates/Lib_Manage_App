@@ -66,17 +66,17 @@ class _HomePageState extends State<HomePage> {
           items: [
             Icon(
               Icons.book_online,
-              size: getSize(context, getSize(context, 30)),
+              size: getSize(context, getSize(context, 27)),
               color: bgColor,
             ),
             Icon(
               Icons.recent_actors_rounded,
-              size: getSize(context, getSize(context, 30)),
+              size: getSize(context, getSize(context, 27)),
               color: bgColor,
             ),
             Icon(
               Icons.person,
-              size: getSize(context, getSize(context, 30)),
+              size: getSize(context, getSize(context, 27)),
               color: bgColor,
             ),
           ],
