@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/services/app_services_impl.dart';
+
+import '../../services/app_constants.dart';
 
 class JournalCustomDelegate extends SearchDelegate {
   List<String> filteredJournals = journals;
@@ -15,6 +18,8 @@ class JournalCustomDelegate extends SearchDelegate {
       ),
     ];
   }
+
+  AppServices imp = AppServiceImp();
 
   @override
   Widget? buildLeading(BuildContext context) {
@@ -43,15 +48,15 @@ class JournalCustomDelegate extends SearchDelegate {
       itemBuilder: (BuildContext context, int index) {
         final journalIndex = journals.indexOf(filteredJournals[index]);
         return Padding(
-          padding: EdgeInsets.all(getSize(context, 8)),
+          padding: EdgeInsets.all(imp.getSize(context, 8)),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(getSize(context, 15)),
+              borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
               color: const Color.fromRGBO(255, 255, 255, 1),
             ),
             child: InkWell(
               onTap: () async {
-                await launchURLto(journalLinks[journalIndex]);
+                await imp.launchURLto(journalLinks[journalIndex]);
               },
               child: Material(
                 elevation: 10,

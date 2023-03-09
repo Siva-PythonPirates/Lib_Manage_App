@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/widgets/book_filter_cat_opt.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
+
+import '../services/app_constants.dart';
 import '../services/app_services.dart';
 import '../views/widgets/carousel.dart';
 
@@ -16,6 +19,7 @@ class _BooksState extends State<Books> {
   Future<void> dummy() async {}
   int selectedcat = 0;
   int selectedSortOpt = 0;
+  AppServices imp = AppServiceImp();
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +35,17 @@ class _BooksState extends State<Books> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(
-                getSize(context, 16),
-                getSize(context, 36),
-                getSize(context, 16),
+                imp.getSize(context, 16),
+                imp.getSize(context, 36),
+                imp.getSize(context, 16),
                 0,
               ),
               child: Row(
                 children: [
                   Container(
                     alignment: Alignment.bottomLeft,
-                    width: getSize(context, 50),
-                    height: getSize(context, 50),
+                    width: imp.getSize(context, 50),
+                    height: imp.getSize(context, 50),
                     color: Colors.deepPurple.withOpacity(0.5),
                     child: const Center(
                       child: Text(
@@ -55,7 +59,7 @@ class _BooksState extends State<Books> {
                       child: Text(
                         'Books',
                         style: TextStyle(
-                          fontSize: getSize(context, 30),
+                          fontSize: imp.getSize(context, 30),
                           color: Colors.white,
                         ),
                       ),
@@ -73,11 +77,11 @@ class _BooksState extends State<Books> {
                       decoration: BoxDecoration(
                         color: Colors.deepPurple.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(
-                          getSize(context, 15),
+                          imp.getSize(context, 15),
                         ),
                       ),
-                      width: getSize(context, 50),
-                      height: getSize(context, 50),
+                      width: imp.getSize(context, 50),
+                      height: imp.getSize(context, 50),
                       child: const Icon(
                         Icons.search,
                         color: Colors.white,
@@ -90,12 +94,13 @@ class _BooksState extends State<Books> {
             const CustomCarousel(),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                getSize(context, 20),
+                imp.getSize(context, 20),
                 0,
-                getSize(context, 20),
-                getSize(context, 20),
+                imp.getSize(context, 20),
+                imp.getSize(context, 20),
               ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 InkWell(
                   onTap: () {
                     showModalBottomSheet(
@@ -105,19 +110,19 @@ class _BooksState extends State<Books> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
-                            getSize(context, 30),
+                            imp.getSize(context, 30),
                           ),
                           topRight: Radius.circular(
-                            getSize(context, 30),
+                            imp.getSize(context, 30),
                           ),
                         ),
                       ),
                       builder: (context) {
                         return SizedBox(
-                          height: getSize(context, 420),
+                          height: imp.getSize(context, 420),
                           child: Padding(
                             padding: EdgeInsets.all(
-                              getSize(context, 20),
+                              imp.getSize(context, 20),
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +131,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksTitle();
+                                      imp.sortBooksTitle();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 1;
@@ -137,7 +142,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Title A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 1) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 1)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -150,7 +157,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksTitleDesc();
+                                      imp.sortBooksTitleDesc();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 2;
@@ -161,7 +168,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Title desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 2) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 2)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -174,7 +183,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksAuthor();
+                                      imp.sortBooksAuthor();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 3;
@@ -185,7 +194,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Author A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 3) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 3)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -198,7 +209,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksAuthorDesc();
+                                      imp.sortBooksAuthorDesc();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 4;
@@ -209,7 +220,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Author desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 4) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 4)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -222,7 +235,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksDept();
+                                      imp.sortBooksDept();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 5;
@@ -233,7 +246,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Dept A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 5) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 5)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -246,7 +261,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      sortBooksDeptDesc();
+                                      imp.sortBooksDeptDesc();
                                       setState(() {
                                         books;
                                         selectedSortOpt = 6;
@@ -257,7 +272,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Dept desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 6) ? Colors.deepOrange : Colors.black,
+                                          color: (selectedSortOpt == 6)
+                                              ? Colors.deepOrange
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -295,8 +312,8 @@ class _BooksState extends State<Books> {
                     );
                   },
                   child: Container(
-                    width: getSize(context, 100),
-                    height: getSize(context, 35),
+                    width: imp.getSize(context, 100),
+                    height: imp.getSize(context, 35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -321,7 +338,7 @@ class _BooksState extends State<Books> {
                   ),
                 ),
                 SizedBox(
-                  width: getSize(context, 40),
+                  width: imp.getSize(context, 40),
                 ),
                 InkWell(
                   onTap: () {
@@ -331,10 +348,10 @@ class _BooksState extends State<Books> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
-                            getSize(context, 30),
+                            imp.getSize(context, 30),
                           ),
                           topRight: Radius.circular(
-                            getSize(context, 30),
+                            imp.getSize(context, 30),
                           ),
                         ),
                       ),
@@ -343,10 +360,10 @@ class _BooksState extends State<Books> {
                         return StatefulBuilder(
                           builder: (context, setState) {
                             return SizedBox(
-                              height: getSize(context, 350),
+                              height: imp.getSize(context, 350),
                               child: Padding(
                                 padding: EdgeInsets.all(
-                                  getSize(context, 20),
+                                  imp.getSize(context, 20),
                                 ),
                                 child: Column(
                                   children: [
@@ -355,9 +372,10 @@ class _BooksState extends State<Books> {
                                         children: [
                                           SizedBox(
                                             height: double.infinity,
-                                            width: getSize(context, 150),
+                                            width: imp.getSize(context, 150),
                                             child: ListView.builder(
-                                              itemCount: booksFilterCategory.length,
+                                              itemCount:
+                                                  booksFilterCategory.length,
                                               itemBuilder: (context, index) {
                                                 return InkWell(
                                                   onTap: () {
@@ -367,22 +385,42 @@ class _BooksState extends State<Books> {
                                                     });
                                                   },
                                                   child: Padding(
-                                                    padding: const EdgeInsets.all(5.0),
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
                                                     child: Container(
                                                       height: 60,
-                                                      decoration: (selectedcat == index)
+                                                      decoration: (selectedcat ==
+                                                              index)
                                                           ? BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(getSize(context, 25)),
-                                                              color: const Color.fromARGB(255, 235, 232, 232))
+                                                              borderRadius: BorderRadius
+                                                                  .circular(imp
+                                                                      .getSize(
+                                                                          context,
+                                                                          25)),
+                                                              color: const Color
+                                                                      .fromARGB(
+                                                                  255,
+                                                                  235,
+                                                                  232,
+                                                                  232))
                                                           : null,
                                                       child: Center(
                                                         child: Padding(
-                                                          padding: EdgeInsets.all(getSize(context, 5)),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  imp.getSize(
+                                                                      context,
+                                                                      5)),
                                                           child: Expanded(
                                                             child: Text(
-                                                              booksFilterCategory[index],
-                                                              style: const TextStyle(
-                                                                fontWeight: FontWeight.bold,
+                                                              booksFilterCategory[
+                                                                  index],
+                                                              style:
+                                                                  const TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                               ),
                                                             ),
                                                           ),
@@ -397,26 +435,32 @@ class _BooksState extends State<Books> {
                                           const VerticalDivider(
                                             color: Colors.black,
                                           ),
-                                          BookFilterShowCatOpt(bookFilterCatOptionIndex: selectedcat),
+                                          BookFilterShowCatOpt(
+                                              bookFilterCatOptionIndex:
+                                                  selectedcat),
                                         ],
                                       ),
                                     ),
                                     SizedBox(
-                                      height: getSize(context, 10),
+                                      height: imp.getSize(context, 10),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         ElevatedButton(
                                           onPressed: () {
-                                            resetJournalFilter();
+                                            imp.resetJournalFilter();
                                             setState(() {
                                               journal;
                                             });
                                             Navigator.pop(context);
                                           },
                                           style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    const Color.fromARGB(
+                                                        255, 211, 211, 211)),
                                           ),
                                           child: const Text(
                                             'Restore Defaults',
@@ -427,7 +471,7 @@ class _BooksState extends State<Books> {
                                         ),
                                         ElevatedButton(
                                           onPressed: () {
-                                            ApplyJournalFilter();
+                                            imp.ApplyJournalFilter();
                                             setState(() {
                                               journal;
                                             });
@@ -447,8 +491,8 @@ class _BooksState extends State<Books> {
                     );
                   },
                   child: Container(
-                    width: getSize(context, 100),
-                    height: getSize(context, 35),
+                    width: imp.getSize(context, 100),
+                    height: imp.getSize(context, 35),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
@@ -479,15 +523,15 @@ class _BooksState extends State<Books> {
                 onRefresh: () => dummy(),
                 child: Scrollbar(
                   child: ListView.builder(
-                    padding: EdgeInsets.all(getSize(context, 8)),
+                    padding: EdgeInsets.all(imp.getSize(context, 8)),
                     itemCount: books.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: EdgeInsets.fromLTRB(
-                          getSize(context, 10),
-                          getSize(context, 10),
-                          getSize(context, 10),
-                          getSize(context, 15),
+                          imp.getSize(context, 10),
+                          imp.getSize(context, 10),
+                          imp.getSize(context, 10),
+                          imp.getSize(context, 15),
                         ),
                         child: InkWell(
                           // splashColor: Colors.black,
@@ -505,7 +549,7 @@ class _BooksState extends State<Books> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
-                                getSize(context, 10),
+                                imp.getSize(context, 10),
                               ),
                               color: const Color.fromRGBO(255, 255, 255, 1),
                               boxShadow: const [
@@ -517,48 +561,57 @@ class _BooksState extends State<Books> {
                               ],
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(getSize(context, 10)),
+                              padding: EdgeInsets.all(imp.getSize(context, 10)),
                               child: Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: getSize(context, 8)),
-                                    height: getSize(context, 100),
-                                    width: getSize(context, 80),
+                                    margin: EdgeInsets.only(
+                                        left: imp.getSize(context, 8)),
+                                    height: imp.getSize(context, 100),
+                                    width: imp.getSize(context, 80),
                                     color: Colors.white,
                                     child: Image(
-                                      loadingBuilder: ((context, child, loadingProgress) {
+                                      loadingBuilder:
+                                          ((context, child, loadingProgress) {
                                         if (loadingProgress == null) {
                                           return child;
                                         } else {
-                                          return const Expanded(
+                                          return Expanded(
                                             child: Center(
-                                              child: CircularProgressIndicator(),
+                                              child: CircularProgressIndicator(
+                                                color: bgColor,
+                                              ),
                                             ),
                                           );
                                         }
                                       }),
-                                      image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                      image: const NetworkImage(
+                                          'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(getSize(context, 8)),
+                                    padding:
+                                        EdgeInsets.all(imp.getSize(context, 8)),
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          width: getSize(context, 200),
+                                          width: imp.getSize(context, 200),
                                           child: Center(
                                             child: Text(
-                                              books[index]['title'] ?? "BOOK TITLE",
+                                              books[index]['title'] ??
+                                                  "BOOK TITLE",
                                               textAlign: TextAlign.center,
-                                              style: const TextStyle(fontWeight: FontWeight.bold),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(top: getSize(context, 8)),
+                                          padding: EdgeInsets.only(
+                                              top: imp.getSize(context, 8)),
                                           child: SizedBox(
-                                            width: getSize(context, 200),
+                                            width: imp.getSize(context, 200),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.center,
                                               children: [

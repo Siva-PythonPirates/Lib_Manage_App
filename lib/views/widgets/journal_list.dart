@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/services/app_services_impl.dart';
+
+import '../../services/app_constants.dart';
 
 class JournalList extends StatelessWidget {
   const JournalList({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppServices imp = AppServiceImp();
     return Scrollbar(
       child: ListView.builder(
-        padding: EdgeInsets.all(getSize(context, 10)),
+        padding: EdgeInsets.all(imp.getSize(context, 10)),
         itemCount: journal.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.fromLTRB(getSize(context, 10), getSize(context, 10), getSize(context, 10), getSize(context, 20)),
+            padding: EdgeInsets.fromLTRB(
+                imp.getSize(context, 10),
+                imp.getSize(context, 10),
+                imp.getSize(context, 10),
+                imp.getSize(context, 20)),
             child: InkWell(
               onTap: () async {
-                await launchURLto(journal[index]['link']!);
+                await imp.launchURLto(journal[index]['link']!);
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -27,18 +35,19 @@ class JournalList extends StatelessWidget {
                       // offset: Offset(5, 5),
                     ),
                   ],
-                  borderRadius: BorderRadius.circular(getSize(context, 15)),
+                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                   color: const Color.fromRGBO(255, 255, 255, 1),
                 ),
                 child: Column(
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      height: getSize(context, 140),
+                      height: imp.getSize(context, 140),
                       child: Image(
                         // width: double.infinity,
-                        // height: getSize(context, 140),
-                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                        // height: imp.getSize(context, size)(context, 140),
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
                           return child;
                         },
                         loadingBuilder: ((context, child, loadingProgress) {
@@ -59,7 +68,7 @@ class JournalList extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(getSize(context, 12)),
+                      padding: EdgeInsets.all(imp.getSize(context, 12)),
                       child: Text(
                         journal[index]['title']!,
                         style: const TextStyle(

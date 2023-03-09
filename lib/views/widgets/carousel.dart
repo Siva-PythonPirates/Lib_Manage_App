@@ -1,6 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/services/app_services_impl.dart';
+
+import '../../services/app_constants.dart';
 
 class CustomCarousel extends StatefulWidget {
   const CustomCarousel({super.key});
@@ -10,19 +13,13 @@ class CustomCarousel extends StatefulWidget {
 }
 
 class _CustomCarouselState extends State<CustomCarousel> {
-  List<String> quotes = [
-    '"Books are a uniquely portable magic." – Stephen King',
-    '"Share your knowledge. It is a way to achieve immortality —Dalai Lama"',
-    '“There is no friend as loyal as a book.” ― Ernest Hemingway',
-    '"We are drowning in information but starved for knowledge." - John Naisbitt',
-    '"The only good is knowledge, and the only evil is ignorance." - Herodotus'
-  ];
+  AppServices imp = AppServiceImp();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: getSize(context, 20),
+        vertical: imp.getSize(context, 20),
       ),
       child: CarouselSlider(
         items: [0, 1, 2, 3, 4].map((i) {
@@ -31,7 +28,10 @@ class _CustomCarouselState extends State<CustomCarousel> {
               return Container(
                 width: MediaQuery.of(context).size.width,
                 margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(color: Colors.pink[200], borderRadius: BorderRadius.circular(10), boxShadow: const []),
+                decoration: BoxDecoration(
+                    color: Colors.pink[200],
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: const []),
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: Center(
@@ -39,7 +39,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                       quotes[i],
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: getSize(context, 13),
+                        fontSize: imp.getSize(context, 13),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -50,7 +50,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
           );
         }).toList(),
         options: CarouselOptions(
-          height: getSize(context, 70),
+          height: imp.getSize(context, 70),
           initialPage: 0,
           enableInfiniteScroll: true,
           autoPlay: true,

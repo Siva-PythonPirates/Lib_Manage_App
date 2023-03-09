@@ -5,6 +5,9 @@ import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 
+import '../services/app_constants.dart';
+import '../services/app_services_impl.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -16,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   // int selectedPage = 0;
 
   int bottomSelectedIndex = 0;
+  AppServices imp = AppServiceImp();
 
   final _pageOptions = [const Journals(), const Books(), const ProfilePage()];
 
@@ -45,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: SizedBox(
-        height: getSize(context, 70),
+        height: imp.getSize(context, 70),
         child: CurvedNavigationBar(
           index: bottomSelectedIndex,
           onTap: (index) {
@@ -62,21 +66,21 @@ class _HomePageState extends State<HomePage> {
           color: Colors.pink[200]!,
           backgroundColor: bgColor,
           buttonBackgroundColor: Colors.white,
-          height: getSize(context, 55),
+          height: imp.getSize(context, 55),
           items: [
             Icon(
               Icons.book_online,
-              size: getSize(context, getSize(context, 27)),
+              size: imp.getSize(context, imp.getSize(context, 27)),
               color: bgColor,
             ),
             Icon(
               Icons.recent_actors_rounded,
-              size: getSize(context, getSize(context, 27)),
+              size: imp.getSize(context, imp.getSize(context, 27)),
               color: bgColor,
             ),
             Icon(
               Icons.person,
-              size: getSize(context, getSize(context, 27)),
+              size: imp.getSize(context, imp.getSize(context, 27)),
               color: bgColor,
             ),
           ],

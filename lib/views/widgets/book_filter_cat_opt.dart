@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/services/app_services_impl.dart';
+
+import '../../services/app_constants.dart';
 
 class BookFilterShowCatOpt extends StatefulWidget {
   final int bookFilterCatOptionIndex;
 
-  const BookFilterShowCatOpt({super.key, required this.bookFilterCatOptionIndex});
+  const BookFilterShowCatOpt(
+      {super.key, required this.bookFilterCatOptionIndex});
 
   @override
   State<BookFilterShowCatOpt> createState() => _BookFilterShowCatOptState();
 }
 
 class _BookFilterShowCatOptState extends State<BookFilterShowCatOpt> {
+  AppServices imp = AppServiceImp();
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Scrollbar(
         child: ListView.builder(
-          itemCount: booksFilterCatOptions[widget.bookFilterCatOptionIndex].length,
+          itemCount:
+              booksFilterCatOptions[widget.bookFilterCatOptionIndex].length,
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: getSize(context, 12),
-                vertical: getSize(context, 2),
+                horizontal: imp.getSize(context, 12),
+                vertical: imp.getSize(context, 2),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Flexible(
                     child: Text(
-                      booksFilterCatOptions[widget.bookFilterCatOptionIndex][index],
+                      booksFilterCatOptions[widget.bookFilterCatOptionIndex]
+                          [index],
                       textAlign: TextAlign.justify,
                     ),
                   ),

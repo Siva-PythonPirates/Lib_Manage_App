@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services_impl.dart';
 
+import '../../services/app_constants.dart';
 import '../../services/app_services.dart';
 
 class BookCustomDelegate extends SearchDelegate {
@@ -16,6 +18,8 @@ class BookCustomDelegate extends SearchDelegate {
       ),
     ];
   }
+
+  AppServices imp = AppServiceImp();
 
   @override
   Widget? buildLeading(BuildContext context) {
@@ -34,15 +38,15 @@ class BookCustomDelegate extends SearchDelegate {
         book['author']!.toLowerCase().contains(query.toLowerCase()) ||
         book['department']!.toLowerCase().contains(query.toLowerCase()));
     return ListView.builder(
-      padding: EdgeInsets.all(getSize(context, 8)),
+      padding: EdgeInsets.all(imp.getSize(context, 8)),
       itemCount: results.length,
       itemBuilder: (BuildContext context, int index) {
         final book = results.elementAt(index);
         return Padding(
-          padding: EdgeInsets.all(getSize(context, 8)),
+          padding: EdgeInsets.all(imp.getSize(context, 8)),
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(getSize(context, 10)),
+              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
               color: const Color.fromRGBO(255, 255, 255, 1),
               boxShadow: const [
                 BoxShadow(
@@ -55,13 +59,13 @@ class BookCustomDelegate extends SearchDelegate {
               onTap: () {},
               child: SizedBox(
                 child: Padding(
-                  padding: EdgeInsets.all(getSize(context, 10)),
+                  padding: EdgeInsets.all(imp.getSize(context, 10)),
                   child: Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.only(left: getSize(context, 8)),
-                        height: getSize(context, 100),
-                        width: getSize(context, 80),
+                        margin: EdgeInsets.only(left: imp.getSize(context, 8)),
+                        height: imp.getSize(context, 100),
+                        width: imp.getSize(context, 80),
                         color: Colors.deepPurple[300],
                         child: const Image(
                           image: NetworkImage(
@@ -70,11 +74,11 @@ class BookCustomDelegate extends SearchDelegate {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(getSize(context, 10)),
+                        padding: EdgeInsets.all(imp.getSize(context, 10)),
                         child: Column(
                           children: [
                             SizedBox(
-                              width: getSize(context, 200),
+                              width: imp.getSize(context, 200),
                               child: Center(
                                 child: Text(
                                   book['title'] ?? "TITLE",
@@ -85,7 +89,7 @@ class BookCustomDelegate extends SearchDelegate {
                               ),
                             ),
                             SizedBox(
-                              width: getSize(context, 200),
+                              width: imp.getSize(context, 200),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
