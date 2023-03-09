@@ -43,6 +43,7 @@ dependencies:
   state_notifier: ^0.7.2+1
   flutter_state_notifier: ^0.7.1
   provider: ^6.0.3
+  flutter_spinkit:
   
 
 dev_dependencies:
