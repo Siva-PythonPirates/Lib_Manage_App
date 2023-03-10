@@ -40,6 +40,7 @@ class _BookDetailsState extends State<BookDetails> {
             backgroundColor: bgColor,
             body: Stack(alignment: Alignment.center, children: [
               Container(
+                height: MediaQuery.of(context).size.height,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/login_bg.jpg"),
@@ -48,7 +49,7 @@ class _BookDetailsState extends State<BookDetails> {
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: screenSize.width * 0.08, vertical: 16),
+                      horizontal: screenSize.width * 0.06, vertical: 16),
                   child: SingleChildScrollView(
                     child: Row(
                       children: [
@@ -56,7 +57,7 @@ class _BookDetailsState extends State<BookDetails> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              height: imp.getSize(context, 350),
+                              height: imp.getSize(context, 300),
                             ),
                             /* SizedBox(
                               height: screenSize.height * 0.3,
@@ -67,208 +68,243 @@ class _BookDetailsState extends State<BookDetails> {
                               ),
                             ),*/
                             //const SizedBox(height: 16),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(context, 100),
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(context, 100),
+                                      child: Align(
+                                        alignment: Alignment.topLeft,
+                                        child: Text(
+                                          "Title:",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline6
+                                              ?.copyWith(
+                                                color: Colors.white,
+                                              ),
+                                        ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
+                                    child: Text(
+                                      '${widget.book['title'] ?? 'BOOK TITLE'}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline6
+                                          ?.copyWith(
+                                            color: Colors.white,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(context, 100),
                                       child: Text(
-                                        "Title:",
+                                        "Author:",
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline6
                                             ?.copyWith(
                                               color: Colors.white,
                                             ),
-                                      ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    '${widget.book['title'] ?? 'BOOK TITLE'}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(context, 100),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "Author:",
+                                      '${widget.book['Author'] ?? 'Author'}',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    '${widget.book['Author'] ?? 'Author'}',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(
-                                        context, imp.getSize(context, 100)),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(
+                                          context, imp.getSize(context, 100)),
+                                      child: Text(
+                                        "Edition:",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "Edition:",
+                                      '3',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    '3',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(
-                                        context, imp.getSize(context, 100)),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(
+                                          context, imp.getSize(context, 100)),
+                                      child: Text(
+                                        "Publisher:",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "Publisher:",
+                                      'Har Chand Publications',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    'Har Chand Publications',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(
-                                        context, imp.getSize(context, 100)),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(
+                                          context, imp.getSize(context, 100)),
+                                      child: Text(
+                                        "Pages:",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "Pages:",
+                                      '3100',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    '3100',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(
-                                        context, imp.getSize(context, 100)),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(
+                                          context, imp.getSize(context, 100)),
+                                      child: Text(
+                                        "ISBN:",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "ISBN:",
+                                      '61-219-0611-3',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    '81-219-0611-3',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                SizedBox(
-                                    width: imp.getSize(
-                                        context, imp.getSize(context, 100)),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  SizedBox(
+                                      width: imp.getSize(
+                                          context, imp.getSize(context, 100)),
+                                      child: Text(
+                                        "Price:",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6
+                                            ?.copyWith(
+                                              color: Colors.white,
+                                            ),
+                                      )),
+                                  SizedBox(
+                                    width: imp.getSize(context, 200),
                                     child: Text(
-                                      "Price:",
+                                      'Rs.175',
                                       style: Theme.of(context)
                                           .textTheme
                                           .headline6
                                           ?.copyWith(
                                             color: Colors.white,
                                           ),
-                                    )),
-                                SizedBox(
-                                  width: imp.getSize(context, 200),
-                                  child: Text(
-                                    'Rs.175',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
-                                        ?.copyWith(
-                                          color: Colors.white,
-                                        ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -291,8 +327,8 @@ class _BookDetailsState extends State<BookDetails> {
               Positioned(
                 top: imp.getSize(context, imp.getSize(context, 60)),
                 child: SizedBox(
-                  width: imp.getSize(context, 242),
-                  height: imp.getSize(context, 150),
+                  width: imp.getSize(context, 240),
+                  height: imp.getSize(context, 152),
                   child: Flexible(
                     child: Text(
                       'Structural Cobol Programming with Business Applications',
@@ -306,6 +342,15 @@ class _BookDetailsState extends State<BookDetails> {
                 ),
               ),
             ]),
+      floatingActionButton: MaterialButton(
+        color: Colors.pink[200],
+        onPressed: (){},
+        child: Container(width:double.infinity,child: Text('Pre-Book',style: TextStyle(
+          color: Colors.white,
+          fontSize: imp.getSize(context, 20),
+        ),textAlign: TextAlign.center,),padding: EdgeInsets.symmetric(vertical:imp.getSize(context, 16)),),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           );
   }
 
