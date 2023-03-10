@@ -6,8 +6,13 @@ import '../../services/app_constants.dart';
 
 class BookFilterWidget extends StatefulWidget {
   final int index;
+  final String bookFilterCatOption;
 
-  const BookFilterWidget({super.key, required this.index});
+  const BookFilterWidget({
+    super.key,
+    required this.bookFilterCatOption,
+    required this.index,
+  });
 
   @override
   State<BookFilterWidget> createState() => _BookFilterWidgetState();
@@ -19,45 +24,34 @@ class _BookFilterWidgetState extends State<BookFilterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: booksFilterCatOptions[widget.index].length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: imp.getSize(context, 14),
-            vertical: imp.getSize(context, 2),
+    String option = booksFilterCatOptions[widget.bookFilterCatOption]![widget.index];
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: imp.getSize(context, 14), vertical: imp.getSize(context, 2)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: Text(
+              option,
+            ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                booksFilterCatOptions[widget.index][index],
-              ),
-              Checkbox(
-                value: (journalFilterSelected
-                        .contains(journalFilterOptions[widget.index]))
-                    ? true
-                    : ischecked,
-                onChanged: (value) {
-                  setState(() {
-                    ischecked = value;
-                  });
-                  if (ischecked ?? false) {
-                    journalFilterSelected
-                        .add(journalFilterOptions[widget.index]);
-                  } else {
-                    if (journalFilterSelected
-                        .contains(journalFilterOptions[widget.index])) {
-                      journalFilterSelected
-                          .remove(journalFilterOptions[widget.index]);
-                    }
-                  }
-                },
-              )
-            ],
+          Checkbox(
+            value: (bookFilterSelected[widget.bookFilterCatOption]!.contains(option)) ? true : ischecked,
+            onChanged: (value) {
+              setState(() {
+                ischecked = value;
+              });
+              if (ischecked ?? false) {
+                bookFilterSelected[widget.bookFilterCatOption]!.add(option);
+              } else {
+                if (bookFilterSelected[widget.bookFilterCatOption]!.contains(option)) {
+                  bookFilterSelected[widget.bookFilterCatOption]!.remove(option);
+                }
+              }
+            },
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
