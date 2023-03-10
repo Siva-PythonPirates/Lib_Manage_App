@@ -69,14 +69,12 @@ class _JournalsState extends State<Journals> {
                   ),
                   InkWell(
                     onTap: () {
-                      showSearch(
-                          context: context, delegate: JournalCustomDelegate());
+                      showSearch(context: context, delegate: JournalCustomDelegate());
                     },
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.deepPurple.withOpacity(0.5),
-                        borderRadius:
-                            BorderRadius.circular(imp.getSize(context, 15)),
+                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                       ),
                       width: imp.getSize(context, 50),
                       height: imp.getSize(context, 50),
@@ -145,9 +143,7 @@ class _JournalsState extends State<Journals> {
                                           'Sort Alphabetically A-Z',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: (selectedSortOpt == 1)
-                                                ? Colors.blue
-                                                : Colors.black,
+                                            color: (selectedSortOpt == 1) ? Colors.blue : Colors.black,
                                             // color:
                                           ),
                                         ),
@@ -174,9 +170,7 @@ class _JournalsState extends State<Journals> {
                                           'Sort Alphabetically desending Z-A',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: (selectedSortOpt == 2)
-                                                ? Colors.blue
-                                                : Colors.black,
+                                            color: (selectedSortOpt == 2) ? Colors.blue : Colors.black,
                                           ),
                                         ),
                                       ),
@@ -291,11 +285,9 @@ class _JournalsState extends State<Journals> {
                                         Expanded(
                                           child: Scrollbar(
                                             child: ListView.builder(
-                                              itemCount:
-                                                  journalFilterOptions.length,
+                                              itemCount: journalFilterOptions.length,
                                               itemBuilder: (context, index) {
-                                                return JournalFilterWidget(
-                                                    index);
+                                                return JournalFilterWidget(index);
 
                                                 // return padding
                                               },
@@ -309,8 +301,7 @@ class _JournalsState extends State<Journals> {
                                     height: imp.getSize(context, 10),
                                   ),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       ElevatedButton(
                                         onPressed: () {
@@ -321,10 +312,7 @@ class _JournalsState extends State<Journals> {
                                           Navigator.pop(context);
                                         },
                                         style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  const Color.fromARGB(
-                                                      255, 211, 211, 211)),
+                                          backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
                                         ),
                                         child: const Text(
                                           'Restore Defaults',
@@ -335,7 +323,7 @@ class _JournalsState extends State<Journals> {
                                       ),
                                       ElevatedButton(
                                         onPressed: () {
-                                          imp.ApplyJournalFilter();
+                                          imp.applyJournalFilter();
                                           setState(() {
                                             journal;
                                           });
@@ -399,10 +387,7 @@ class _JournalsState extends State<Journals> {
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
                         padding: EdgeInsets.fromLTRB(
-                            imp.getSize(context, 10),
-                            imp.getSize(context, 10),
-                            imp.getSize(context, 10),
-                            imp.getSize(context, 20)),
+                            imp.getSize(context, 10), imp.getSize(context, 10), imp.getSize(context, 10), imp.getSize(context, 20)),
                         child: InkWell(
                           onTap: () async {
                             await imp.launchURLto(journal[index]['link']!);
@@ -417,8 +402,7 @@ class _JournalsState extends State<Journals> {
                                   // offset: Offset(5, 5),
                                 ),
                               ],
-                              borderRadius: BorderRadius.circular(
-                                  imp.getSize(context, 15)),
+                              borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                               color: const Color.fromRGBO(255, 255, 255, 1),
                             ),
                             child: Column(
@@ -429,12 +413,10 @@ class _JournalsState extends State<Journals> {
                                   child: Image(
                                     // width: double.infinity,
                                     // height: imp.getSize(context, size)(context, 140),
-                                    frameBuilder: (context, child, frame,
-                                        wasSynchronouslyLoaded) {
+                                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                                       return child;
                                     },
-                                    loadingBuilder:
-                                        ((context, child, loadingProgress) {
+                                    loadingBuilder: ((context, child, loadingProgress) {
                                       if (loadingProgress == null) {
                                         return child;
                                       } else {
@@ -454,8 +436,7 @@ class _JournalsState extends State<Journals> {
                                   ),
                                 ),
                                 Padding(
-                                  padding:
-                                      EdgeInsets.all(imp.getSize(context, 12)),
+                                  padding: EdgeInsets.all(imp.getSize(context, 12)),
                                   child: Text(
                                     journal[index]['title']!,
                                     style: const TextStyle(

@@ -23,30 +23,12 @@ List<String> journals = [
 
 List<Map<String, String>> journal = [
   {'title': 'IEEE', 'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp'},
-  {
-    'title': 'ASME - American society of Mechanical Engineers',
-    'link': 'https://asmedigitalcollection.asme.org/journals'
-  },
-  {
-    'title': 'ASCE - American Society of Civil Engineers',
-    'link': 'https://ascelibrary.org/'
-  },
-  {
-    'title': 'Elsevier (Science Direct)- Biotechnology (Back File)',
-    'link': 'https://www.sciencedirect.com/'
-  },
-  {
-    'title': 'J-GATE- Engineering & Technology',
-    'link': 'https://jgateplus.com/home/'
-  },
-  {
-    'title': 'J-GATE- Management Sciences',
-    'link': 'https://jgateplus.com/home/'
-  },
-  {
-    'title': 'EBSCO–Business Source Elite',
-    'link': 'https://search.ebscohost.com/'
-  },
+  {'title': 'ASME - American society of Mechanical Engineers', 'link': 'https://asmedigitalcollection.asme.org/journals'},
+  {'title': 'ASCE - American Society of Civil Engineers', 'link': 'https://ascelibrary.org/'},
+  {'title': 'Elsevier (Science Direct)- Biotechnology (Back File)', 'link': 'https://www.sciencedirect.com/'},
+  {'title': 'J-GATE- Engineering & Technology', 'link': 'https://jgateplus.com/home/'},
+  {'title': 'J-GATE- Management Sciences', 'link': 'https://jgateplus.com/home/'},
+  {'title': 'EBSCO–Business Source Elite', 'link': 'https://search.ebscohost.com/'},
 ];
 
 List<String> journalLinks = [
@@ -102,70 +84,88 @@ List<String> booksFilterCategoryAuthorOptions = [
   'Jean',
 ];
 
-List<List<String>> booksFilterCatOptions = [
-  [...booksFilterCategoryDeptOptions],
-  [...booksFilterCategoryAuthorOptions],
-];
+// List<Map<String, List<String>>> booksFilterCatOptions = [
+//   {
+//     'Department': [...booksFilterCategoryDeptOptions]
+//   },
+//   {
+//     'Author': [...booksFilterCategoryAuthorOptions],
+//   }
+// ];
+
+Map<String, List<String>> booksFilterCatOptions = {
+  'Department': [...booksFilterCategoryDeptOptions],
+  'Author': [...booksFilterCategoryAuthorOptions],
+};
 
 List<Map<String, String>> books = [
   {
     'title': 'The Structure of Scientific Revolutions',
-    'author': 'Thomas S. Kuhn',
-    'department': 'Science',
+    'Author': 'Thomas S. Kuhn',
+    'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
   },
   {
     'title': 'The Wealth of Nations',
-    'author': 'Adam Smith',
-    'department': 'Economics',
+    'Author': 'Adam Smith',
+    'Department': 'Economics',
     'image': 'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
   },
   {
     'title': 'A Brief History of Time',
-    'author': 'Stephen Hawking',
-    'department': 'Science',
+    'Author': 'Stephen Hawking',
+    'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
   },
   {
     'title': 'The Origin of Species',
-    'author': 'Charles Darwin',
-    'department': 'Science',
+    'Author': 'Charles Darwin',
+    'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
   },
   {
     'title': 'The Elements of Style',
-    'author': 'William Strunk Jr. and E.B. White',
-    'department': 'Language and Writing',
+    'Author': 'William Strunk Jr. and E.B. White',
+    'Department': 'Language and Writing',
     'image': 'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
   },
   {
     'title': 'Principles of Economics',
-    'author': 'N. Gregory Mankiw',
-    'department': 'Economics',
+    'Author': 'N. Gregory Mankiw',
+    'Department': 'Economics',
     'image': 'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
   },
   {
     'title': 'The Selfish Gene',
-    'author': 'Richard Dawkins',
-    'department': 'Science',
+    'Author': 'Richard Dawkins',
+    'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
   },
   {
     'title': 'The Republic',
-    'author': 'Plato',
-    'department': 'Philosophy',
+    'Author': 'Plato',
+    'Department': 'Philosophy',
     'image': 'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
   },
   {
     'title': 'The Interpretation of Dreams',
-    'author': 'Sigmund Freud',
-    'department': 'Psychology',
+    'Author': 'Sigmund Freud',
+    'Department': 'Psychology',
     'image': 'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
   },
   {
     'title': 'The Social Contract',
-    'author': 'Jean-Jacques Rousseau',
-    'department': 'Political Science',
+    'Author': 'Jean-Jacques Rousseau',
+    'Department': 'Political Science',
     'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
   },
 ];
+
+Map<String, List<String>> bookFilterSelected = {
+  'Department': [],
+  'Author': [],
+};
+
+List<Map<String, String>> tempBooks = [];
+
+List<Map<String, String>> filteredBooks = [];

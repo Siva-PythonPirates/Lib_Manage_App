@@ -7,7 +7,7 @@ abstract class AppServices {
   void sortJournalDesc();
   void resetJournalSort();
   void createtempjournal();
-  void ApplyJournalFilter();
+  void applyJournalFilter();
   void resetJournalFilter();
   void sortBooksTitle();
   void sortBooksTitleDesc();
@@ -15,4 +15,7 @@ abstract class AppServices {
   void sortBooksAuthorDesc();
   void sortBooksDept();
   void sortBooksDeptDesc();
+  void resetBookSort();
+  void applyBooksFilter();
+  void resetBooksFilter();
 }
