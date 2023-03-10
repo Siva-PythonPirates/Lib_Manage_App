@@ -9,6 +9,7 @@ import 'package:lib_management/views/widgets/carousel.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/favourite_page.dart';
 import 'package:lib_management/views/history_page.dart';
+import 'package:lib_management/views/toppicks_page.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -122,7 +123,14 @@ class _DashBoardState extends State<DashBoard> {
                                 borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const HistoryPage(),
+                                      ),
+                                    );
+                                  },
                                   borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     decoration: BoxDecoration(
@@ -306,7 +314,7 @@ class _DashBoardState extends State<DashBoard> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const HistoryPage(),
+                                            builder: (context) => const TopPicksPage(),
                                           ),
                                         );
                                       },
@@ -551,7 +559,7 @@ class _DashBoardState extends State<DashBoard> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const HistoryPage(),
+                                              builder: (context) => const TopPicksPage(),
                                             ),
                                           );
                                         },
