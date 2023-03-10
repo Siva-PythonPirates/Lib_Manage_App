@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/views/choose_dept.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/widgets/mail_textfield.dart';
 
@@ -137,7 +138,7 @@ class _LoginState extends State<Login> {
                                         try {
                                           Navigator.pushAndRemoveUntil(
                                             context,
-                                            MaterialPageRoute(builder: (context) => const HomePage()),
+                                            MaterialPageRoute(builder: (context) => const Department()),
                                             (Route<dynamic> route) => false,
                                           );
                                         } on Exception catch (e) {
