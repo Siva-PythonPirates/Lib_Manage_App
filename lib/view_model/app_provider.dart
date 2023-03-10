@@ -98,4 +98,8 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     List<Map<String, String>> books = imp.applyBooksFilter();
     state = state.rebuild((p0) => p0.books = books);
   }
+
+  Future<void> getMailId(String mail) async {
+    state = state.rebuild((p0) => p0.mail = mail);
+  }
 }

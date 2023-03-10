@@ -29,6 +29,13 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
                   Map, const [const FullType(String), const FullType(String)])
             ])));
     }
+    value = object.mail;
+    if (value != null) {
+      result
+        ..add('mail')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -50,6 +57,10 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
                     Map, const [const FullType(String), const FullType(String)])
               ])) as List<Map<String, String>>?;
           break;
+        case 'mail':
+          result.mail = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
       }
     }
 
@@ -60,11 +71,13 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
 class _$Appstate extends Appstate {
   @override
   final List<Map<String, String>>? books;
+  @override
+  final String? mail;
 
   factory _$Appstate([void Function(AppstateBuilder)? updates]) =>
       (new AppstateBuilder()..update(updates))._build();
 
-  _$Appstate._({this.books}) : super._();
+  _$Appstate._({this.books, this.mail}) : super._();
 
   @override
   Appstate rebuild(void Function(AppstateBuilder) updates) =>
@@ -76,20 +89,23 @@ class _$Appstate extends Appstate {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Appstate && books == other.books;
+    return other is Appstate && books == other.books && mail == other.mail;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
     _$hash = $jc(_$hash, books.hashCode);
+    _$hash = $jc(_$hash, mail.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'Appstate')..add('books', books))
+    return (newBuiltValueToStringHelper(r'Appstate')
+          ..add('books', books)
+          ..add('mail', mail))
         .toString();
   }
 }
@@ -101,12 +117,17 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   List<Map<String, String>>? get books => _$this._books;
   set books(List<Map<String, String>>? books) => _$this._books = books;
 
+  String? _mail;
+  String? get mail => _$this._mail;
+  set mail(String? mail) => _$this._mail = mail;
+
   AppstateBuilder();
 
   AppstateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _books = $v.books;
+      _mail = $v.mail;
       _$v = null;
     }
     return this;
@@ -127,7 +148,7 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   Appstate build() => _build();
 
   _$Appstate _build() {
-    final _$result = _$v ?? new _$Appstate._(books: books);
+    final _$result = _$v ?? new _$Appstate._(books: books, mail: mail);
     replace(_$result);
     return _$result;
   }

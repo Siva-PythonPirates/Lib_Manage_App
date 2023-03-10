@@ -31,7 +31,7 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: imp.getSize(context, 500),
+                        height: imp.getSize(context, 530),
                       ),
                       Text(
                         "Peaky Blinders",
@@ -40,11 +40,21 @@ class ProfilePage extends StatelessWidget {
                             fontSize: imp.getSize(context, 40),
                             fontWeight: FontWeight.normal),
                       ),
+                      SizedBox(
+                        height: imp.getSize(context, 20),
+                      ),
+                      Text(
+                        "210701254",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: imp.getSize(context, 30),
+                            fontWeight: FontWeight.normal),
+                      ),
                     ],
                   ),
                 ),
               )),
-          Positioned(
+          /*  Positioned(
             top: MediaQuery.of(context).size.width / 2.2,
             left: MediaQuery.of(context).size.width / 3.2,
             child: Container(
@@ -62,7 +72,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ),*/
           Positioned(
             top: MediaQuery.of(context).size.width / 1.05,
             child: Column(
