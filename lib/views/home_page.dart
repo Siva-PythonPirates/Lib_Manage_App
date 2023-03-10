@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/books_page.dart';
+import 'package:lib_management/views/dashboard.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   int bottomSelectedIndex = 0;
   AppServices imp = AppServiceImp();
 
-  final _pageOptions = [const Journals(), const Books(), const ProfilePage()];
+  final _pageOptions = [const DashBoard(), const Journals(), const Books(), const ProfilePage()];
 
   PageController pageController = PageController(
     initialPage: 0,
@@ -43,6 +44,7 @@ class _HomePageState extends State<HomePage> {
           pageChanged(index);
         },
         children: const <Widget>[
+          DashBoard(),
           Journals(),
           Books(),
           ProfilePage(),
@@ -68,6 +70,11 @@ class _HomePageState extends State<HomePage> {
           buttonBackgroundColor: Colors.white,
           height: imp.getSize(context, 55),
           items: [
+            Icon(
+              Icons.home,
+              size: imp.getSize(context, 27),
+              color: bgColor,
+            ),
             Icon(
               Icons.book_online,
               size: imp.getSize(context, imp.getSize(context, 27)),
