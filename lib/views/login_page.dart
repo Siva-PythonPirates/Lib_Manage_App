@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/view_model/app_provider.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/widgets/mail_textfield.dart';
+import 'package:provider/provider.dart';
 
 import '../services/app_constants.dart';
 
@@ -125,7 +127,7 @@ class _LoginState extends State<Login> {
                                   style: ButtonStyle(
                                       backgroundColor: MaterialStateProperty.all(Colors.white),
                                       shape: MaterialStateProperty.all(const StadiumBorder())),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     bool emailValid =
                                         RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
                                     if (mail.text == '' || password.text == '') {
@@ -139,6 +141,7 @@ class _LoginState extends State<Login> {
                                     } else {
                                       if (emailValid == true) {
                                         try {
+                                          await context.read<MyModel>().getMailId(mail.text);
                                           Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(builder: (context) => const HomePage()),

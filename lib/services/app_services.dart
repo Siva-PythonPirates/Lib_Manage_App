@@ -16,6 +16,6 @@ abstract class AppServices {
   void sortBooksDept();
   void sortBooksDeptDesc();
   void resetBookSort();
-  void applyBooksFilter();
+  List<Map<String, String>> applyBooksFilter();
   void resetBooksFilter();
 }

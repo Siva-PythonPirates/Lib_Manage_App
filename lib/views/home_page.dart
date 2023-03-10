@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
               color: bgColor,
             ),
             Icon(
-              Icons.recent_actors_rounded,
+              Icons.book,
               size: imp.getSize(context, imp.getSize(context, 27)),
               color: bgColor,
             ),

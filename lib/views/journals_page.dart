@@ -407,6 +407,30 @@ class _JournalsState extends State<Journals> {
                             ),
                             child: Column(
                               children: [
+                                // CachedNetworkImage(
+                                //   imageUrl: 'https://event.asme.org/Events/media/library/images/POWER/Logo_Power-Division_100-Year-03.png',
+                                //   imageBuilder: (context, imageProvider) => Container(
+                                //     width: double.infinity,
+                                //     height: imp.getSize(context, 140),
+                                //     decoration: BoxDecoration(
+                                //       image: DecorationImage(
+                                //         image: imageProvider,
+                                //         fit: BoxFit.cover,
+                                //       ),
+                                //     ),
+                                //   ),
+                                //   placeholder: (context, url) {
+                                //     return Expanded(
+                                //       child: Center(
+                                //         child: CircularProgressIndicator(
+                                //           color: bgColor,
+                                //         ),
+                                //       ),
+                                //     );
+                                //   },
+                                //   errorWidget: (context, url, error) => const Icon(Icons.error),
+                                // ),
+
                                 SizedBox(
                                   width: double.infinity,
                                   height: imp.getSize(context, 140),
@@ -429,8 +453,8 @@ class _JournalsState extends State<Journals> {
                                         );
                                       }
                                     }),
-                                    image: const NetworkImage(
-                                      'https://images.unsplash.com/photo-1550517355-375c103a6a81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
+                                    image: NetworkImage(
+                                      journal[index]['image']!,
                                     ),
                                     fit: BoxFit.cover,
                                   ),

@@ -22,13 +22,41 @@ List<String> journals = [
 ];
 
 List<Map<String, String>> journal = [
-  {'title': 'IEEE', 'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp'},
-  {'title': 'ASME - American society of Mechanical Engineers', 'link': 'https://asmedigitalcollection.asme.org/journals'},
-  {'title': 'ASCE - American Society of Civil Engineers', 'link': 'https://ascelibrary.org/'},
-  {'title': 'Elsevier (Science Direct)- Biotechnology (Back File)', 'link': 'https://www.sciencedirect.com/'},
-  {'title': 'J-GATE- Engineering & Technology', 'link': 'https://jgateplus.com/home/'},
-  {'title': 'J-GATE- Management Sciences', 'link': 'https://jgateplus.com/home/'},
-  {'title': 'EBSCO–Business Source Elite', 'link': 'https://search.ebscohost.com/'},
+  {
+    'title': 'IEEE',
+    'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp',
+    'image': 'https://wireless.engineering.nyu.edu/wp-content/uploads/2016/07/ieee-banner.jpg',
+  },
+  {
+    'title': 'ASME - American society of Mechanical Engineers',
+    'link': 'https://asmedigitalcollection.asme.org/journals',
+    'image': 'https://event.asme.org/Events/media/library/images/POWER/Logo_Power-Division_100-Year-03.png',
+  },
+  {
+    'title': 'J-GATE- Management Sciences',
+    'link': 'https://jgateplus.com/home/',
+    'image': 'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
+  },
+  {
+    'title': 'ASCE - American Society of Civil Engineers',
+    'link': 'https://ascelibrary.org/',
+    'image': 'https://www.uvu.edu/engineering/images/asce_logo.png',
+  },
+  {
+    'title': 'Elsevier (Science Direct)- Biotechnology (Back File)',
+    'link': 'https://www.sciencedirect.com/',
+    'image': 'https://typeset.io/resources/content/images/2022/10/Elsevier.png',
+  },
+  {
+    'title': 'J-GATE- Engineering & Technology',
+    'link': 'https://jgateplus.com/home/',
+    'image': 'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
+  },
+  {
+    'title': 'EBSCO–Business Source Elite',
+    'link': 'https://search.ebscohost.com/',
+    'image': 'https://storage.googleapis.com/seamk-production/2017/09/ebscohost_logo_cmyk.png',
+  },
 ];
 
 List<String> journalLinks = [
@@ -169,3 +197,133 @@ Map<String, List<String>> bookFilterSelected = {
 List<Map<String, String>> tempBooks = [];
 
 List<Map<String, String>> filteredBooks = [];
+
+//            BOOKS FOR TOP PICKS
+
+List<Map<String, String>> topPicksBooks = [
+  {
+    'title': 'The Structure of Scientific Revolutions',
+    'Author': 'Thomas S. Kuhn',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
+  },
+  {
+    'title': 'The Wealth of Nations',
+    'Author': 'Adam Smith',
+    'Department': 'Economics',
+    'image': 'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
+  },
+  {
+    'title': 'A Brief History of Time',
+    'Author': 'Stephen Hawking',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
+  },
+  {
+    'title': 'The Origin of Species',
+    'Author': 'Charles Darwin',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
+  },
+  {
+    'title': 'The Elements of Style',
+    'Author': 'William Strunk Jr. and E.B. White',
+    'Department': 'Language and Writing',
+    'image': 'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
+  },
+  {
+    'title': 'Principles of Economics',
+    'Author': 'N. Gregory Mankiw',
+    'Department': 'Economics',
+    'image': 'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
+  },
+  {
+    'title': 'The Selfish Gene',
+    'Author': 'Richard Dawkins',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
+  },
+  {
+    'title': 'The Republic',
+    'Author': 'Plato',
+    'Department': 'Philosophy',
+    'image': 'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
+  },
+  {
+    'title': 'The Interpretation of Dreams',
+    'Author': 'Sigmund Freud',
+    'Department': 'Psychology',
+    'image': 'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
+  },
+  {
+    'title': 'The Social Contract',
+    'Author': 'Jean-Jacques Rousseau',
+    'Department': 'Political Science',
+    'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
+  },
+];
+
+//              MY FAVOURITES BOOKS
+
+List<Map<String, String>> favouriteBooks = [
+  {
+    'title': 'The Structure of Scientific Revolutions',
+    'Author': 'Thomas S. Kuhn',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
+  },
+  {
+    'title': 'The Wealth of Nations',
+    'Author': 'Adam Smith',
+    'Department': 'Economics',
+    'image': 'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
+  },
+  {
+    'title': 'A Brief History of Time',
+    'Author': 'Stephen Hawking',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
+  },
+  {
+    'title': 'The Origin of Species',
+    'Author': 'Charles Darwin',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
+  },
+  {
+    'title': 'The Elements of Style',
+    'Author': 'William Strunk Jr. and E.B. White',
+    'Department': 'Language and Writing',
+    'image': 'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
+  },
+  {
+    'title': 'Principles of Economics',
+    'Author': 'N. Gregory Mankiw',
+    'Department': 'Economics',
+    'image': 'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
+  },
+  {
+    'title': 'The Selfish Gene',
+    'Author': 'Richard Dawkins',
+    'Department': 'Science',
+    'image': 'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
+  },
+  {
+    'title': 'The Republic',
+    'Author': 'Plato',
+    'Department': 'Philosophy',
+    'image': 'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
+  },
+  {
+    'title': 'The Interpretation of Dreams',
+    'Author': 'Sigmund Freud',
+    'Department': 'Psychology',
+    'image': 'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
+  },
+  {
+    'title': 'The Social Contract',
+    'Author': 'Jean-Jacques Rousseau',
+    'Department': 'Political Science',
+    'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
+  },
+];

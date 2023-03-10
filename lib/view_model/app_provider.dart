@@ -1,8 +1,8 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:lib_management/models/appstate.dart';
-import 'package:lib_management/models/book_details.dart';
+import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/services/app_services_impl.dart';
 
 class Changes extends StatelessWidget {
   const Changes({Key? key, required this.child}) : super(key: key);
@@ -18,9 +18,88 @@ class Changes extends StatelessWidget {
 
 class MyModel extends StateNotifier<Appstate> with LocatorMixin {
   MyModel() : super(Appstate());
+  Future<void> getInitialBooks() async {
+    state = state.rebuild((p0) => p0.books = [
+          {
+            'title': 'The Structure of Scientific Revolutions',
+            'Author': 'Thomas S. Kuhn',
+            'Department': 'Science',
+            'image':
+                'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
+          },
+          {
+            'title': 'The Wealth of Nations',
+            'Author': 'Adam Smith',
+            'Department': 'Economics',
+            'image':
+                'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
+          },
+          {
+            'title': 'A Brief History of Time',
+            'Author': 'Stephen Hawking',
+            'Department': 'Science',
+            'image':
+                'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
+          },
+          {
+            'title': 'The Origin of Species',
+            'Author': 'Charles Darwin',
+            'Department': 'Science',
+            'image':
+                'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
+          },
+          {
+            'title': 'The Elements of Style',
+            'Author': 'William Strunk Jr. and E.B. White',
+            'Department': 'Language and Writing',
+            'image':
+                'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
+          },
+          {
+            'title': 'Principles of Economics',
+            'Author': 'N. Gregory Mankiw',
+            'Department': 'Economics',
+            'image':
+                'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
+          },
+          {
+            'title': 'The Selfish Gene',
+            'Author': 'Richard Dawkins',
+            'Department': 'Science',
+            'image':
+                'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
+          },
+          {
+            'title': 'The Republic',
+            'Author': 'Plato',
+            'Department': 'Philosophy',
+            'image':
+                'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
+          },
+          {
+            'title': 'The Interpretation of Dreams',
+            'Author': 'Sigmund Freud',
+            'Department': 'Psychology',
+            'image':
+                'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
+          },
+          {
+            'title': 'The Social Contract',
+            'Author': 'Jean-Jacques Rousseau',
+            'Department': 'Political Science',
+            'image':
+                'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
+          },
+        ]);
+  }
 
   Future<void> getBookDetails() async {
-    List<BookDetails> books = [];
-    state = state.rebuild((p0) => p0.books = books.toBuiltList().toBuilder());
+    AppServices imp = AppServiceImp();
+    List<Map<String, String>> books = imp.applyBooksFilter();
+    state = state.rebuild((p0) => p0.books = books);
+  }
+
+  Future<void> getMailId(String mail) async {
+    state = state.rebuild((p0) => p0.mail = mail);
   }
 }
