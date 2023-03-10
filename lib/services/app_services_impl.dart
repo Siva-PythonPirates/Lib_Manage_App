@@ -60,7 +60,12 @@ class AppServiceImp implements AppServices {
     if (journalFilterSelected.isNotEmpty) {
       for (var query in journalFilterSelected) {
         print(query);
-        filteredJournal = [...filteredJournal, ...tempjournal.where((element) => element['title']!.contains(query)).toList()];
+        filteredJournal = [
+          ...filteredJournal,
+          ...tempjournal
+              .where((element) => element['title']!.contains(query))
+              .toList()
+        ];
       }
       journal = filteredJournal;
       print(journal);
@@ -144,7 +149,7 @@ class AppServiceImp implements AppServices {
   //             BOOK FILTERING         //
 
   @override
-  void applyBooksFilter() {
+  List<Map<String, String>> applyBooksFilter() {
     if (tempBooks.isEmpty) {
       createtempbooks();
     }
@@ -154,16 +159,19 @@ class AppServiceImp implements AppServices {
         // List<Map<String,String>> tempFilteredBooks=[];
         for (var query in bookFilterSelected[category]!) {
           print(query);
-          filteredBooks = [...books.where((element) => element[category]!.contains(query)).toList()];
+          filteredBooks = [
+            ...books
+                .where((element) => element[category]!.contains(query))
+                .toList()
+          ];
         }
-        // books = filteredBooks;
-
-        // filteredBooks=filteredBooks.add()
       }
       books = filteredBooks;
       print(filteredBooks);
       print(books.length);
+      return books;
     }
+    return [];
   }
 
   @override

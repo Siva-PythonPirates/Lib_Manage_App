@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/views/login_page.dart';
 import 'package:lib_management/views/reset_page.dart';
 
 import '../services/app_constants.dart';
@@ -192,6 +193,35 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+              right: imp.getSize(context, 20),
+              top: imp.getSize(context, 40),
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login()),
+                    (Route<dynamic> route) => false,
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.exit_to_app,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: imp.getSize(context, 10),
+                    ),
+                    Text(
+                      "LogOut",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: imp.getSize(context, 20)),
+                    )
+                  ],
+                ),
+              ))
         ],
       ),
     );

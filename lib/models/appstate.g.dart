@@ -17,13 +17,18 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
   @override
   Iterable<Object?> serialize(Serializers serializers, Appstate object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[
-      'books',
-      serializers.serialize(object.books,
-          specifiedType:
-              const FullType(BuiltList, const [const FullType(BookDetails)])),
-    ];
-
+    final result = <Object?>[];
+    Object? value;
+    value = object.books;
+    if (value != null) {
+      result
+        ..add('books')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(List, const [
+              const FullType(
+                  Map, const [const FullType(String), const FullType(String)])
+            ])));
+    }
     return result;
   }
 
@@ -39,10 +44,11 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
       final Object? value = iterator.current;
       switch (key) {
         case 'books':
-          result.books.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(BookDetails)]))!
-              as BuiltList<Object?>);
+          result.books = serializers.deserialize(value,
+              specifiedType: const FullType(List, const [
+                const FullType(
+                    Map, const [const FullType(String), const FullType(String)])
+              ])) as List<Map<String, String>>?;
           break;
       }
     }
@@ -53,14 +59,12 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
 
 class _$Appstate extends Appstate {
   @override
-  final BuiltList<BookDetails> books;
+  final List<Map<String, String>>? books;
 
   factory _$Appstate([void Function(AppstateBuilder)? updates]) =>
       (new AppstateBuilder()..update(updates))._build();
 
-  _$Appstate._({required this.books}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(books, r'Appstate', 'books');
-  }
+  _$Appstate._({this.books}) : super._();
 
   @override
   Appstate rebuild(void Function(AppstateBuilder) updates) =>
@@ -93,17 +97,16 @@ class _$Appstate extends Appstate {
 class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   _$Appstate? _$v;
 
-  ListBuilder<BookDetails>? _books;
-  ListBuilder<BookDetails> get books =>
-      _$this._books ??= new ListBuilder<BookDetails>();
-  set books(ListBuilder<BookDetails>? books) => _$this._books = books;
+  List<Map<String, String>>? _books;
+  List<Map<String, String>>? get books => _$this._books;
+  set books(List<Map<String, String>>? books) => _$this._books = books;
 
   AppstateBuilder();
 
   AppstateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _books = $v.books.toBuilder();
+      _books = $v.books;
       _$v = null;
     }
     return this;
@@ -124,20 +127,7 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   Appstate build() => _build();
 
   _$Appstate _build() {
-    _$Appstate _$result;
-    try {
-      _$result = _$v ?? new _$Appstate._(books: books.build());
-    } catch (_) {
-      late String _$failedField;
-      try {
-        _$failedField = 'books';
-        books.build();
-      } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            r'Appstate', _$failedField, e.toString());
-      }
-      rethrow;
-    }
+    final _$result = _$v ?? new _$Appstate._(books: books);
     replace(_$result);
     return _$result;
   }
