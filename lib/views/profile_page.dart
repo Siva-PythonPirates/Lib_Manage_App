@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/views/login_page.dart';
 import 'package:lib_management/views/reset_page.dart';
 
 import '../services/app_constants.dart';
@@ -30,7 +31,7 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(
-                        height: imp.getSize(context, 500),
+                        height: imp.getSize(context, 530),
                       ),
                       Text(
                         "Peaky Blinders",
@@ -39,11 +40,21 @@ class ProfilePage extends StatelessWidget {
                             fontSize: imp.getSize(context, 40),
                             fontWeight: FontWeight.normal),
                       ),
+                      SizedBox(
+                        height: imp.getSize(context, 20),
+                      ),
+                      Text(
+                        "210701254",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: imp.getSize(context, 30),
+                            fontWeight: FontWeight.normal),
+                      ),
                     ],
                   ),
                 ),
               )),
-          Positioned(
+          /*  Positioned(
             top: MediaQuery.of(context).size.width / 2.2,
             left: MediaQuery.of(context).size.width / 3.2,
             child: Container(
@@ -61,7 +72,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ),*/
           Positioned(
             top: MediaQuery.of(context).size.width / 1.05,
             child: Column(
@@ -192,6 +203,35 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+              right: imp.getSize(context, 20),
+              top: imp.getSize(context, 40),
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login()),
+                    (Route<dynamic> route) => false,
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.exit_to_app,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: imp.getSize(context, 10),
+                    ),
+                    Text(
+                      "LogOut",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: imp.getSize(context, 20)),
+                    )
+                  ],
+                ),
+              ))
         ],
       ),
     );
