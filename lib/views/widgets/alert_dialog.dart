@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 
@@ -22,6 +23,7 @@ Future<bool> showLogOutDialog(BuildContext context) {
               child: Text(
                 'Yes',
                 style: TextStyle(
+                  color: bgColor,
                   fontSize: imp.getSize(context, 20),
                 ),
               ),
@@ -33,6 +35,7 @@ Future<bool> showLogOutDialog(BuildContext context) {
               child: Text(
                 "No",
                 style: TextStyle(
+                  color: bgColor,
                   fontSize: imp.getSize(context, 20),
                 ),
               ),
