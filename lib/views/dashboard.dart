@@ -8,7 +8,7 @@ import 'package:lib_management/views/favorites_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 import 'package:lib_management/views/widgets/carousel.dart';
 import 'package:lib_management/views/journals_page.dart';
-import 'package:lib_management/views/favourite_page.dart';
+import 'package:lib_management/views/favorites_page.dart';
 
 import 'package:lib_management/views/history.dart';
 
@@ -154,7 +154,7 @@ class _DashBoardState extends State<DashBoard> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const FavouritePage(),
+              builder: (context) => MyFavoritesPage(),
             ),
           );
         },
