@@ -69,9 +69,12 @@ class _DashBoardState extends State<DashBoard> {
                     child: Center(
                       child: SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        child: Text(
-                          topPicksBooks[i]['title']!,
-                          textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: EdgeInsets.all(imp.getSize(context, 3)),
+                          child: Text(
+                            topPicksBooks[i]['title']!,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),
@@ -133,9 +136,12 @@ class _DashBoardState extends State<DashBoard> {
                     child: Center(
                       child: SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
-                        child: Text(
-                          favouriteBooks[i]['title']!,
-                          textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: EdgeInsets.all(imp.getSize(context, 3)),
+                          child: Text(
+                            favouriteBooks[i]['title']!,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),

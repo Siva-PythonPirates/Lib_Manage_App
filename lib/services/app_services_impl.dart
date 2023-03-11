@@ -7,8 +7,11 @@ import 'app_constants.dart';
 class AppServiceImp implements AppServices {
   @override
   launchURLto(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(
+        Uri.parse(url),
+        mode: LaunchMode.externalApplication,
+      );
     } else {
       throw 'Could not launch $url';
     }
@@ -60,12 +63,7 @@ class AppServiceImp implements AppServices {
     if (journalFilterSelected.isNotEmpty) {
       for (var query in journalFilterSelected) {
         print(query);
-        filteredJournal = [
-          ...filteredJournal,
-          ...tempjournal
-              .where((element) => element['title']!.contains(query))
-              .toList()
-        ];
+        filteredJournal = [...filteredJournal, ...tempjournal.where((element) => element['title']!.contains(query)).toList()];
       }
       journal = filteredJournal;
       print(journal);
@@ -159,11 +157,7 @@ class AppServiceImp implements AppServices {
         // List<Map<String,String>> tempFilteredBooks=[];
         for (var query in bookFilterSelected[category]!) {
           print(query);
-          filteredBooks = [
-            ...books
-                .where((element) => element[category]!.contains(query))
-                .toList()
-          ];
+          filteredBooks = [...books.where((element) => element[category]!.contains(query)).toList()];
         }
       }
       books = filteredBooks;

@@ -43,7 +43,7 @@ class _CustomCarouselState extends State<CustomCarousel> {
                           quotes[i],
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: imp.getSize(context, 13),
+                            fontSize: imp.getSize(context, 14),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
