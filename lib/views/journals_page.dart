@@ -3,7 +3,7 @@ import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/widgets/journal_filter_widget.dart';
 import 'package:lib_management/views/widgets/search_button.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../services/app_constants.dart';
 import '../views/widgets/carousel.dart';
 
@@ -371,6 +371,7 @@ class _JournalsState extends State<Journals> {
             ),
             Expanded(
               child: RefreshIndicator(
+                color: bgColor,
                 onRefresh: () {
                   if (tempjournal.isNotEmpty) journal = tempjournal;
                   journalFilterSelected = [];
@@ -407,58 +408,58 @@ class _JournalsState extends State<Journals> {
                             ),
                             child: Column(
                               children: [
-                                // CachedNetworkImage(
-                                //   imageUrl: 'https://event.asme.org/Events/media/library/images/POWER/Logo_Power-Division_100-Year-03.png',
-                                //   imageBuilder: (context, imageProvider) => Container(
-                                //     width: double.infinity,
-                                //     height: imp.getSize(context, 140),
-                                //     decoration: BoxDecoration(
-                                //       image: DecorationImage(
-                                //         image: imageProvider,
-                                //         fit: BoxFit.cover,
-                                //       ),
-                                //     ),
-                                //   ),
-                                //   placeholder: (context, url) {
-                                //     return Expanded(
-                                //       child: Center(
-                                //         child: CircularProgressIndicator(
-                                //           color: bgColor,
-                                //         ),
-                                //       ),
-                                //     );
-                                //   },
-                                //   errorWidget: (context, url, error) => const Icon(Icons.error),
-                                // ),
-
-                                SizedBox(
-                                  width: double.infinity,
-                                  height: imp.getSize(context, 140),
-                                  child: Image(
-                                    // width: double.infinity,
-                                    // height: imp.getSize(context, size)(context, 140),
-                                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                                      return child;
-                                    },
-                                    loadingBuilder: ((context, child, loadingProgress) {
-                                      if (loadingProgress == null) {
-                                        return child;
-                                      } else {
-                                        return Expanded(
-                                          child: Center(
-                                            child: CircularProgressIndicator(
-                                              color: bgColor,
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                    }),
-                                    image: NetworkImage(
-                                      journal[index]['image']!,
+                                CachedNetworkImage(
+                                  imageUrl: journal[index]['image']!,
+                                  imageBuilder: (context, imageProvider) => Container(
+                                    width: double.infinity,
+                                    height: imp.getSize(context, 140),
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: imageProvider,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
-                                    fit: BoxFit.cover,
                                   ),
+                                  placeholder: (context, url) {
+                                    return Expanded(
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          color: bgColor,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  // errorWidget: (context, url, error) => const Icon(Icons.error),
                                 ),
+
+                                // SizedBox(
+                                //   width: double.infinity,
+                                //   height: imp.getSize(context, 140),
+                                //   child: Image(
+                                //     // width: double.infinity,
+                                //     // height: imp.getSize(context, size)(context, 140),
+                                //     frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                                //       return child;
+                                //     },
+                                //     loadingBuilder: ((context, child, loadingProgress) {
+                                //       if (loadingProgress == null) {
+                                //         return child;
+                                //       } else {
+                                //         return Expanded(
+                                //           child: Center(
+                                //             child: CircularProgressIndicator(
+                                //               color: bgColor,
+                                //             ),
+                                //           ),
+                                //         );
+                                //       }
+                                //     }),
+                                //     image: NetworkImage(
+                                //       journal[index]['image']!,
+                                //     ),
+                                //     fit: BoxFit.cover,
+                                //   ),
+                                // ),
                                 Padding(
                                   padding: EdgeInsets.all(imp.getSize(context, 12)),
                                   child: Text(

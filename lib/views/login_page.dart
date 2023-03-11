@@ -211,7 +211,7 @@ class _LoginState extends State<Login> {
             )),
         Positioned(
           top: imp.getSize(context, 60),
-          left: imp.getSize(context, 90),
+          left: imp.getSize(context, 80),
           child: Text(
             'REC-Library',
             style: TextStyle(fontSize: imp.getSize(context, 40), color: bgColor, fontWeight: FontWeight.bold),
