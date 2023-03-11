@@ -54,12 +54,6 @@ class _FavouritePageState extends State<FavouritePage> {
               ),
             ),
           ),
-          Positioned(
-            top: imp.getSize(context, imp.getSize(context, 240)),
-            child: InkWell(
-              onTap: () {},
-            ),
-          ),
         ],
       ),
     );

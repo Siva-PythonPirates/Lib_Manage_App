@@ -9,7 +9,6 @@ import 'package:lib_management/views/widgets/carousel.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/favourite_page.dart';
 import 'package:lib_management/views/history_page.dart';
-import 'package:lib_management/views/toppicks_page.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -20,6 +19,141 @@ class DashBoard extends StatefulWidget {
 
 class _DashBoardState extends State<DashBoard> {
   AppServices imp = AppServiceImp();
+
+  List<Widget> createTopPicksChildren() {
+    List<Widget> children = [];
+    for (int i = 0; i < 10; i++) {
+      children.add(
+        Padding(
+          padding: EdgeInsets.all(imp.getSize(context, 10)),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetails(
+                    book: topPicksBooks[i],
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              width: imp.getSize(context, 130),
+              height: imp.getSize(context, 200),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+              ),
+              child: Column(
+                children: [
+                  Image(
+                    height: imp.getSize(context, 150),
+                    width: double.infinity,
+                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Text(
+                          topPicksBooks[i]['title']!,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return children;
+  }
+
+  List<Widget> createFavouriteBooksChildren() {
+    List<Widget> children = [];
+    for (int i = 0; i < 5; i++) {
+      children.add(
+        Padding(
+          padding: EdgeInsets.all(imp.getSize(context, 10)),
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => BookDetails(
+                    book: favouriteBooks[i],
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              width: imp.getSize(context, 130),
+              height: imp.getSize(context, 200),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+              ),
+              child: Column(
+                children: [
+                  Image(
+                    height: imp.getSize(context, 150),
+                    width: double.infinity,
+                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                  Expanded(
+                    child: Center(
+                      child: SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Text(
+                          favouriteBooks[i]['title']!,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    children.add(
+      InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const FavouritePage(),
+            ),
+          );
+        },
+        child: Padding(
+          padding: EdgeInsets.only(left: imp.getSize(context, 10)),
+          child: Column(
+            children: [
+              Icon(
+                Icons.arrow_circle_right_rounded,
+                color: Colors.white,
+                size: imp.getSize(context, 30),
+              ),
+              SizedBox(height: imp.getSize(context, 10)),
+              Text(
+                'See More',
+                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    return children;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -309,21 +443,6 @@ class _DashBoardState extends State<DashBoard> {
                                         fontSize: imp.getSize(context, 25),
                                       ),
                                     ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => const TopPicksPage(),
-                                          ),
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.arrow_forward,
-                                        color: Colors.white,
-                                        size: imp.getSize(context, 25),
-                                      ),
-                                    ),
                                   ],
                                 ),
                                 SizedBox(
@@ -332,271 +451,7 @@ class _DashBoardState extends State<DashBoard> {
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[0],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          splashColor: Colors.blue,
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[0]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[1],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[1]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[2],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[2]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[3],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[3]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[4],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[4]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const TopPicksPage(),
-                                            ),
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: imp.getSize(context, 10)),
-                                          child: Column(
-                                            children: [
-                                              Icon(
-                                                Icons.arrow_circle_right_rounded,
-                                                color: Colors.white,
-                                                size: imp.getSize(context, 30),
-                                              ),
-                                              SizedBox(height: imp.getSize(context, 10)),
-                                              Text(
-                                                'See More',
-                                                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      // ListView.builder(
-                                      //   shrinkWrap: true,
-                                      //   scrollDirection: Axis.horizontal,
-                                      //   itemCount: 4,
-                                      //   itemBuilder: (context, index) {
-                                      //     return Padding(
-                                      //       padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                      //       child: Container(
-                                      //         width: imp.getSize(context, 130),
-                                      //         height: imp.getSize(context, 200),
-                                      //         color: Colors.white,
-                                      //       ),
-                                      //     );
-                                      //   },
-                                      // ),
-                                    ],
+                                    children: createTopPicksChildren(),
                                   ),
                                 ),
                               ],
@@ -648,269 +503,7 @@ class _DashBoardState extends State<DashBoard> {
                                 SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[0],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[0]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[1],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[1]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[2],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[2]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[3],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[3]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                        child: InkWell(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => BookDetails(
-                                                  book: books[4],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: imp.getSize(context, 130),
-                                            height: imp.getSize(context, 200),
-                                            decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Image(
-                                                  height: imp.getSize(context, 150),
-                                                  width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                                Expanded(
-                                                  child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
-                                                      child: Text(
-                                                        topPicksBooks[4]['title']!,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const FavouritePage(),
-                                            ),
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.only(left: imp.getSize(context, 10)),
-                                          child: Column(
-                                            children: [
-                                              Icon(
-                                                Icons.arrow_circle_right_rounded,
-                                                color: Colors.white,
-                                                size: imp.getSize(context, 30),
-                                              ),
-                                              SizedBox(height: imp.getSize(context, 10)),
-                                              Text(
-                                                'See More',
-                                                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      //   shrinkWrap: true,
-                                      //   scrollDirection: Axis.horizontal,
-                                      //   itemCount: 4,
-                                      //   itemBuilder: (context, index) {
-                                      //     return Padding(
-                                      //       padding: EdgeInsets.all(imp.getSize(context, 10)),
-                                      //       child: Container(
-                                      //         width: imp.getSize(context, 130),
-                                      //         height: imp.getSize(context, 200),
-                                      //         color: Colors.white,
-                                      //       ),
-                                      //     );
-                                      //   },
-                                      // ),
-                                    ],
+                                    children: createFavouriteBooksChildren(),
                                   ),
                                 ),
                               ],
