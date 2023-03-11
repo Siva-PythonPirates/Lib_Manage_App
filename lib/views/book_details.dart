@@ -5,7 +5,7 @@ import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 
 class BookDetails extends StatefulWidget {
-  final Map<String, dynamic> book;
+  final Map<String, String> book;
 
   const BookDetails({Key? key, required this.book}) : super(key: key);
 
@@ -50,7 +50,8 @@ class _BookDetailsState extends State<BookDetails> {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: screenSize.width * 0.06, vertical: 16),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenSize.width * 0.06, vertical: 16),
                     child: SingleChildScrollView(
                       child: Row(
                         children: [
@@ -80,7 +81,10 @@ class _BookDetailsState extends State<BookDetails> {
                                           alignment: Alignment.topLeft,
                                           child: Text(
                                             "Title:",
-                                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge
+                                                ?.copyWith(
                                                   color: Colors.white,
                                                 ),
                                           ),
@@ -89,7 +93,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         '${widget.book['title'] ?? 'BOOK TITLE'}',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -107,7 +114,10 @@ class _BookDetailsState extends State<BookDetails> {
                                         width: imp.getSize(context, 100),
                                         child: Text(
                                           "Author:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -115,7 +125,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         '${widget.book['Author'] ?? 'Author'}',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -130,10 +143,14 @@ class _BookDetailsState extends State<BookDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                        width: imp.getSize(context, imp.getSize(context, 100)),
+                                        width: imp.getSize(
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Edition:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -141,7 +158,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         '3',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -156,10 +176,14 @@ class _BookDetailsState extends State<BookDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                        width: imp.getSize(context, imp.getSize(context, 100)),
+                                        width: imp.getSize(
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Publisher:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -167,7 +191,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         'Har Chand Publications',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -182,10 +209,14 @@ class _BookDetailsState extends State<BookDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                        width: imp.getSize(context, imp.getSize(context, 100)),
+                                        width: imp.getSize(
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Pages:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -193,7 +224,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         '3100',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -208,10 +242,14 @@ class _BookDetailsState extends State<BookDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                        width: imp.getSize(context, imp.getSize(context, 100)),
+                                        width: imp.getSize(
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "ISBN:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -219,7 +257,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         '61-219-0611-3',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -234,10 +275,14 @@ class _BookDetailsState extends State<BookDetails> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                        width: imp.getSize(context, imp.getSize(context, 100)),
+                                        width: imp.getSize(
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Price:",
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge
+                                              ?.copyWith(
                                                 color: Colors.white,
                                               ),
                                         )),
@@ -245,7 +290,10 @@ class _BookDetailsState extends State<BookDetails> {
                                       width: imp.getSize(context, 200),
                                       child: Text(
                                         'Rs.175',
-                                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge
+                                            ?.copyWith(
                                               color: Colors.white,
                                             ),
                                       ),
@@ -280,7 +328,10 @@ class _BookDetailsState extends State<BookDetails> {
                       child: Text(
                         '${widget.book['title'] ?? 'BOOK TITLE'}',
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: imp.getSize(context, 34), color: bgColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontSize: imp.getSize(context, 34),
+                            color: bgColor,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -298,7 +349,8 @@ class _BookDetailsState extends State<BookDetails> {
               onPressed: () {},
               child: Container(
                 width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: imp.getSize(context, 16)),
+                padding:
+                    EdgeInsets.symmetric(vertical: imp.getSize(context, 16)),
                 child: Text(
                   'Pre-Book',
                   style: TextStyle(
@@ -310,7 +362,8 @@ class _BookDetailsState extends State<BookDetails> {
                 ),
               ),
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
           );
   }
 
