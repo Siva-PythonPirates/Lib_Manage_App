@@ -8,7 +8,8 @@ import 'package:lib_management/views/profile_page.dart';
 import 'package:lib_management/views/widgets/carousel.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/favourite_page.dart';
-import 'package:lib_management/views/history_page.dart';
+
+import 'package:lib_management/views/history.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -40,17 +41,29 @@ class _DashBoardState extends State<DashBoard> {
             child: Container(
               width: imp.getSize(context, 130),
               height: imp.getSize(context, 200),
+              // color: Colors.white,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
               ),
               child: Column(
                 children: [
-                  Image(
+                  Container(
                     height: imp.getSize(context, 150),
                     width: double.infinity,
-                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                    fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                            imp.getSize(context, 10),
+                          ),
+                          topRight: Radius.circular(
+                            imp.getSize(context, 10),
+                          ),
+                        ),
+                        image: const DecorationImage(
+                          image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                          fit: BoxFit.cover,
+                        )),
                   ),
                   Expanded(
                     child: Center(
@@ -99,11 +112,22 @@ class _DashBoardState extends State<DashBoard> {
               ),
               child: Column(
                 children: [
-                  Image(
+                  Container(
                     height: imp.getSize(context, 150),
                     width: double.infinity,
-                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                    fit: BoxFit.cover,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                            imp.getSize(context, 10),
+                          ),
+                          topRight: Radius.circular(
+                            imp.getSize(context, 10),
+                          ),
+                        ),
+                        image: const DecorationImage(
+                          image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                          fit: BoxFit.cover,
+                        )),
                   ),
                   Expanded(
                     child: Center(
@@ -261,7 +285,7 @@ class _DashBoardState extends State<DashBoard> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const HistoryPage(),
+                                        builder: (context) => const History(),
                                       ),
                                     );
                                   },

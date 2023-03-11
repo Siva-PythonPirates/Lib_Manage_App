@@ -400,7 +400,6 @@ class _JournalsState extends State<Journals> {
                                   color: Color.fromARGB(255, 118, 23, 182),
                                   blurRadius: 8,
                                   spreadRadius: 9,
-                                  // offset: Offset(5, 5),
                                 ),
                               ],
                               borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
@@ -414,6 +413,14 @@ class _JournalsState extends State<Journals> {
                                     width: double.infinity,
                                     height: imp.getSize(context, 140),
                                     decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(
+                                          imp.getSize(context, 15),
+                                        ),
+                                        topRight: Radius.circular(
+                                          imp.getSize(context, 15),
+                                        ),
+                                      ),
                                       image: DecorationImage(
                                         image: imageProvider,
                                         fit: BoxFit.cover,
@@ -421,45 +428,19 @@ class _JournalsState extends State<Journals> {
                                     ),
                                   ),
                                   placeholder: (context, url) {
-                                    return Expanded(
-                                      child: Center(
-                                        child: CircularProgressIndicator(
-                                          color: bgColor,
+                                    return SizedBox(
+                                      width: double.infinity,
+                                      height: imp.getSize(context, 140),
+                                      child: Expanded(
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            color: bgColor,
+                                          ),
                                         ),
                                       ),
                                     );
                                   },
-                                  // errorWidget: (context, url, error) => const Icon(Icons.error),
                                 ),
-
-                                // SizedBox(
-                                //   width: double.infinity,
-                                //   height: imp.getSize(context, 140),
-                                //   child: Image(
-                                //     // width: double.infinity,
-                                //     // height: imp.getSize(context, size)(context, 140),
-                                //     frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                                //       return child;
-                                //     },
-                                //     loadingBuilder: ((context, child, loadingProgress) {
-                                //       if (loadingProgress == null) {
-                                //         return child;
-                                //       } else {
-                                //         return Expanded(
-                                //           child: Center(
-                                //             child: CircularProgressIndicator(
-                                //               color: bgColor,
-                                //             ),
-                                //           ),
-                                //         );
-                                //       }
-                                //     }),
-                                //     image: NetworkImage(
-                                //       journal[index]['image']!,
-                                //     ),
-                                //     fit: BoxFit.cover,
-                                //   ),
-                                // ),
                                 Padding(
                                   padding: EdgeInsets.all(imp.getSize(context, 12)),
                                   child: Text(
@@ -467,7 +448,6 @@ class _JournalsState extends State<Journals> {
                                     style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
-                                      // decoration: TextDecoration.underline,
                                     ),
                                     textAlign: TextAlign.start,
                                   ),
