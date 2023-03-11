@@ -46,7 +46,9 @@ dependencies:
   flutter_spinkit:
   date_time_picker: ^2.1.0
   cached_network_image: ^3.2.3
-  
+  shared_preferences:
+
+
 
 dev_dependencies:
   flutter_test:

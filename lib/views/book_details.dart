@@ -5,7 +5,7 @@ import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 
 class BookDetails extends StatefulWidget {
-  final Map<String, dynamic> book;
+  final Map<String, String> book;
 
   const BookDetails({Key? key, required this.book}) : super(key: key);
 
@@ -92,7 +92,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '${widget.book['title'] ?? 'BOOK TITLE'}',
+                                        widget.book['title'] ?? 'BOOK TITLE',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleLarge
@@ -124,7 +124,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '${widget.book['Author'] ?? 'Author'}',
+                                        widget.book['Author'] ?? 'Author',
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleLarge
@@ -144,7 +144,7 @@ class _BookDetailsState extends State<BookDetails> {
                                   children: [
                                     SizedBox(
                                         width: imp.getSize(
-                                            context, imp.getSize(context, 120)),
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Edition:",
                                           style: Theme.of(context)
@@ -177,7 +177,7 @@ class _BookDetailsState extends State<BookDetails> {
                                   children: [
                                     SizedBox(
                                         width: imp.getSize(
-                                            context, imp.getSize(context, 120)),
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Publisher:",
                                           style: Theme.of(context)
@@ -210,7 +210,7 @@ class _BookDetailsState extends State<BookDetails> {
                                   children: [
                                     SizedBox(
                                         width: imp.getSize(
-                                            context, imp.getSize(context, 120)),
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Pages:",
                                           style: Theme.of(context)
@@ -243,7 +243,7 @@ class _BookDetailsState extends State<BookDetails> {
                                   children: [
                                     SizedBox(
                                         width: imp.getSize(
-                                            context, imp.getSize(context, 120)),
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "ISBN:",
                                           style: Theme.of(context)
@@ -276,7 +276,7 @@ class _BookDetailsState extends State<BookDetails> {
                                   children: [
                                     SizedBox(
                                         width: imp.getSize(
-                                            context, imp.getSize(context, 120)),
+                                            context, imp.getSize(context, 100)),
                                         child: Text(
                                           "Price:",
                                           style: Theme.of(context)
@@ -321,22 +321,17 @@ class _BookDetailsState extends State<BookDetails> {
                     )),
                 Positioned(
                   top: imp.getSize(context, imp.getSize(context, 60)),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: imp.getSize(context, 300),
-                        height: imp.getSize(context, 152),
-                        child: Flexible(
-                          child: Text(
-                            '${widget.book['title'] ?? 'BOOK TITLE'}',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: imp.getSize(context, 34),
-                                color: bgColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                  child: SizedBox(
+                    width: imp.getSize(context, 350),
+                    height: imp.getSize(context, 152),
+                    child: Flexible(
+                      child: Text(
+                        widget.book['title'] ?? 'BOOK TITLE',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: imp.getSize(context, 34),
+                            color: bgColor,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
