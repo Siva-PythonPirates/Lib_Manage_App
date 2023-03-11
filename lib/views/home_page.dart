@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/views/books_page.dart';
+import 'package:lib_management/views/history.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
           pageChanged(index);
         },
         children: const <Widget>[
-          Journals(),
+          History(),
           Books(),
           ProfilePage(),
         ],
