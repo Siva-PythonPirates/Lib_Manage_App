@@ -61,8 +61,7 @@ class _DashBoardState extends State<DashBoard> {
                           ),
                         ),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                          image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -126,8 +125,7 @@ class _DashBoardState extends State<DashBoard> {
                           ),
                         ),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                          image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -171,8 +169,7 @@ class _DashBoardState extends State<DashBoard> {
               SizedBox(height: imp.getSize(context, 10)),
               Text(
                 'See More',
-                style: TextStyle(
-                    color: Colors.white, fontSize: imp.getSize(context, 15)),
+                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
               ),
             ],
           ),
@@ -233,35 +230,29 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.blue[200],
-                                borderRadius: BorderRadius.circular(
-                                    imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ProfilePage(),
+                                        builder: (context) => const ProfilePage(),
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(
-                                      imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 60),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/profilelogo.png'),
+                                        image: AssetImage('assets/images/profilelogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     ),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Text(
                                           'My Profile',
@@ -287,8 +278,7 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.orange[300],
-                                borderRadius: BorderRadius.circular(
-                                    imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
@@ -299,22 +289,18 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(
-                                      imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/historylogo.png'),
+                                        image: AssetImage('assets/images/historylogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     ),
                                     height: imp.getSize(context, 60),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Text(
                                           'History',
@@ -347,8 +333,7 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.cyan[200],
-                                borderRadius: BorderRadius.circular(
-                                    imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
@@ -359,18 +344,15 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(
-                                      imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/journallogo.png'),
+                                        image: AssetImage('assets/images/journallogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -392,8 +374,7 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(
-                                    imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
@@ -404,18 +385,15 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(
-                                      imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/booklogo.png'),
+                                        image: AssetImage('assets/images/booklogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -437,23 +415,19 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.pink[200],
-                                borderRadius: BorderRadius.circular(
-                                    imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {},
-                                  borderRadius: BorderRadius.circular(
-                                      imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/ebooklogo.png'),
+                                        image: AssetImage('assets/images/ebooklogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(
-                                          imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -484,8 +458,7 @@ class _DashBoardState extends State<DashBoard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Top Picks',
@@ -522,8 +495,7 @@ class _DashBoardState extends State<DashBoard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'My Favourites',
@@ -537,8 +509,7 @@ class _DashBoardState extends State<DashBoard> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) =>
-                                                MyFavoritesPage(),
+                                            builder: (context) => MyFavoritesPage(),
                                           ),
                                         );
                                       },
