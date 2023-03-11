@@ -8,8 +8,9 @@ import 'package:lib_management/views/profile_page.dart';
 import 'package:lib_management/views/widgets/carousel.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/favourite_page.dart';
-import 'package:lib_management/views/history_page.dart';
 import 'package:lib_management/views/toppicks_page.dart';
+
+import 'history.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -72,29 +73,35 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.blue[200],
-                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const ProfilePage(),
+                                        builder: (context) =>
+                                            const ProfilePage(),
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 60),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage('assets/images/profilelogo.png'),
+                                        image: AssetImage(
+                                            'assets/images/profilelogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(
+                                          imp.getSize(context, 15)),
                                     ),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Text(
                                           'My Profile',
@@ -120,29 +127,34 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.orange[300],
-                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const HistoryPage(),
+                                        builder: (context) => const History(),
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   child: Ink(
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage('assets/images/historylogo.png'),
+                                        image: AssetImage(
+                                            'assets/images/historylogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(
+                                          imp.getSize(context, 15)),
                                     ),
                                     height: imp.getSize(context, 60),
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Text(
                                           'History',
@@ -175,7 +187,8 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.cyan[200],
-                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
@@ -186,15 +199,18 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage('assets/images/journallogo.png'),
+                                        image: AssetImage(
+                                            'assets/images/journallogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(
+                                          imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -216,7 +232,8 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {
@@ -227,15 +244,18 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     );
                                   },
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage('assets/images/booklogo.png'),
+                                        image: AssetImage(
+                                            'assets/images/booklogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(
+                                          imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -257,19 +277,23 @@ class _DashBoardState extends State<DashBoard> {
                               padding: EdgeInsets.all(imp.getSize(context, 8)),
                               child: Material(
                                 color: Colors.pink[200],
-                                borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 15)),
                                 elevation: 20,
                                 child: InkWell(
                                   onTap: () {},
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   child: Ink(
                                     height: imp.getSize(context, 100),
                                     decoration: BoxDecoration(
                                       image: const DecorationImage(
-                                        image: AssetImage('assets/images/ebooklogo.png'),
+                                        image: AssetImage(
+                                            'assets/images/ebooklogo.png'),
                                         fit: BoxFit.cover,
                                       ),
-                                      borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                      borderRadius: BorderRadius.circular(
+                                          imp.getSize(context, 15)),
                                     ),
                                     child: Center(
                                       child: Text(
@@ -300,7 +324,8 @@ class _DashBoardState extends State<DashBoard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Top Picks',
@@ -314,7 +339,8 @@ class _DashBoardState extends State<DashBoard> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const TopPicksPage(),
+                                            builder: (context) =>
+                                                const TopPicksPage(),
                                           ),
                                         );
                                       },
@@ -334,13 +360,15 @@ class _DashBoardState extends State<DashBoard> {
                                   child: Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[0],
                                                 ),
                                               ),
@@ -352,23 +380,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[0]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[0]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -379,13 +415,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[1],
                                                 ),
                                               ),
@@ -396,23 +434,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[1]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[1]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -423,13 +469,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[2],
                                                 ),
                                               ),
@@ -440,23 +488,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[2]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[2]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -467,13 +523,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[3],
                                                 ),
                                               ),
@@ -484,23 +542,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[3]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[3]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -511,13 +577,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[4],
                                                 ),
                                               ),
@@ -528,23 +596,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[4]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[4]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -559,23 +635,31 @@ class _DashBoardState extends State<DashBoard> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const TopPicksPage(),
+                                              builder: (context) =>
+                                                  const TopPicksPage(),
                                             ),
                                           );
                                         },
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: imp.getSize(context, 10)),
+                                          padding: EdgeInsets.only(
+                                              left: imp.getSize(context, 10)),
                                           child: Column(
                                             children: [
                                               Icon(
-                                                Icons.arrow_circle_right_rounded,
+                                                Icons
+                                                    .arrow_circle_right_rounded,
                                                 color: Colors.white,
                                                 size: imp.getSize(context, 30),
                                               ),
-                                              SizedBox(height: imp.getSize(context, 10)),
+                                              SizedBox(
+                                                  height:
+                                                      imp.getSize(context, 10)),
                                               Text(
                                                 'See More',
-                                                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: imp.getSize(
+                                                        context, 15)),
                                               ),
                                             ],
                                           ),
@@ -616,7 +700,8 @@ class _DashBoardState extends State<DashBoard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'My Favourites',
@@ -630,7 +715,8 @@ class _DashBoardState extends State<DashBoard> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => const FavouritePage(),
+                                            builder: (context) =>
+                                                const FavouritePage(),
                                           ),
                                         );
                                       },
@@ -650,13 +736,15 @@ class _DashBoardState extends State<DashBoard> {
                                   child: Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[0],
                                                 ),
                                               ),
@@ -667,23 +755,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[0]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[0]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -694,13 +790,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[1],
                                                 ),
                                               ),
@@ -711,23 +809,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[1]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[1]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -738,13 +844,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[2],
                                                 ),
                                               ),
@@ -755,23 +863,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[2]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[2]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -782,13 +898,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[3],
                                                 ),
                                               ),
@@ -799,23 +917,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[3]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[3]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -826,13 +952,15 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                        padding: EdgeInsets.all(
+                                            imp.getSize(context, 10)),
                                         child: InkWell(
                                           onTap: () {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => BookDetails(
+                                                builder: (context) =>
+                                                    BookDetails(
                                                   book: books[4],
                                                 ),
                                               ),
@@ -843,23 +971,31 @@ class _DashBoardState extends State<DashBoard> {
                                             height: imp.getSize(context, 200),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      imp.getSize(context, 10)),
                                             ),
                                             child: Column(
                                               children: [
                                                 Image(
-                                                  height: imp.getSize(context, 150),
+                                                  height:
+                                                      imp.getSize(context, 150),
                                                   width: double.infinity,
-                                                  image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                                  image: const NetworkImage(
+                                                      'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Expanded(
                                                   child: Center(
-                                                    child: SingleChildScrollView(
-                                                      physics: const BouncingScrollPhysics(),
+                                                    child:
+                                                        SingleChildScrollView(
+                                                      physics:
+                                                          const BouncingScrollPhysics(),
                                                       child: Text(
-                                                        topPicksBooks[4]['title']!,
-                                                        textAlign: TextAlign.center,
+                                                        topPicksBooks[4]
+                                                            ['title']!,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                       ),
                                                     ),
                                                   ),
@@ -874,23 +1010,31 @@ class _DashBoardState extends State<DashBoard> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const FavouritePage(),
+                                              builder: (context) =>
+                                                  const FavouritePage(),
                                             ),
                                           );
                                         },
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: imp.getSize(context, 10)),
+                                          padding: EdgeInsets.only(
+                                              left: imp.getSize(context, 10)),
                                           child: Column(
                                             children: [
                                               Icon(
-                                                Icons.arrow_circle_right_rounded,
+                                                Icons
+                                                    .arrow_circle_right_rounded,
                                                 color: Colors.white,
                                                 size: imp.getSize(context, 30),
                                               ),
-                                              SizedBox(height: imp.getSize(context, 10)),
+                                              SizedBox(
+                                                  height:
+                                                      imp.getSize(context, 10)),
                                               Text(
                                                 'See More',
-                                                style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: imp.getSize(
+                                                        context, 15)),
                                               ),
                                             ],
                                           ),
