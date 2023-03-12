@@ -44,7 +44,7 @@ class AppServiceImp implements AppServices {
 
   @override
   void resetJournalSort() {
-    journal = tempjournal;
+    if (tempjournal.isNotEmpty) journal = tempjournal;
   }
 
   @override
@@ -72,7 +72,7 @@ class AppServiceImp implements AppServices {
 
   @override
   void resetJournalFilter() {
-    journal = tempjournal;
+    if (tempjournal.isNotEmpty) journal = tempjournal;
     journalFilterSelected = [];
     filteredJournal = [];
   }
@@ -141,7 +141,7 @@ class AppServiceImp implements AppServices {
 
   @override
   void resetBookSort() {
-    books = tempBooks;
+    if (tempBooks.isNotEmpty) books = tempBooks;
   }
 
   //             BOOK FILTERING         //
@@ -157,7 +157,11 @@ class AppServiceImp implements AppServices {
         // List<Map<String,String>> tempFilteredBooks=[];
         for (var query in bookFilterSelected[category]!) {
           print(query);
-          filteredBooks = [...books.where((element) => element[category]!.contains(query)).toList()];
+          filteredBooks = [
+            ...books.where((element) {
+              return element[category]!.contains(query) && (!filteredBooks.contains(element));
+            }).toList()
+          ];
         }
       }
       books = filteredBooks;
@@ -170,9 +174,11 @@ class AppServiceImp implements AppServices {
 
   @override
   void resetBooksFilter() {
-    books = tempBooks;
-    print(tempBooks);
-    bookFilterSelected = {'Department': [], 'Author': []};
-    filteredBooks = [];
+    if (tempBooks.isNotEmpty) {
+      books = tempBooks;
+      print(tempBooks);
+      bookFilterSelected = {'Department': [], 'Author': []};
+      filteredBooks = [];
+    }
   }
 }
