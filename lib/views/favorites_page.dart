@@ -17,6 +17,7 @@ class _MyFavoritesPageState extends State<MyFavoritesPage> {
         .where(
             (book) => context.read<MyModel>().favorites.contains(book["title"]))
         .toList();
+    print(favoriteBooks);
 
     context.read<MyModel>().loadFavorites();
 
