@@ -1,9 +1,12 @@
 import 'dart:async';
+// import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lib_management/view_model/app_provider.dart';
+import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/login_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,14 +48,23 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       ),
     );
     Timer(
-      const Duration(seconds: 3),
-      () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (_) => const Login(),
-          ),
-        );
+      const Duration(seconds: 2),
+      () async {
+        if (await context.read<MyModel>().getLoginDetail()) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const HomePage(),
+            ),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const Login(),
+            ),
+          );
+        }
       },
     );
     _animationController.forward();

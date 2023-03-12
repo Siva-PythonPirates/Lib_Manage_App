@@ -30,7 +30,7 @@ class _HistoryState extends State<History> {
             Expanded(
               child: Scrollbar(
                 child: Padding(
-                  padding: EdgeInsets.only(top: imp.getSize(context, 200)),
+                  padding: EdgeInsets.only(top: imp.getSize(context, 210)),
                   child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     padding: EdgeInsets.all(imp.getSize(context, 8)),
@@ -74,50 +74,42 @@ class _HistoryState extends State<History> {
                               child: Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(
-                                        left: imp.getSize(context, 8)),
+                                    margin: EdgeInsets.only(left: imp.getSize(context, 8)),
                                     height: imp.getSize(context, 100),
                                     width: imp.getSize(context, 80),
                                     color: Colors.white,
                                     child: Image(
-                                      loadingBuilder:
-                                          ((context, child, loadingProgress) {
+                                      loadingBuilder: ((context, child, loadingProgress) {
                                         if (loadingProgress == null) {
                                           return child;
                                         } else {
                                           return const Expanded(
                                             child: Center(
-                                              child:
-                                                  CircularProgressIndicator(),
+                                              child: CircularProgressIndicator(),
                                             ),
                                           );
                                         }
                                       }),
-                                      image: const NetworkImage(
-                                          'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                      image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.all(imp.getSize(context, 8)),
+                                    padding: EdgeInsets.all(imp.getSize(context, 8)),
                                     child: Column(
                                       children: [
                                         SizedBox(
                                           width: imp.getSize(context, 200),
                                           child: Center(
                                             child: Text(
-                                              books[index]['title'] ??
-                                                  "BOOK TITLE",
+                                              books[index]['title'] ?? "BOOK TITLE",
                                               textAlign: TextAlign.center,
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold),
+                                              style: const TextStyle(fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                              top: imp.getSize(context, 8)),
+                                          padding: EdgeInsets.only(top: imp.getSize(context, 8)),
                                           child: SizedBox(
                                             width: imp.getSize(context, 200),
                                             child: Column(
@@ -137,22 +129,18 @@ class _HistoryState extends State<History> {
                                                   height: 5,
                                                 ),
                                                 Container(
-                                                  margin: const EdgeInsets.only(
-                                                      left: 8),
+                                                  margin: const EdgeInsets.only(left: 8),
                                                   alignment: Alignment.center,
                                                   decoration: BoxDecoration(
                                                     border: Border.all(
                                                       style: BorderStyle.none,
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.all(
+                                                    borderRadius: BorderRadius.all(
                                                       Radius.circular(
-                                                        imp.getSize(
-                                                            context, 18),
+                                                        imp.getSize(context, 18),
                                                       ),
                                                     ),
-                                                    color: Colors.green
-                                                        .withOpacity(0.7),
+                                                    color: Colors.green.withOpacity(0.7),
                                                   ),
                                                   child: const Padding(
                                                     padding: EdgeInsets.all(8),
@@ -201,10 +189,7 @@ class _HistoryState extends State<History> {
                   child: Text(
                     'History',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: imp.getSize(context, 34),
-                        color: bgColor,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: imp.getSize(context, 34), color: bgColor, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

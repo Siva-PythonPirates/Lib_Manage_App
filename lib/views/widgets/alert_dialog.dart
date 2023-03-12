@@ -3,7 +3,7 @@ import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 
-Future<bool> showLogOutDialog(BuildContext context) {
+Future<bool> showAlertDialog({required BuildContext context, required title, required content, required action1, required action2}) {
   AppServices imp = AppServiceImp();
   return showDialog<bool>(
       context: context,
@@ -13,15 +13,15 @@ Future<bool> showLogOutDialog(BuildContext context) {
             borderRadius: BorderRadius.circular(imp.getSize(context, 20)),
           ),
           elevation: 20,
-          title: const Text('Log out'),
-          content: const Text("Do you want to Log out ?"),
+          title: Text(title),
+          content: (content == null) ? null : Text(content),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
               child: Text(
-                'Yes',
+                action1,
                 style: TextStyle(
                   color: bgColor,
                   fontSize: imp.getSize(context, 20),
@@ -33,7 +33,7 @@ Future<bool> showLogOutDialog(BuildContext context) {
                 Navigator.of(context).pop(false);
               },
               child: Text(
-                "No",
+                action2,
                 style: TextStyle(
                   color: bgColor,
                   fontSize: imp.getSize(context, 20),

@@ -142,6 +142,7 @@ class _LoginState extends State<Login> {
                                       if (emailValid == true) {
                                         try {
                                           await context.read<MyModel>().getMailId(mail.text);
+                                          await context.read<MyModel>().updateLogin(true);
                                           Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(builder: (context) => const HomePage()),
