@@ -24,6 +24,7 @@ class _BooksState extends State<Books> {
   AppServices imp = AppServiceImp();
   Future<void> func() async {
     await context.read<MyModel>().getInitialBooks();
+    books = await context.read<MyModel>().state.books!;
   }
 
   @override
@@ -34,7 +35,6 @@ class _BooksState extends State<Books> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> books = context.read<MyModel>().state.books ?? [];
     print(books);
     return Scaffold(
       body: DecoratedBox(
