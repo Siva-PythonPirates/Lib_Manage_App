@@ -303,6 +303,9 @@ class _BookDetailsState extends State<BookDetails> {
                                   ],
                                 ),
                               ),
+                              SizedBox(
+                                height: 100,
+                              )
                             ],
                           ),
                         ],
