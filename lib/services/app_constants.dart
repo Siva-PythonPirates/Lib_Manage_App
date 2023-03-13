@@ -25,20 +25,17 @@ List<Map<String, String>> journal = [
   {
     'title': 'IEEE',
     'link': 'https://ieeexplore.ieee.org/Xplore/home.jsp',
-    'image':
-        'https://wireless.engineering.nyu.edu/wp-content/uploads/2016/07/ieee-banner.jpg',
+    'image': 'https://wireless.engineering.nyu.edu/wp-content/uploads/2016/07/ieee-banner.jpg',
   },
   {
     'title': 'ASME - American society of Mechanical Engineers',
     'link': 'https://asmedigitalcollection.asme.org/journals',
-    'image':
-        'https://event.asme.org/Events/media/library/images/POWER/Logo_Power-Division_100-Year-03.png',
+    'image': 'https://event.asme.org/Events/media/library/images/POWER/Logo_Power-Division_100-Year-03.png',
   },
   {
     'title': 'J-GATE- Management Sciences',
     'link': 'https://jgateplus.com/home/',
-    'image':
-        'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
+    'image': 'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
   },
   {
     'title': 'ASCE - American Society of Civil Engineers',
@@ -53,14 +50,12 @@ List<Map<String, String>> journal = [
   {
     'title': 'J-GATE- Engineering & Technology',
     'link': 'https://jgateplus.com/home/',
-    'image':
-        'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
+    'image': 'https://www.jagranimages.com/images/newimg/18042020/18_04_2020-j_gate_20203111.jpg',
   },
   {
     'title': 'EBSCO–Business Source Elite',
     'link': 'https://search.ebscohost.com/',
-    'image':
-        'https://storage.googleapis.com/seamk-production/2017/09/ebscohost_logo_cmyk.png',
+    'image': 'https://storage.googleapis.com/seamk-production/2017/09/ebscohost_logo_cmyk.png',
   },
 ];
 
@@ -133,7 +128,7 @@ Map<String, List<String>> booksFilterCatOptions = {
 
 List<Map<String, String>> books = [
   {
-    'title': 'The Structure of Scientific Revolutions',
+    'title': 'The Structure of Scientific Revolutionssssssssssssssssssssssssssss',
     'Author': 'Thomas S. Kuhn',
     'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
@@ -207,7 +202,7 @@ List<Map<String, String>> filteredBooks = [];
 
 List<Map<String, String>> topPicksBooks = [
   {
-    'title': 'The Structure of Scientific Revolutions',
+    'title': 'The Structure of Scientific Revolutionssssssssssssssssssssssss',
     'Author': 'Thomas S. Kuhn',
     'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'

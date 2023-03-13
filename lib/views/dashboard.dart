@@ -1,4 +1,4 @@
-import 'dart:developer';
+import 'dart:developer' show log;
 
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_constants.dart';
@@ -275,8 +275,8 @@ class _DashBoardState extends State<DashBoard> {
     }
 
     return WillPopScope(
-      onWillPop: () {
-        return showAlertDialog(context: context, title: 'Exit App ?', content: null, action1: 'Yes', action2: 'No');
+      onWillPop: () async {
+        return await showAlertDialog(context: context, title: 'Exit App ?', content: null, action1: 'Yes', action2: 'No');
       },
       child: Scaffold(
         body: DecoratedBox(

@@ -281,7 +281,8 @@ class _BookDetailsState extends State<BookDetails> {
                   child: SizedBox(
                     width: imp.getSize(context, 310),
                     height: imp.getSize(context, 152),
-                    child: Flexible(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: Text(
                         '${widget.book['title'] ?? 'BOOK TITLE'}',
                         textAlign: TextAlign.center,
