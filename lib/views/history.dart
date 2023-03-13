@@ -74,8 +74,8 @@ class _HistoryState extends State<History> {
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(left: imp.getSize(context, 8)),
-                                  height: imp.getSize(context, 100),
-                                  width: imp.getSize(context, 80),
+                                  height: imp.getSize(context, 130),
+                                  width: imp.getSize(context, 90),
                                   color: Colors.white,
                                   child: Image(
                                     loadingBuilder: ((context, child, loadingProgress) {
@@ -90,6 +90,9 @@ class _HistoryState extends State<History> {
                                     image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                     fit: BoxFit.fill,
                                   ),
+                                ),
+                                SizedBox(
+                                  width: imp.getSize(context, 10),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.all(imp.getSize(context, 8)),
@@ -121,6 +124,7 @@ class _HistoryState extends State<History> {
                                               ),
                                               const Text(
                                                 'Due Date: 05/08/2023',
+                                                textAlign: TextAlign.center,
                                               ),
                                               const SizedBox(
                                                 height: 5,
@@ -143,6 +147,7 @@ class _HistoryState extends State<History> {
                                                   padding: EdgeInsets.all(8),
                                                   child: Text(
                                                     'Status: Not yet Borrowed',
+                                                    textAlign: TextAlign.center,
                                                   ),
                                                 ),
                                               ),

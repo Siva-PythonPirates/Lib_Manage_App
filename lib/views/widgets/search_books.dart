@@ -35,8 +35,8 @@ class BookCustomDelegate extends SearchDelegate {
   Widget buildResults(BuildContext context) {
     final results = books.where((book) =>
         book['title']!.toLowerCase().contains(query.toLowerCase()) ||
-        book['author']!.toLowerCase().contains(query.toLowerCase()) ||
-        book['department']!.toLowerCase().contains(query.toLowerCase()));
+        book['Author']!.toLowerCase().contains(query.toLowerCase()) ||
+        book['Department']!.toLowerCase().contains(query.toLowerCase()));
     return ListView.builder(
       padding: EdgeInsets.all(imp.getSize(context, 8)),
       itemCount: results.length,
@@ -68,10 +68,12 @@ class BookCustomDelegate extends SearchDelegate {
                         width: imp.getSize(context, 80),
                         color: Colors.deepPurple[300],
                         child: const Image(
-                          image: NetworkImage(
-                              "https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
+                          image: NetworkImage("https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
                           fit: BoxFit.fill,
                         ),
+                      ),
+                      SizedBox(
+                        width: imp.getSize(context, 12),
                       ),
                       Padding(
                         padding: EdgeInsets.all(imp.getSize(context, 10)),
@@ -83,8 +85,7 @@ class BookCustomDelegate extends SearchDelegate {
                                 child: Text(
                                   book['title'] ?? "TITLE",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -94,11 +95,12 @@ class BookCustomDelegate extends SearchDelegate {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Author: ${book['author']}  ',
+                                    'Author: ${book['Author']}  ',
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    'Dept: ${book['department']}',
+                                    'Dept: ${book['Department']}',
+                                    textAlign: TextAlign.center,
                                   ),
                                 ],
                               ),
