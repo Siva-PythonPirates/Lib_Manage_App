@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/view_model/app_provider.dart';
@@ -128,7 +129,7 @@ class _LoginState extends State<Login> {
                                       backgroundColor: MaterialStateProperty.all(Colors.white),
                                       shape: MaterialStateProperty.all(const StadiumBorder())),
                                   onPressed: () async {
-                                    bool emailValid =
+                                     bool emailValid =
                                         RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(mail.text);
                                     if (mail.text == '' || password.text == '') {
                                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
