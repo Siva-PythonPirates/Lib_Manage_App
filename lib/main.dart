@@ -97,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             child: FadeTransition(
               opacity: _translateAnimation,
               child: const Text(
-                '\n\n\n\n\n\n\nREC_LIBRARY',
+                '\n\n\n\n\n\nREC-LIBRARY',
                 style: TextStyle(
                   fontSize: 32.0,
                   fontWeight: FontWeight.bold,

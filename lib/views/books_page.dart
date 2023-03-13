@@ -55,10 +55,17 @@ class _BooksState extends State<Books> {
               ),
               child: Row(
                 children: [
-                  Image(
-                    image: const AssetImage('assets/images/book-stack.png'),
-                    width: imp.getSize(context, 45),
-                    height: imp.getSize(context, 45),
+                  Container(
+                    alignment: Alignment.bottomLeft,
+                    width: imp.getSize(context, 50),
+                    height: imp.getSize(context, 50),
+                    color: Colors.deepPurple.withOpacity(0.5),
+                    child: const Center(
+                      child: Text(
+                        'logo',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: Center(
@@ -78,6 +85,7 @@ class _BooksState extends State<Books> {
                         delegate: BookCustomDelegate(),
                       );
                     },
+                    // borderRadius: BorderRadius.circular(10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.deepPurple.withOpacity(0.5),
@@ -109,6 +117,8 @@ class _BooksState extends State<Books> {
                   onTap: () {
                     showModalBottomSheet(
                       context: context,
+
+                      // elevation: 50,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(
@@ -621,7 +631,7 @@ class _BooksState extends State<Books> {
                                               ],
                                             ),
                                           ),
-                                        ),
+                                        )
                                       ],
                                     ),
                                   )

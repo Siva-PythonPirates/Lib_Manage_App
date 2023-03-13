@@ -292,27 +292,54 @@ class _BookDetailsState extends State<BookDetails> {
                   ),
                 ),
                 Positioned(
-                  top: imp.getSize(context, 200),
-                  child: IconButton(
-                    icon: context.read<MyModel>().favorites.contains(widget.book['title'])
-                        ? Icon(
-                            Icons.favorite,
-                            color: Colors.red,
-                            size: imp.getSize(context, 40),
-                          )
-                        : Icon(
-                            Icons.favorite_border,
-                            size: imp.getSize(context, 40),
+                  top: imp.getSize(context, 50),
+                  right: imp.getSize(context, 15),
+                  child: Builder(
+                    builder: (context) => IconButton(
+                      icon: context.read<MyModel>().favorites.contains(widget.book['title'])
+                          ? Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: imp.getSize(context, 30),
+                      )
+                          : Icon(
+                        Icons.favorite_border,
+                        size: imp.getSize(context, 30),
+                      ),
+                      onPressed: () {
+                        final isFavorite = context.read<MyModel>().favorites.contains(widget.book['title']);
+                        if (isFavorite) {
+                          context.read<MyModel>().removeFromFavorites(widget.book['title']);
+                        } else {
+                          context.read<MyModel>().addToFavorites(widget.book['title']);
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              isFavorite ? 'Removed from favorites' : 'Added to favorites',
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            duration: Duration(seconds: 2),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {
+                                if (isFavorite) {
+                                  context.read<MyModel>().addToFavorites(widget.book['title']);
+                                } else {
+                                  context.read<MyModel>().removeFromFavorites(widget.book['title']);
+                                }
+                                setState(() {});
+                              },
+                            ),
                           ),
-                    onPressed: () {
-                      if (context.read<MyModel>().favorites.contains(widget.book['title'])) {
-                        context.read<MyModel>().removeFromFavorites(widget.book['title']);
-                      } else {
-                        context.read<MyModel>().addToFavorites(widget.book['title']);
-                      }
-                      setState(() {});
-                    },
+                        );
+
+                        setState(() {});
+                      },
+                    ),
                   ),
+
                 ),
               ],
             ),
