@@ -1,5 +1,7 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/models/serializers.dart';
 
 part 'appstate.g.dart';
@@ -20,4 +22,5 @@ abstract class Appstate implements Built<Appstate, AppstateBuilder> {
   static Serializer<Appstate> get serializer => _$appstateSerializer;
   List<Map<String, String>>? get books;
   String? get mail;
+  BuiltList<Location>? get locations;
 }

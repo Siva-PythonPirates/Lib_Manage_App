@@ -36,6 +36,14 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.locations;
+    if (value != null) {
+      result
+        ..add('locations')
+        ..add(serializers.serialize(value,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Location)])));
+    }
     return result;
   }
 
@@ -61,6 +69,12 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
           result.mail = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'locations':
+          result.locations.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Location)]))!
+              as BuiltList<Object?>);
+          break;
       }
     }
 
@@ -73,11 +87,13 @@ class _$Appstate extends Appstate {
   final List<Map<String, String>>? books;
   @override
   final String? mail;
+  @override
+  final BuiltList<Location>? locations;
 
   factory _$Appstate([void Function(AppstateBuilder)? updates]) =>
       (new AppstateBuilder()..update(updates))._build();
 
-  _$Appstate._({this.books, this.mail}) : super._();
+  _$Appstate._({this.books, this.mail, this.locations}) : super._();
 
   @override
   Appstate rebuild(void Function(AppstateBuilder) updates) =>
@@ -89,7 +105,10 @@ class _$Appstate extends Appstate {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is Appstate && books == other.books && mail == other.mail;
+    return other is Appstate &&
+        books == other.books &&
+        mail == other.mail &&
+        locations == other.locations;
   }
 
   @override
@@ -97,6 +116,7 @@ class _$Appstate extends Appstate {
     var _$hash = 0;
     _$hash = $jc(_$hash, books.hashCode);
     _$hash = $jc(_$hash, mail.hashCode);
+    _$hash = $jc(_$hash, locations.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -105,7 +125,8 @@ class _$Appstate extends Appstate {
   String toString() {
     return (newBuiltValueToStringHelper(r'Appstate')
           ..add('books', books)
-          ..add('mail', mail))
+          ..add('mail', mail)
+          ..add('locations', locations))
         .toString();
   }
 }
@@ -121,6 +142,12 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   String? get mail => _$this._mail;
   set mail(String? mail) => _$this._mail = mail;
 
+  ListBuilder<Location>? _locations;
+  ListBuilder<Location> get locations =>
+      _$this._locations ??= new ListBuilder<Location>();
+  set locations(ListBuilder<Location>? locations) =>
+      _$this._locations = locations;
+
   AppstateBuilder();
 
   AppstateBuilder get _$this {
@@ -128,6 +155,7 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
     if ($v != null) {
       _books = $v.books;
       _mail = $v.mail;
+      _locations = $v.locations?.toBuilder();
       _$v = null;
     }
     return this;
@@ -148,7 +176,22 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   Appstate build() => _build();
 
   _$Appstate _build() {
-    final _$result = _$v ?? new _$Appstate._(books: books, mail: mail);
+    _$Appstate _$result;
+    try {
+      _$result = _$v ??
+          new _$Appstate._(
+              books: books, mail: mail, locations: _locations?.build());
+    } catch (_) {
+      late String _$failedField;
+      try {
+        _$failedField = 'locations';
+        _locations?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            r'Appstate', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

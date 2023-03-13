@@ -1,10 +1,13 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/dataservices.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/view_model/app_provider.dart';
 import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/dashboard.dart';
 import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
+import 'package:provider/provider.dart';
 
 import '../services/app_constants.dart';
 import '../services/app_services_impl.dart';
@@ -18,11 +21,28 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // int selectedPage = 0;
+  DataServices obj = DataServices();
+  Future<void> getget() async {
+    await context.read<MyModel>().getlocations();
+    print(context.read<MyModel>().state.locations);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getget();
+  }
 
   int bottomSelectedIndex = 0;
   AppServices imp = AppServiceImp();
 
-  final _pageOptions = [const DashBoard(), const Journals(), const Books(), const ProfilePage()];
+  final _pageOptions = [
+    const DashBoard(),
+    const Journals(),
+    const Books(),
+    const ProfilePage()
+  ];
 
   PageController pageController = PageController(
     initialPage: 0,
