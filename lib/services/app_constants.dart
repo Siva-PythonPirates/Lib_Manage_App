@@ -128,7 +128,7 @@ Map<String, List<String>> booksFilterCatOptions = {
 
 List<Map<String, String>> books = [
   {
-    'title': 'The Structure of Scientific Revolutionssssssssssssssssssssssssssss',
+    'title': 'The Structure of Scientific Revolutions',
     'Author': 'Thomas S. Kuhn',
     'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
@@ -202,7 +202,7 @@ List<Map<String, String>> filteredBooks = [];
 
 List<Map<String, String>> topPicksBooks = [
   {
-    'title': 'The Structure of Scientific Revolutionssssssssssssssssssssssss',
+    'title': 'The Structure of Scientific Revolutions',
     'Author': 'Thomas S. Kuhn',
     'Department': 'Science',
     'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'

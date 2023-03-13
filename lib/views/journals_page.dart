@@ -431,11 +431,9 @@ class _JournalsState extends State<Journals> {
                                     return SizedBox(
                                       width: double.infinity,
                                       height: imp.getSize(context, 140),
-                                      child: Expanded(
-                                        child: Center(
-                                          child: CircularProgressIndicator(
-                                            color: bgColor,
-                                          ),
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          color: bgColor,
                                         ),
                                       ),
                                     );

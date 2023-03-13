@@ -396,12 +396,10 @@ class _BooksState extends State<Books> {
                                                       child: Center(
                                                         child: Padding(
                                                           padding: EdgeInsets.all(imp.getSize(context, 5)),
-                                                          child: Expanded(
-                                                            child: Text(
-                                                              booksFilterCategory[index],
-                                                              style: const TextStyle(
-                                                                fontWeight: FontWeight.bold,
-                                                              ),
+                                                          child: Text(
+                                                            booksFilterCategory[index],
+                                                            style: const TextStyle(
+                                                              fontWeight: FontWeight.bold,
                                                             ),
                                                           ),
                                                         ),
@@ -562,11 +560,9 @@ class _BooksState extends State<Books> {
                                         if (loadingProgress == null) {
                                           return child;
                                         } else {
-                                          return Expanded(
-                                            child: Center(
-                                              child: CircularProgressIndicator(
-                                                color: bgColor,
-                                              ),
+                                          return Center(
+                                            child: CircularProgressIndicator(
+                                              color: bgColor,
                                             ),
                                           );
                                         }
