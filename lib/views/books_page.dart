@@ -621,7 +621,7 @@ class _BooksState extends State<Books> {
                                               ],
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   )

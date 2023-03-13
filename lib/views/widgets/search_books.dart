@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 
 import '../../services/app_constants.dart';
@@ -56,7 +57,16 @@ class BookCustomDelegate extends SearchDelegate {
               ],
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BookDetails(
+                      book: books[index],
+                    ),
+                  ),
+                );
+              },
               child: SizedBox(
                 child: Padding(
                   padding: EdgeInsets.all(imp.getSize(context, 10)),
