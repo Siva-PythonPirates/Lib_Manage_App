@@ -596,6 +596,9 @@ class _BooksState extends State<Books> {
                                   //   },
                                   //   errorWidget: (context, url, error) => const Icon(Icons.error),
                                   // ),
+                                  SizedBox(
+                                    width: imp.getSize(context, 12),
+                                  ),
                                   Padding(
                                     padding: EdgeInsets.all(imp.getSize(context, 8)),
                                     child: Column(
@@ -623,6 +626,7 @@ class _BooksState extends State<Books> {
                                                 ),
                                                 Text(
                                                   'DEPT: ${books[index]['Department'] ?? "XXX"}',
+                                                  textAlign: TextAlign.center,
                                                 ),
                                               ],
                                             ),
