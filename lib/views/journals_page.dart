@@ -44,17 +44,10 @@ class _JournalsState extends State<Journals> {
               ),
               child: Row(
                 children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    width: imp.getSize(context, 50),
+                  Image(
+                    image: const AssetImage('assets/images/journal.png'),
                     height: imp.getSize(context, 50),
-                    color: Colors.deepPurple.withOpacity(0.5),
-                    child: const Center(
-                      child: Text(
-                        'logo',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                    width: imp.getSize(context, 50),
                   ),
                   Expanded(
                     child: Center(
