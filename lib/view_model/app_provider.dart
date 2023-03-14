@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:lib_management/models/appstate.dart';
-import 'package:lib_management/services/app_services.dart';
-import 'package:lib_management/services/app_services_impl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Changes extends StatelessWidget {
@@ -99,11 +97,11 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     prefs.setBool('isLoggedIn', bool);
   }
 
-  Future<void> getBookDetails() async {
-    AppServices imp = AppServiceImp();
-    List<Map<String, String>> books = imp.applyBooksFilter();
-    state = state.rebuild((p0) => p0.books = books);
-  }
+  // Future<void> getBookDetails() async {
+  //   AppServices imp = AppServiceImp();
+  //   List<Map<String, String>> books = imp.applyBooksFilter();
+  //   state = state.rebuild((p0) => p0.books = books);
+  // }
 
   Future<void> getMailId(String mail) async {
     state = state.rebuild((p0) => p0.mail = mail);

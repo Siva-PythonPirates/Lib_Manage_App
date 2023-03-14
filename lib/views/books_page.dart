@@ -1,44 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
-import 'package:lib_management/views/widgets/book_filter_cat_opt.dart';
+import 'package:lib_management/views/widgets/book_filter_widget.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
-import 'package:provider/provider.dart';
-
 import '../services/app_constants.dart';
-import '../services/app_services.dart';
-import '../view_model/app_provider.dart';
 import '../views/widgets/carousel.dart';
 
 class Books extends StatefulWidget {
-  const Books({Key? key}) : super(key: key);
+  const Books({super.key});
 
   @override
   State<Books> createState() => _BooksState();
 }
 
 class _BooksState extends State<Books> {
-  Future<void> dummy() async {}
-  int selectedcat = 0;
   int selectedSortOpt = 0;
-  AppServices imp = AppServiceImp();
-  Future<void> func() async {
-    await context.read<MyModel>().getInitialBooks();
-    books = context.read<MyModel>().state.books!;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    func();
-  }
-
   @override
   Widget build(BuildContext context) {
-    print(books);
+    Future<void> dummy() async {}
+
+    AppServices imp = AppServiceImp();
+
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
+          // color: Colors.transparent,
           image: DecorationImage(
             image: AssetImage('assets/images/login_bg.jpg'),
             fit: BoxFit.cover,
@@ -55,17 +42,10 @@ class _BooksState extends State<Books> {
               ),
               child: Row(
                 children: [
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    width: imp.getSize(context, 50),
-                    height: imp.getSize(context, 50),
-                    color: Colors.deepPurple.withOpacity(0.5),
-                    child: const Center(
-                      child: Text(
-                        'logo',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
+                  Image(
+                    image: const AssetImage('assets/images/book-stack.png'),
+                    height: imp.getSize(context, 45),
+                    width: imp.getSize(context, 45),
                   ),
                   Expanded(
                     child: Center(
@@ -80,18 +60,12 @@ class _BooksState extends State<Books> {
                   ),
                   InkWell(
                     onTap: () {
-                      showSearch(
-                        context: context,
-                        delegate: BookCustomDelegate(),
-                      );
+                      showSearch(context: context, delegate: BookCustomDelegate());
                     },
-                    // borderRadius: BorderRadius.circular(10),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.deepPurple.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(
-                          imp.getSize(context, 15),
-                        ),
+                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                       ),
                       width: imp.getSize(context, 50),
                       height: imp.getSize(context, 50),
@@ -112,399 +86,378 @@ class _BooksState extends State<Books> {
                 imp.getSize(context, 20),
                 imp.getSize(context, 20),
               ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        isDismissible: true,
+                        context: context,
 
-                      // elevation: 50,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                            imp.getSize(context, 30),
-                          ),
-                          topRight: Radius.circular(
-                            imp.getSize(context, 30),
+                        // elevation: 50,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                              imp.getSize(context, 30),
+                            ),
+                            topRight: Radius.circular(
+                              imp.getSize(context, 30),
+                            ),
                           ),
                         ),
-                      ),
-                      builder: (context) {
-                        return SizedBox(
-                          height: imp.getSize(context, 420),
-                          child: Padding(
-                            padding: EdgeInsets.all(
-                              imp.getSize(context, 20),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksTitle();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 1;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Title A-Z',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 1) ? Colors.blue : Colors.black,
+                        builder: (context) {
+                          return SizedBox(
+                            height: imp.getSize(context, 420),
+                            child: Padding(
+                              padding: EdgeInsets.all(
+                                imp.getSize(context, 20),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksTitle();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 1;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Title A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 1) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksTitleDesc();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 2;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Title desending Z-A',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 2) ? Colors.blue : Colors.black,
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksTitleDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 2;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Title desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 2) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksAuthor();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 3;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Author A-Z',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 3) ? Colors.blue : Colors.black,
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksAuthor();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 3;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Author A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 3) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksAuthorDesc();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 4;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Author desending Z-A',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 4) ? Colors.blue : Colors.black,
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksAuthorDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 4;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Author desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 4) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksDept();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 5;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Dept A-Z',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 5) ? Colors.blue : Colors.black,
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksDept();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 5;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Dept A-Z',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 5) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      imp.sortBooksDeptDesc();
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 6;
-                                      });
-                                    },
-                                    child: Center(
-                                      child: Text(
-                                        'Sort by Dept desending Z-A',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 6) ? Colors.blue : Colors.black,
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.sortBooksDeptDesc();
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 6;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Sort by Dept desending Z-A',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: (selectedSortOpt == 6) ? Colors.blue : Colors.black,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                const Divider(
-                                  color: Colors.black,
-                                ),
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      imp.resetBookSort();
-                                      Navigator.pop(context);
+                                  const Divider(
+                                    color: Colors.black,
+                                  ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        imp.resetBookSort();
 
-                                      setState(() {
-                                        books;
-                                        selectedSortOpt = 0;
-                                      });
-                                    },
-                                    child: const Center(
-                                      child: Text(
-                                        'Restore Defaults',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.red,
+                                        setState(() {
+                                          books;
+                                          selectedSortOpt = 0;
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Center(
+                                        child: Text(
+                                          'Restore Defaults',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.red,
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    width: imp.getSize(context, 100),
-                    height: imp.getSize(context, 35),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.sort,
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: imp.getSize(context, 100),
+                      height: imp.getSize(context, 35),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
                           color: Colors.white,
                         ),
-                        Text(
-                          '  Sort',
-                          style: TextStyle(
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.sort,
                             color: Colors.white,
                           ),
-                        ),
-                      ],
+                          Text(
+                            '  Sort',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: imp.getSize(context, 40),
-                ),
-                InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                      elevation: 20,
-                      isDismissible: true,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                            imp.getSize(context, 30),
-                          ),
-                          topRight: Radius.circular(
-                            imp.getSize(context, 30),
+                  SizedBox(
+                    width: imp.getSize(context, 40),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        elevation: 20,
+                        isDismissible: true,
+                        context: context,
+
+                        // elevation: 50,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                              imp.getSize(context, 30),
+                            ),
+                            topRight: Radius.circular(
+                              imp.getSize(context, 30),
+                            ),
                           ),
                         ),
-                      ),
-                      context: context,
-                      builder: (context) {
-                        return StatefulBuilder(
-                          builder: (context, setState) {
-                            return SizedBox(
-                              height: imp.getSize(context, 350),
-                              child: Padding(
-                                padding: EdgeInsets.all(
-                                  imp.getSize(context, 20),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          SizedBox(
-                                            height: double.infinity,
-                                            width: imp.getSize(context, 150),
+                        builder: (context) {
+                          return SizedBox(
+                            height: imp.getSize(context, 350),
+                            child: Padding(
+                              padding: EdgeInsets.all(
+                                imp.getSize(context, 20),
+                              ),
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          height: double.infinity,
+                                          width: imp.getSize(context, 150),
+                                          child: const Center(
+                                            child: Text(
+                                              'Department',
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const VerticalDivider(
+                                          color: Colors.black,
+                                        ),
+                                        Expanded(
+                                          child: Scrollbar(
                                             child: ListView.builder(
-                                              itemCount: booksFilterCategory.length,
+                                              itemCount: booksFilterOptions.length,
                                               itemBuilder: (context, index) {
-                                                return InkWell(
-                                                  onTap: () {
-                                                    selectedcat = index;
-                                                    setState(() {
-                                                      selectedcat;
-                                                    });
-                                                  },
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.all(5.0),
-                                                    child: Container(
-                                                      height: 60,
-                                                      decoration: (selectedcat == index)
-                                                          ? BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(imp.getSize(context, 25)),
-                                                              color: const Color.fromARGB(255, 235, 232, 232))
-                                                          : null,
-                                                      child: Center(
-                                                        child: Padding(
-                                                          padding: EdgeInsets.all(imp.getSize(context, 5)),
-                                                          child: Text(
-                                                            booksFilterCategory[index],
-                                                            style: const TextStyle(
-                                                              fontWeight: FontWeight.bold,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
+                                                return BookFilterWidget(index: index);
                                               },
                                             ),
                                           ),
-                                          const VerticalDivider(
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: imp.getSize(context, 10),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          imp.resetBooksFilter();
+                                          setState(() {
+                                            books;
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
+                                        ),
+                                        child: const Text(
+                                          'Restore Defaults',
+                                          style: TextStyle(
                                             color: Colors.black,
                                           ),
-                                          BookFilterShowCatOpt(bookFilterCatOption: booksFilterCategory[selectedcat]),
-                                        ],
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: imp.getSize(context, 10),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        ElevatedButton(
-                                          onPressed: () {
-                                            imp.resetBooksFilter();
-                                            setState(() {
-                                              books;
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                          style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
-                                          ),
-                                          child: const Text(
-                                            'Restore Defaults',
-                                            style: TextStyle(
-                                              color: Colors.black,
-                                            ),
-                                          ),
                                         ),
-                                        ElevatedButton(
-                                          onPressed: () async {
-                                            await context.read<MyModel>().getBookDetails();
-                                            setState(() {
-                                              books;
-                                              print(books);
-                                              print(context.read<MyModel>().state.books);
-                                            });
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text('Apply Filters'),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          imp.applyBooksFilter();
+                                          setState(() {
+                                            books;
+                                          });
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Apply Filters'),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                  child: Container(
-                    width: imp.getSize(context, 100),
-                    height: imp.getSize(context, 35),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: Colors.white,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.filter,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      width: imp.getSize(context, 100),
+                      height: imp.getSize(context, 35),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
                           color: Colors.white,
                         ),
-                        Text(
-                          '  Filter',
-                          style: TextStyle(
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.filter,
                             color: Colors.white,
                           ),
-                        ),
-                      ],
+                          Text(
+                            '  Filter',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ]),
+                ],
+              ),
             ),
             Expanded(
               child: RefreshIndicator(
                 color: bgColor,
                 onRefresh: () {
-                  if (tempBooks.isNotEmpty) {
-                    books = tempBooks;
-                  }
-                  bookFilterSelected = {'Department': [], 'Author': []};
+                  if (tempBooks.isNotEmpty) books = tempBooks;
+                  bookFilterSelected = [];
                   filteredBooks = [];
                   setState(() {
                     books;
                   });
-
                   return dummy();
                 },
                 child: Scrollbar(
@@ -512,6 +465,7 @@ class _BooksState extends State<Books> {
                     padding: EdgeInsets.all(imp.getSize(context, 8)),
                     itemCount: books.length,
                     itemBuilder: (BuildContext context, int index) {
+                      // print(books.length);
                       return Padding(
                         padding: EdgeInsets.fromLTRB(
                           imp.getSize(context, 10),

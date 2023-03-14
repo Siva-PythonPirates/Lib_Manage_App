@@ -18,55 +18,37 @@ class ProfilePage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-              top: -MediaQuery.of(context).size.width - 20,
-              left: -MediaQuery.of(context).size.width / 4,
-              child: Container(
-                height: MediaQuery.of(context).size.width * 2,
-                width: MediaQuery.of(context).size.width * 1.5,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: imp.getSize(context, 530),
-                      ),
-                      Text(
-                        "Peaky Blinders",
-                        style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 40), fontWeight: FontWeight.normal),
-                      ),
-                      SizedBox(
-                        height: imp.getSize(context, 20),
-                      ),
-                      Text(
-                        "210701254",
-                        style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 30), fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  ),
-                ),
-              )),
-          /*  Positioned(
-            top: MediaQuery.of(context).size.width / 2.2,
-            left: MediaQuery.of(context).size.width / 3.2,
+            top: -MediaQuery.of(context).size.width - 20,
+            left: -MediaQuery.of(context).size.width / 4,
             child: Container(
-              height: imp.getSize(context, 150),
-              width: imp.getSize(context, 150),
-              decoration: BoxDecoration(
-                  border: Border.all(color: bgColor, width: 5),
-                  shape: BoxShape.circle,
-                  color: Colors.white),
+              height: MediaQuery.of(context).size.width * 2,
+              width: MediaQuery.of(context).size.width * 1.5,
+              decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/images/login_bg.jpg'), fit: BoxFit.cover),
+                shape: BoxShape.circle,
+              ),
               child: Center(
-                child: Icon(
-                  Icons.person,
-                  color: bgColor,
-                  size: imp.getSize(context, 120),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: imp.getSize(context, 530),
+                    ),
+                    Text(
+                      "Peaky Blinders",
+                      style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 40), fontWeight: FontWeight.normal),
+                    ),
+                    SizedBox(
+                      height: imp.getSize(context, 20),
+                    ),
+                    Text(
+                      "210701254",
+                      style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 30), fontWeight: FontWeight.normal),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ),*/
+          ),
           Positioned(
             top: MediaQuery.of(context).size.width / 1.05,
             child: Column(

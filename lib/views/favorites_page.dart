@@ -22,10 +22,10 @@ class _MyFavoritesPageState extends State<MyFavoritesPage> {
   @override
   Widget build(BuildContext context) {
     AppServices imp = AppServiceImp();
-    List<Map<String, String>> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-    print(favoriteBooks);
-
     context.read<MyModel>().loadFavorites();
+    List<Map<String, String>> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+    // print(favoriteBooks);
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(

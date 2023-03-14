@@ -6,13 +6,8 @@ import '../../services/app_constants.dart';
 
 class BookFilterWidget extends StatefulWidget {
   final int index;
-  final String bookFilterCatOption;
 
-  const BookFilterWidget({
-    super.key,
-    required this.bookFilterCatOption,
-    required this.index,
-  });
+  const BookFilterWidget({super.key, required this.index});
 
   @override
   State<BookFilterWidget> createState() => _BookFilterWidgetState();
@@ -24,32 +19,34 @@ class _BookFilterWidgetState extends State<BookFilterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    String option = booksFilterCatOptions[widget.bookFilterCatOption]![widget.index];
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: imp.getSize(context, 14), vertical: imp.getSize(context, 2)),
+      padding: EdgeInsets.symmetric(
+        horizontal: imp.getSize(context, 10),
+        vertical: imp.getSize(context, 2),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Flexible(
+          Expanded(
             child: Text(
-              option,
+              booksFilterOptions[widget.index],
             ),
           ),
           Checkbox(
-            value: (bookFilterSelected[widget.bookFilterCatOption]!.contains(option)) ? true : ischecked,
+            value: (bookFilterSelected.contains(booksFilterOptions[widget.index])) ? true : ischecked,
             onChanged: (value) {
               setState(() {
                 ischecked = value;
               });
               if (ischecked ?? false) {
-                bookFilterSelected[widget.bookFilterCatOption]!.add(option);
+                bookFilterSelected.add(booksFilterOptions[widget.index]);
               } else {
-                if (bookFilterSelected[widget.bookFilterCatOption]!.contains(option)) {
-                  bookFilterSelected[widget.bookFilterCatOption]!.remove(option);
+                if (bookFilterSelected.contains(booksFilterOptions[widget.index])) {
+                  bookFilterSelected.remove(booksFilterOptions[widget.index]);
                 }
               }
             },
-          ),
+          )
         ],
       ),
     );

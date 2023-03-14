@@ -62,11 +62,9 @@ class AppServiceImp implements AppServices {
     filteredJournal = [];
     if (journalFilterSelected.isNotEmpty) {
       for (var query in journalFilterSelected) {
-        print(query);
         filteredJournal = [...filteredJournal, ...tempjournal.where((element) => element['title']!.contains(query)).toList()];
       }
       journal = filteredJournal;
-      print(journal);
     }
   }
 
@@ -147,38 +145,28 @@ class AppServiceImp implements AppServices {
   //             BOOK FILTERING         //
 
   @override
-  List<Map<String, String>> applyBooksFilter() {
+  void resetBooksFilter() {
+    if (tempBooks.isNotEmpty) {
+      books = tempBooks;
+      bookFilterSelected = [];
+      filteredBooks = [];
+    }
+  }
+
+  @override
+  void applyBooksFilter() {
     if (tempBooks.isEmpty) {
       createtempbooks();
     }
     filteredBooks = [];
     if (bookFilterSelected.isNotEmpty) {
-      for (var category in booksFilterCategory) {
-        // List<Map<String,String>> tempFilteredBooks=[];
-        for (var query in bookFilterSelected[category]!) {
-          print(query);
-          filteredBooks = [
-            ...books.where((element) {
-              return element[category]!.contains(query) && (!filteredBooks.contains(element));
-            }).toList()
-          ];
-        }
+      for (var query in bookFilterSelected) {
+        filteredBooks = [
+          ...filteredBooks,
+          ...tempBooks.where((element) => element['Department']!.toLowerCase().contains(query.toLowerCase())).toList()
+        ];
       }
       books = filteredBooks;
-      print(filteredBooks);
-      print(books.length);
-      return books;
-    }
-    return [];
-  }
-
-  @override
-  void resetBooksFilter() {
-    if (tempBooks.isNotEmpty) {
-      books = tempBooks;
-      print(tempBooks);
-      bookFilterSelected = {'Department': [], 'Author': []};
-      filteredBooks = [];
     }
   }
 }

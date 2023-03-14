@@ -84,12 +84,7 @@ List<Map<String, String>> tempjournal = [];
 
 List<Map<String, String>> filteredJournal = [];
 
-List<String> booksFilterCategory = [
-  'Department',
-  'Author',
-];
-
-List<String> booksFilterCategoryDeptOptions = [
+List<String> booksFilterOptions = [
   'Science',
   'Economics',
   'Language and writing',
@@ -97,34 +92,6 @@ List<String> booksFilterCategoryDeptOptions = [
   'psycholology',
   'Political Science',
 ];
-
-List<String> booksFilterCategoryAuthorOptions = [
-  'Plato',
-  'Thomas',
-  'Adam Smith',
-  'Stephen Hawking',
-  'Charles Darvin',
-  'William Strunk',
-  'E.B.White',
-  'Gregory',
-  'Richard',
-  'Sigmund Freud',
-  'Jean',
-];
-
-// List<Map<String, List<String>>> booksFilterCatOptions = [
-//   {
-//     'Department': [...booksFilterCategoryDeptOptions]
-//   },
-//   {
-//     'Author': [...booksFilterCategoryAuthorOptions],
-//   }
-// ];
-
-Map<String, List<String>> booksFilterCatOptions = {
-  'Department': [...booksFilterCategoryDeptOptions],
-  'Author': [...booksFilterCategoryAuthorOptions],
-};
 
 List<Map<String, String>> books = [
   {
@@ -189,10 +156,7 @@ List<Map<String, String>> books = [
   },
 ];
 
-Map<String, List<String>> bookFilterSelected = {
-  'Department': [],
-  'Author': [],
-};
+List<String> bookFilterSelected = [];
 
 List<Map<String, String>> tempBooks = [];
 
@@ -263,67 +227,4 @@ List<Map<String, String>> topPicksBooks = [
   },
 ];
 
-//              MY FAVOURITES BOOKS
-
-List<Map<String, String>> favouriteBooks = [
-  {
-    'title': 'The Structure of Scientific Revolutions',
-    'Author': 'Thomas S. Kuhn',
-    'Department': 'Science',
-    'image': 'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
-  },
-  {
-    'title': 'The Wealth of Nations',
-    'Author': 'Adam Smith',
-    'Department': 'Economics',
-    'image': 'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
-  },
-  {
-    'title': 'A Brief History of Time',
-    'Author': 'Stephen Hawking',
-    'Department': 'Science',
-    'image': 'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
-  },
-  {
-    'title': 'The Origin of Species',
-    'Author': 'Charles Darwin',
-    'Department': 'Science',
-    'image': 'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
-  },
-  {
-    'title': 'The Elements of Style',
-    'Author': 'William Strunk Jr. and E.B. White',
-    'Department': 'Language and Writing',
-    'image': 'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
-  },
-  {
-    'title': 'Principles of Economics',
-    'Author': 'N. Gregory Mankiw',
-    'Department': 'Economics',
-    'image': 'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
-  },
-  {
-    'title': 'The Selfish Gene',
-    'Author': 'Richard Dawkins',
-    'Department': 'Science',
-    'image': 'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
-  },
-  {
-    'title': 'The Republic',
-    'Author': 'Plato',
-    'Department': 'Philosophy',
-    'image': 'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
-  },
-  {
-    'title': 'The Interpretation of Dreams',
-    'Author': 'Sigmund Freud',
-    'Department': 'Psychology',
-    'image': 'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
-  },
-  {
-    'title': 'The Social Contract',
-    'Author': 'Jean-Jacques Rousseau',
-    'Department': 'Political Science',
-    'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
-  },
-];
+List<Map<String, dynamic>> historyBooks = [];

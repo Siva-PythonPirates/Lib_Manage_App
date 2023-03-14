@@ -1,5 +1,3 @@
-import 'dart:developer' show log;
-
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
@@ -27,14 +25,10 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     AppServices imp = AppServiceImp();
+
+    context.read<MyModel>().loadFavorites();
     List<Map<String, String>> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-
-    // setState(() {
-    // books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-    log(favoriteBooks.toString());
-
-    // context.read<MyModel>().loadFavorites();
-    // });
+    // print(favoriteBooks);
 
     List<Widget> createTopPicksChildren() {
       List<Widget> children = [];
@@ -55,9 +49,6 @@ class _DashBoardState extends State<DashBoard> {
                   (value) {
                     setState(() {
                       favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                      log(favoriteBooks.toString());
-
-                      // context.read<MyModel>().loadFavorites();
                     });
                   },
                 );
@@ -133,9 +124,6 @@ class _DashBoardState extends State<DashBoard> {
                     (value) {
                       setState(() {
                         favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                        log(favoriteBooks.toString());
-
-                        // context.read<MyModel>().loadFavorites();
                       });
                     },
                   );
@@ -198,9 +186,6 @@ class _DashBoardState extends State<DashBoard> {
               ).then((value) {
                 setState(() {
                   favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                  log(favoriteBooks.toString());
-
-                  // context.read<MyModel>().loadFavorites();
                 });
               });
             },
@@ -235,9 +220,6 @@ class _DashBoardState extends State<DashBoard> {
               ).then((value) {
                 setState(() {
                   favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                  log(favoriteBooks.toString());
-
-                  // context.read<MyModel>().loadFavorites();
                 });
               });
             },
@@ -250,7 +232,6 @@ class _DashBoardState extends State<DashBoard> {
                   borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
                   color: Colors.white.withOpacity(0.3),
                 ),
-                // color: Colors.white.withOpacity(0.3),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -315,6 +296,7 @@ class _DashBoardState extends State<DashBoard> {
               const CustomCarousel(),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
                   child: Padding(
                     padding: EdgeInsets.all(imp.getSize(context, 10)),
                     child: Column(
@@ -612,9 +594,6 @@ class _DashBoardState extends State<DashBoard> {
                                             setState(() {
                                               favoriteBooks =
                                                   books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                                              log(favoriteBooks.toString());
-
-                                              // context.read<MyModel>().loadFavorites();
                                             });
                                           });
                                         },

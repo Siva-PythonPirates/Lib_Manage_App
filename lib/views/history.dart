@@ -27,147 +27,177 @@ class _HistoryState extends State<History> {
         ),
         child: Stack(
           children: [
-            Scrollbar(
-              child: Padding(
-                padding: EdgeInsets.only(top: imp.getSize(context, 210)),
-                child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.all(imp.getSize(context, 8)),
-                  itemCount: books.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        imp.getSize(context, 10),
-                        imp.getSize(context, 10),
-                        imp.getSize(context, 10),
-                        imp.getSize(context, 15),
-                      ),
-                      child: InkWell(
-                        // splashColor: Colors.black,
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BookDetails(
-                                book: books[index],
-                              ),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
+            (historyBooks.isNotEmpty)
+                ? Scrollbar(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: imp.getSize(context, 210)),
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        padding: EdgeInsets.all(imp.getSize(context, 8)),
+                        itemCount: historyBooks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: EdgeInsets.fromLTRB(
                               imp.getSize(context, 10),
+                              imp.getSize(context, 10),
+                              imp.getSize(context, 10),
+                              imp.getSize(context, 15),
                             ),
-                            color: const Color.fromRGBO(255, 255, 255, 1),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromARGB(255, 118, 23, 182),
-                                blurRadius: 5,
-                                spreadRadius: 7,
-                              ),
-                            ],
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(imp.getSize(context, 10)),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(left: imp.getSize(context, 8)),
-                                  height: imp.getSize(context, 130),
-                                  width: imp.getSize(context, 90),
-                                  color: Colors.white,
-                                  child: Image(
-                                    loadingBuilder: ((context, child, loadingProgress) {
-                                      if (loadingProgress == null) {
-                                        return child;
-                                      } else {
-                                        return const Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      }
-                                    }),
-                                    image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
-                                    fit: BoxFit.fill,
+                            child: InkWell(
+                              // splashColor: Colors.black,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => BookDetails(
+                                      book: historyBooks[index],
+                                    ),
                                   ),
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    imp.getSize(context, 10),
+                                  ),
+                                  color: const Color.fromRGBO(255, 255, 255, 1),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Color.fromARGB(255, 118, 23, 182),
+                                      blurRadius: 5,
+                                      spreadRadius: 7,
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: imp.getSize(context, 10),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(imp.getSize(context, 8)),
-                                  child: Column(
+                                child: Padding(
+                                  padding: EdgeInsets.all(imp.getSize(context, 10)),
+                                  child: Row(
                                     children: [
-                                      SizedBox(
-                                        width: imp.getSize(context, 200),
-                                        child: Center(
-                                          child: Text(
-                                            books[index]['title'] ?? "BOOK TITLE",
-                                            textAlign: TextAlign.center,
-                                            style: const TextStyle(fontWeight: FontWeight.bold),
-                                          ),
+                                      Container(
+                                        margin: EdgeInsets.only(left: imp.getSize(context, 8)),
+                                        height: imp.getSize(context, 130),
+                                        width: imp.getSize(context, 90),
+                                        color: Colors.white,
+                                        child: Image(
+                                          loadingBuilder: ((context, child, loadingProgress) {
+                                            if (loadingProgress == null) {
+                                              return child;
+                                            } else {
+                                              return const Center(
+                                                child: CircularProgressIndicator(),
+                                              );
+                                            }
+                                          }),
+                                          image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                          fit: BoxFit.fill,
                                         ),
                                       ),
+                                      SizedBox(
+                                        width: imp.getSize(context, 10),
+                                      ),
                                       Padding(
-                                        padding: EdgeInsets.only(top: imp.getSize(context, 8)),
-                                        child: SizedBox(
-                                          width: imp.getSize(context, 200),
-                                          child: Column(
-                                            // mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              const Text(
-                                                'Borrow Date: 05/08/2023',
-                                                textAlign: TextAlign.center,
+                                        padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              width: imp.getSize(context, 200),
+                                              child: Center(
+                                                child: Text(
+                                                  historyBooks[index]['title'] ?? "BOOK TITLE",
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                                ),
                                               ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              const Text(
-                                                'Due Date: 05/08/2023',
-                                                textAlign: TextAlign.center,
-                                              ),
-                                              const SizedBox(
-                                                height: 5,
-                                              ),
-                                              Container(
-                                                margin: const EdgeInsets.only(left: 8),
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                    style: BorderStyle.none,
-                                                  ),
-                                                  borderRadius: BorderRadius.all(
-                                                    Radius.circular(
-                                                      imp.getSize(context, 18),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: imp.getSize(context, 8)),
+                                              child: SizedBox(
+                                                width: imp.getSize(context, 200),
+                                                child: Column(
+                                                  // mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'Borrow date: ${historyBooks[index]['borrowDate']!}',
+                                                      textAlign: TextAlign.center,
                                                     ),
-                                                  ),
-                                                  color: Colors.green.withOpacity(0.7),
-                                                ),
-                                                child: const Padding(
-                                                  padding: EdgeInsets.all(8),
-                                                  child: Text(
-                                                    'Status: Not yet Borrowed',
-                                                    textAlign: TextAlign.center,
-                                                  ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text(
+                                                      'Return date: ${historyBooks[index]['returnDate']!}',
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Container(
+                                                      margin: const EdgeInsets.only(left: 8),
+                                                      alignment: Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                          style: BorderStyle.none,
+                                                        ),
+                                                        borderRadius: BorderRadius.all(
+                                                          Radius.circular(
+                                                            imp.getSize(context, 18),
+                                                          ),
+                                                        ),
+                                                        color: Colors.green.withOpacity(0.7),
+                                                      ),
+                                                      child: const Padding(
+                                                        padding: EdgeInsets.all(8),
+                                                        child: Text(
+                                                          'Status: Not yet Borrowed',
+                                                          textAlign: TextAlign.center,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            )
+                                          ],
                                         ),
                                       )
                                     ],
                                   ),
-                                )
-                              ],
+                                ),
+                              ),
                             ),
-                          ),
+                          );
+                        },
+                      ),
+                    ),
+                  )
+                : Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: imp.getSize(context, 10)),
+                      child: Container(
+                        width: imp.getSize(context, 130),
+                        height: imp.getSize(context, 130),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        // color: Colors.white.withOpacity(0.3),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.close,
+                              color: Colors.white,
+                              size: imp.getSize(context, 30),
+                            ),
+                            SizedBox(height: imp.getSize(context, 20)),
+                            Text(
+                              'No History',
+                              style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
-            ),
+                    ),
+                  ),
             Positioned(
               top: -MediaQuery.of(context).size.width - 100,
               left: -MediaQuery.of(context).size.width / 4,

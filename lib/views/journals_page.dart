@@ -20,14 +20,11 @@ class _JournalsState extends State<Journals> {
   int selectedSortOpt = 0;
   AppServices imp = AppServiceImp();
 
-  // List<String> filterOptions = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
-          // color: Colors.transparent,
           image: DecorationImage(
             image: AssetImage('assets/images/login_bg.jpg'),
             fit: BoxFit.cover,
@@ -281,8 +278,6 @@ class _JournalsState extends State<Journals> {
                                               itemCount: journalFilterOptions.length,
                                               itemBuilder: (context, index) {
                                                 return JournalFilterWidget(index);
-
-                                                // return padding
                                               },
                                             ),
                                           ),
