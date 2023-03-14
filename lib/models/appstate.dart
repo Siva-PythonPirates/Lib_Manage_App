@@ -20,7 +20,7 @@ abstract class Appstate implements Built<Appstate, AppstateBuilder> {
   }
 
   static Serializer<Appstate> get serializer => _$appstateSerializer;
-  List<Map<String, String>>? get books;
+  BuiltList<Location>? get books;
   String? get mail;
   BuiltList<Location>? get locations;
 }

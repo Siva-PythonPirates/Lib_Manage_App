@@ -1,9 +1,12 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
+import 'package:provider/provider.dart';
 
-import '../../services/app_constants.dart';
+import '../../models/location.dart';
+import '../../view_model/app_provider.dart';
 
 class BookList extends StatelessWidget {
   const BookList({super.key});
@@ -11,6 +14,7 @@ class BookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppServices imp = AppServiceImp();
+    BuiltList<Location> books = context.read<MyModel>().state.locations!;
 
     return Scrollbar(
       child: ListView.builder(
@@ -85,7 +89,7 @@ class BookList extends StatelessWidget {
                               width: imp.getSize(context, 200),
                               child: Center(
                                 child: Text(
-                                  books[index]['title'] ?? "BOOK TITLE",
+                                  books[index].TITLE ?? "BOOK TITLE",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold),
@@ -101,11 +105,11 @@ class BookList extends StatelessWidget {
                                   // mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'AUTHOR: ${books[index]['author'] ?? "XXX"}',
+                                      'AUTHOR: ${books[index].AUTHORS ?? "XXX"}',
                                       textAlign: TextAlign.center,
                                     ),
                                     Text(
-                                      'DEPT: ${books[index]['department'] ?? "XXX"}',
+                                      'PUBLISHER: ${books[index].PUBLISHER ?? "XXX"}',
                                     ),
                                   ],
                                 ),

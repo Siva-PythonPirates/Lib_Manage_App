@@ -24,10 +24,8 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
       result
         ..add('books')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(List, const [
-              const FullType(
-                  Map, const [const FullType(String), const FullType(String)])
-            ])));
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(Location)])));
     }
     value = object.mail;
     if (value != null) {
@@ -59,11 +57,10 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
       final Object? value = iterator.current;
       switch (key) {
         case 'books':
-          result.books = serializers.deserialize(value,
-              specifiedType: const FullType(List, const [
-                const FullType(
-                    Map, const [const FullType(String), const FullType(String)])
-              ])) as List<Map<String, String>>?;
+          result.books.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(Location)]))!
+              as BuiltList<Object?>);
           break;
         case 'mail':
           result.mail = serializers.deserialize(value,
@@ -84,7 +81,7 @@ class _$AppstateSerializer implements StructuredSerializer<Appstate> {
 
 class _$Appstate extends Appstate {
   @override
-  final List<Map<String, String>>? books;
+  final BuiltList<Location>? books;
   @override
   final String? mail;
   @override
@@ -134,9 +131,10 @@ class _$Appstate extends Appstate {
 class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   _$Appstate? _$v;
 
-  List<Map<String, String>>? _books;
-  List<Map<String, String>>? get books => _$this._books;
-  set books(List<Map<String, String>>? books) => _$this._books = books;
+  ListBuilder<Location>? _books;
+  ListBuilder<Location> get books =>
+      _$this._books ??= new ListBuilder<Location>();
+  set books(ListBuilder<Location>? books) => _$this._books = books;
 
   String? _mail;
   String? get mail => _$this._mail;
@@ -153,7 +151,7 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
   AppstateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _books = $v.books;
+      _books = $v.books?.toBuilder();
       _mail = $v.mail;
       _locations = $v.locations?.toBuilder();
       _$v = null;
@@ -180,10 +178,15 @@ class AppstateBuilder implements Builder<Appstate, AppstateBuilder> {
     try {
       _$result = _$v ??
           new _$Appstate._(
-              books: books, mail: mail, locations: _locations?.build());
+              books: _books?.build(),
+              mail: mail,
+              locations: _locations?.build());
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'books';
+        _books?.build();
+
         _$failedField = 'locations';
         _locations?.build();
       } catch (e) {

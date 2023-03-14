@@ -1,4 +1,6 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/widgets/book_filter_cat_opt.dart';
@@ -22,20 +24,11 @@ class _BooksState extends State<Books> {
   int selectedcat = 0;
   int selectedSortOpt = 0;
   AppServices imp = AppServiceImp();
-  Future<void> func() async {
-    await context.read<MyModel>().getInitialBooks();
-    books = context.read<MyModel>().state.books!;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    func();
-  }
 
   @override
   Widget build(BuildContext context) {
-    print(books);
+    BuiltList<Location> books = context.read<MyModel>().state.locations!;
+    print(books.length);
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -104,7 +97,8 @@ class _BooksState extends State<Books> {
                 imp.getSize(context, 20),
                 imp.getSize(context, 20),
               ),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              child:
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 InkWell(
                   onTap: () {
                     showModalBottomSheet(
@@ -133,7 +127,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitle();
+                                      imp.sortBooksTitle(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 1;
@@ -144,7 +138,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Title A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 1) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 1)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -157,7 +153,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitleDesc();
+                                      imp.sortBooksTitleDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 2;
@@ -168,7 +164,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Title desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 2) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 2)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -181,7 +179,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthor();
+                                      imp.sortBooksAuthor(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 3;
@@ -192,7 +190,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Author A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 3) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 3)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -205,7 +205,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthorDesc();
+                                      imp.sortBooksAuthorDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 4;
@@ -216,7 +216,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Author desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 4) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 4)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -229,7 +231,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDept();
+                                      imp.sortBooksDept(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 5;
@@ -240,7 +242,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Dept A-Z',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 5) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 5)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -253,7 +257,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDeptDesc();
+                                      imp.sortBooksDeptDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 6;
@@ -264,7 +268,9 @@ class _BooksState extends State<Books> {
                                         'Sort by Dept desending Z-A',
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: (selectedSortOpt == 6) ? Colors.blue : Colors.black,
+                                          color: (selectedSortOpt == 6)
+                                              ? Colors.blue
+                                              : Colors.black,
                                         ),
                                       ),
                                     ),
@@ -276,7 +282,7 @@ class _BooksState extends State<Books> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () {
-                                      imp.resetBookSort();
+                                      imp.resetBookSort(books);
                                       Navigator.pop(context);
 
                                       setState(() {
@@ -365,7 +371,8 @@ class _BooksState extends State<Books> {
                                             height: double.infinity,
                                             width: imp.getSize(context, 150),
                                             child: ListView.builder(
-                                              itemCount: booksFilterCategory.length,
+                                              itemCount:
+                                                  booksFilterCategory.length,
                                               itemBuilder: (context, index) {
                                                 return InkWell(
                                                   onTap: () {
@@ -375,21 +382,41 @@ class _BooksState extends State<Books> {
                                                     });
                                                   },
                                                   child: Padding(
-                                                    padding: const EdgeInsets.all(5.0),
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            5.0),
                                                     child: Container(
                                                       height: 60,
-                                                      decoration: (selectedcat == index)
+                                                      decoration: (selectedcat ==
+                                                              index)
                                                           ? BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(imp.getSize(context, 25)),
-                                                              color: const Color.fromARGB(255, 235, 232, 232))
+                                                              borderRadius: BorderRadius
+                                                                  .circular(imp
+                                                                      .getSize(
+                                                                          context,
+                                                                          25)),
+                                                              color: const Color
+                                                                      .fromARGB(
+                                                                  255,
+                                                                  235,
+                                                                  232,
+                                                                  232))
                                                           : null,
                                                       child: Center(
                                                         child: Padding(
-                                                          padding: EdgeInsets.all(imp.getSize(context, 5)),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  imp.getSize(
+                                                                      context,
+                                                                      5)),
                                                           child: Text(
-                                                            booksFilterCategory[index],
-                                                            style: const TextStyle(
-                                                              fontWeight: FontWeight.bold,
+                                                            booksFilterCategory[
+                                                                index],
+                                                            style:
+                                                                const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                             ),
                                                           ),
                                                         ),
@@ -403,7 +430,10 @@ class _BooksState extends State<Books> {
                                           const VerticalDivider(
                                             color: Colors.black,
                                           ),
-                                          BookFilterShowCatOpt(bookFilterCatOption: booksFilterCategory[selectedcat]),
+                                          BookFilterShowCatOpt(
+                                              bookFilterCatOption:
+                                                  booksFilterCategory[
+                                                      selectedcat]),
                                         ],
                                       ),
                                     ),
@@ -411,18 +441,22 @@ class _BooksState extends State<Books> {
                                       height: imp.getSize(context, 10),
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
                                       children: [
                                         ElevatedButton(
                                           onPressed: () {
-                                            imp.resetBooksFilter();
+                                            imp.resetBooksFilter(books);
                                             setState(() {
                                               books;
                                             });
                                             Navigator.pop(context);
                                           },
                                           style: ButtonStyle(
-                                            backgroundColor: MaterialStateProperty.all(const Color.fromARGB(255, 211, 211, 211)),
+                                            backgroundColor:
+                                                MaterialStateProperty.all(
+                                                    const Color.fromARGB(
+                                                        255, 211, 211, 211)),
                                           ),
                                           child: const Text(
                                             'Restore Defaults',
@@ -433,11 +467,16 @@ class _BooksState extends State<Books> {
                                         ),
                                         ElevatedButton(
                                           onPressed: () async {
-                                            await context.read<MyModel>().getBookDetails();
+                                            await context
+                                                .read<MyModel>()
+                                                .getBookDetails(books);
                                             setState(() {
                                               books;
                                               print(books);
-                                              print(context.read<MyModel>().state.books);
+                                              print(context
+                                                  .read<MyModel>()
+                                                  .state
+                                                  .books);
                                             });
                                             Navigator.pop(context);
                                           },
@@ -487,7 +526,7 @@ class _BooksState extends State<Books> {
                 color: bgColor,
                 onRefresh: () {
                   if (tempBooks.isNotEmpty) {
-                    books = tempBooks;
+                    //books = tempBooks;
                   }
                   bookFilterSelected = {'Department': [], 'Author': []};
                   filteredBooks = [];
@@ -541,12 +580,14 @@ class _BooksState extends State<Books> {
                               child: Row(
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(left: imp.getSize(context, 8)),
+                                    margin: EdgeInsets.only(
+                                        left: imp.getSize(context, 8)),
                                     height: imp.getSize(context, 100),
                                     width: imp.getSize(context, 80),
                                     color: Colors.white,
                                     child: Image(
-                                      loadingBuilder: ((context, child, loadingProgress) {
+                                      loadingBuilder:
+                                          ((context, child, loadingProgress) {
                                         if (loadingProgress == null) {
                                           return child;
                                         } else {
@@ -557,7 +598,8 @@ class _BooksState extends State<Books> {
                                           );
                                         }
                                       }),
-                                      image: const NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                                      image: const NetworkImage(
+                                          'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -590,32 +632,36 @@ class _BooksState extends State<Books> {
                                     width: imp.getSize(context, 12),
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                    padding:
+                                        EdgeInsets.all(imp.getSize(context, 8)),
                                     child: Column(
                                       children: [
                                         SizedBox(
                                           width: imp.getSize(context, 200),
                                           child: Center(
                                             child: Text(
-                                              books[index]['title'] ?? "BOOK TITLE",
+                                              books[index].TITLE ??
+                                                  "BOOK TITLE",
                                               textAlign: TextAlign.center,
-                                              style: const TextStyle(fontWeight: FontWeight.bold),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.only(top: imp.getSize(context, 8)),
+                                          padding: EdgeInsets.only(
+                                              top: imp.getSize(context, 8)),
                                           child: SizedBox(
                                             width: imp.getSize(context, 200),
                                             child: Column(
                                               // mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'AUTHOR: ${books[index]['Author'] ?? "XXX"}',
+                                                  'AUTHOR: ${books[index].AUTHORS ?? "XXX"}',
                                                   textAlign: TextAlign.center,
                                                 ),
                                                 Text(
-                                                  'DEPT: ${books[index]['Department'] ?? "XXX"}',
+                                                  'PUBLISHER: ${books[index].PUBLISHER ?? "XXX"}',
                                                   textAlign: TextAlign.center,
                                                 ),
                                               ],

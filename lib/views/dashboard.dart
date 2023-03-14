@@ -1,20 +1,21 @@
 import 'dart:developer' show log;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/view_model/app_provider.dart';
 import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/favorites_page.dart';
+import 'package:lib_management/views/history.dart';
+import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 import 'package:lib_management/views/widgets/alert_dialog.dart';
 import 'package:lib_management/views/widgets/carousel.dart';
-import 'package:lib_management/views/journals_page.dart';
-import 'package:lib_management/view_model/app_provider.dart';
 import 'package:provider/provider.dart';
-
-import 'package:lib_management/views/history.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -27,7 +28,10 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     AppServices imp = AppServiceImp();
-    List<Map<String, String>> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+    BuiltList<Location> books = context.read<MyModel>().state.locations!;
+    BuiltList<Location> favoriteBooks = books
+        .where((book) => context.read<MyModel>().favorites.contains(book.TITLE))
+        .toBuiltList();
 
     // setState(() {
     // books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
@@ -44,7 +48,7 @@ class _DashBoardState extends State<DashBoard> {
             padding: EdgeInsets.all(imp.getSize(context, 10)),
             child: InkWell(
               onTap: () {
-                Navigator.push(
+                /*  Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => BookDetails(
@@ -60,7 +64,7 @@ class _DashBoardState extends State<DashBoard> {
                       // context.read<MyModel>().loadFavorites();
                     });
                   },
-                );
+                );*/
               },
               child: Container(
                 width: imp.getSize(context, 130),
@@ -85,7 +89,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                           ),
                           image: const DecorationImage(
-                            image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                            image: NetworkImage(
+                                'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -132,7 +137,12 @@ class _DashBoardState extends State<DashBoard> {
                   ).then(
                     (value) {
                       setState(() {
-                        favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                        favoriteBooks = books
+                            .where((book) => context
+                                .read<MyModel>()
+                                .favorites
+                                .contains(book.TITLE))
+                            .toBuiltList();
                         log(favoriteBooks.toString());
 
                         // context.read<MyModel>().loadFavorites();
@@ -145,7 +155,8 @@ class _DashBoardState extends State<DashBoard> {
                   height: imp.getSize(context, 200),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(imp.getSize(context, 10)),
+                    borderRadius:
+                        BorderRadius.circular(imp.getSize(context, 10)),
                   ),
                   child: Column(
                     children: [
@@ -162,7 +173,8 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                             ),
                             image: const DecorationImage(
-                              image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                              image: NetworkImage(
+                                  'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                               fit: BoxFit.cover,
                             )),
                       ),
@@ -173,7 +185,7 @@ class _DashBoardState extends State<DashBoard> {
                             child: Padding(
                               padding: EdgeInsets.all(imp.getSize(context, 3)),
                               child: Text(
-                                favoriteBooks[i]['title']!,
+                                favoriteBooks[i].TITLE!,
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -197,7 +209,12 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ).then((value) {
                 setState(() {
-                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                  favoriteBooks = books
+                      .where((book) => context
+                          .read<MyModel>()
+                          .favorites
+                          .contains(book.TITLE))
+                      .toBuiltList();
                   log(favoriteBooks.toString());
 
                   // context.read<MyModel>().loadFavorites();
@@ -216,7 +233,9 @@ class _DashBoardState extends State<DashBoard> {
                   SizedBox(height: imp.getSize(context, 10)),
                   Text(
                     'See More',
-                    style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: imp.getSize(context, 15)),
                   ),
                 ],
               ),
@@ -234,7 +253,12 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ).then((value) {
                 setState(() {
-                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                  favoriteBooks = books
+                      .where((book) => context
+                          .read<MyModel>()
+                          .favorites
+                          .contains(book.TITLE))
+                      .toBuiltList();
                   log(favoriteBooks.toString());
 
                   // context.read<MyModel>().loadFavorites();
@@ -262,7 +286,9 @@ class _DashBoardState extends State<DashBoard> {
                     SizedBox(height: imp.getSize(context, 10)),
                     Text(
                       'Add Books',
-                      style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 15)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: imp.getSize(context, 15)),
                     ),
                   ],
                 ),
@@ -276,7 +302,12 @@ class _DashBoardState extends State<DashBoard> {
 
     return WillPopScope(
       onWillPop: () async {
-        return await showAlertDialog(context: context, title: 'Exit App ?', content: null, action1: 'Yes', action2: 'No');
+        return await showAlertDialog(
+            context: context,
+            title: 'Exit App ?',
+            content: null,
+            action1: 'Yes',
+            action2: 'No');
       },
       child: Scaffold(
         body: DecoratedBox(
@@ -324,37 +355,45 @@ class _DashBoardState extends State<DashBoard> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                padding:
+                                    EdgeInsets.all(imp.getSize(context, 8)),
                                 child: Material(
                                   color: Colors.blue[200],
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const ProfilePage(),
+                                          builder: (context) =>
+                                              const ProfilePage(),
                                         ),
                                       );
                                     },
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    borderRadius: BorderRadius.circular(
+                                        imp.getSize(context, 15)),
                                     child: Ink(
                                       height: imp.getSize(context, 60),
                                       decoration: BoxDecoration(
                                         image: const DecorationImage(
-                                          image: AssetImage('assets/images/profilelogo.png'),
+                                          image: AssetImage(
+                                              'assets/images/profilelogo.png'),
                                           fit: BoxFit.cover,
                                         ),
-                                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                        borderRadius: BorderRadius.circular(
+                                            imp.getSize(context, 15)),
                                       ),
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Text(
                                             'My Profile',
                                             style: TextStyle(
-                                              fontSize: imp.getSize(context, 20),
+                                              fontSize:
+                                                  imp.getSize(context, 20),
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -372,10 +411,12 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                padding:
+                                    EdgeInsets.all(imp.getSize(context, 8)),
                                 child: Material(
                                   color: Colors.orange[300],
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
                                     onTap: () {
@@ -386,23 +427,28 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       );
                                     },
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    borderRadius: BorderRadius.circular(
+                                        imp.getSize(context, 15)),
                                     child: Ink(
                                       decoration: BoxDecoration(
                                         image: const DecorationImage(
-                                          image: AssetImage('assets/images/historylogo.png'),
+                                          image: AssetImage(
+                                              'assets/images/historylogo.png'),
                                           fit: BoxFit.cover,
                                         ),
-                                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                        borderRadius: BorderRadius.circular(
+                                            imp.getSize(context, 15)),
                                       ),
                                       height: imp.getSize(context, 60),
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Text(
                                             'History',
                                             style: TextStyle(
-                                              fontSize: imp.getSize(context, 20),
+                                              fontSize:
+                                                  imp.getSize(context, 20),
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
@@ -427,29 +473,35 @@ class _DashBoardState extends State<DashBoard> {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                padding:
+                                    EdgeInsets.all(imp.getSize(context, 8)),
                                 child: Material(
                                   color: Colors.cyan[200],
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => const Journals(),
+                                          builder: (context) =>
+                                              const Journals(),
                                         ),
                                       );
                                     },
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    borderRadius: BorderRadius.circular(
+                                        imp.getSize(context, 15)),
                                     child: Ink(
                                       height: imp.getSize(context, 100),
                                       decoration: BoxDecoration(
                                         image: const DecorationImage(
-                                          image: AssetImage('assets/images/journallogo.png'),
+                                          image: AssetImage(
+                                              'assets/images/journallogo.png'),
                                           fit: BoxFit.cover,
                                         ),
-                                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                        borderRadius: BorderRadius.circular(
+                                            imp.getSize(context, 15)),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -468,10 +520,12 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                padding:
+                                    EdgeInsets.all(imp.getSize(context, 8)),
                                 child: Material(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
                                     onTap: () {
@@ -482,15 +536,18 @@ class _DashBoardState extends State<DashBoard> {
                                         ),
                                       );
                                     },
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    borderRadius: BorderRadius.circular(
+                                        imp.getSize(context, 15)),
                                     child: Ink(
                                       height: imp.getSize(context, 100),
                                       decoration: BoxDecoration(
                                         image: const DecorationImage(
-                                          image: AssetImage('assets/images/booklogo.png'),
+                                          image: AssetImage(
+                                              'assets/images/booklogo.png'),
                                           fit: BoxFit.cover,
                                         ),
-                                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                        borderRadius: BorderRadius.circular(
+                                            imp.getSize(context, 15)),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -509,22 +566,27 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsets.all(imp.getSize(context, 8)),
+                                padding:
+                                    EdgeInsets.all(imp.getSize(context, 8)),
                                 child: Material(
                                   color: Colors.pink[200],
-                                  borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                  borderRadius: BorderRadius.circular(
+                                      imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
                                     onTap: () {},
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    borderRadius: BorderRadius.circular(
+                                        imp.getSize(context, 15)),
                                     child: Ink(
                                       height: imp.getSize(context, 100),
                                       decoration: BoxDecoration(
                                         image: const DecorationImage(
-                                          image: AssetImage('assets/images/ebooklogo.png'),
+                                          image: AssetImage(
+                                              'assets/images/ebooklogo.png'),
                                           fit: BoxFit.cover,
                                         ),
-                                        borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                        borderRadius: BorderRadius.circular(
+                                            imp.getSize(context, 15)),
                                       ),
                                       child: Center(
                                         child: Text(
@@ -555,7 +617,8 @@ class _DashBoardState extends State<DashBoard> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'Top Picks',
@@ -592,7 +655,8 @@ class _DashBoardState extends State<DashBoard> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         'My Favourites',
@@ -606,12 +670,17 @@ class _DashBoardState extends State<DashBoard> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) => const MyFavoritesPage(),
+                                              builder: (context) =>
+                                                  const MyFavoritesPage(),
                                             ),
                                           ).then((value) {
                                             setState(() {
-                                              favoriteBooks =
-                                                  books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                                              favoriteBooks = books
+                                                  .where((book) => context
+                                                      .read<MyModel>()
+                                                      .favorites
+                                                      .contains(book.TITLE))
+                                                  .toBuiltList();
                                               log(favoriteBooks.toString());
 
                                               // context.read<MyModel>().loadFavorites();
