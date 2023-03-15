@@ -26,6 +26,23 @@ class DataServices {
     return null;
   }
 
+  Future<int?> logIn({required String email, required String password}) async {
+    try {
+      final response = await http.post(
+        Uri.parse('http://172.16.53.74:3000/login'),
+        body: jsonEncode(<String, String>{
+          'email': email,
+          'password': password,
+        }),
+      );
+      final Map<String, dynamic> data = json.decode(response.body);
+      return data['message'];
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
   fetchAlbum() async {
     final response = await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
 

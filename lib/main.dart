@@ -93,19 +93,19 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               ),
             ),
           ),
-          Center(
-            child: FadeTransition(
-              opacity: _translateAnimation,
-              child: const Text(
-                '\n\n\n\n\n\n\nREC_LIBRARY',
-                style: TextStyle(
-                  fontSize: 32.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
+          // Center(
+          //   child: FadeTransition(
+          //     opacity: _translateAnimation,
+          //     child: const Text(
+          //       '\n\n\n\n\n\n\nREC_LIBRARY',
+          //       style: TextStyle(
+          //         fontSize: 32.0,
+          //         fontWeight: FontWeight.bold,
+          //         color: Colors.black,
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

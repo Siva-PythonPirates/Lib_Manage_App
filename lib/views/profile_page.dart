@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lib_management/services/app_services_impl.dart';
-import 'package:lib_management/view_model/app_provider.dart';
-import 'package:lib_management/views/login_page.dart';
 import 'package:lib_management/views/reset_page.dart';
-import 'package:lib_management/views/widgets/alert_dialog.dart';
-import 'package:provider/provider.dart';
 import '../services/app_constants.dart';
 import '../services/app_services.dart';
 
@@ -174,38 +170,39 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-              right: imp.getSize(context, 20),
-              top: imp.getSize(context, 40),
-              child: MaterialButton(
-                onPressed: () async {
-                  final shouldLogout =
-                      await showAlertDialog(context: context, title: 'Logout', content: 'Do you want to Logout?', action1: 'Yes', action2: 'No');
-                  if (shouldLogout) {
-                    await context.read<MyModel>().updateLogin(false);
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Login()),
-                      (Route<dynamic> route) => false,
-                    );
-                  }
-                },
-                child: Row(
-                  children: [
-                    const Icon(
-                      Icons.exit_to_app,
-                      color: Colors.white,
-                    ),
-                    SizedBox(
-                      width: imp.getSize(context, 10),
-                    ),
-                    Text(
-                      "LogOut",
-                      style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 20)),
-                    )
-                  ],
-                ),
-              ))
+          // Positioned(
+          //   right: imp.getSize(context, 20),
+          //   top: imp.getSize(context, 40),
+          //   child: MaterialButton(
+          //     onPressed: () async {
+          //       final shouldLogout =
+          //           await showAlertDialog(context: context, title: 'Logout', content: 'Do you want to Logout?', action1: 'Yes', action2: 'No');
+          //       if (shouldLogout) {
+          //         await context.read<MyModel>().updateLogin(false);
+          //         Navigator.pushAndRemoveUntil(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => const Login()),
+          //           (Route<dynamic> route) => false,
+          //         );
+          //       }
+          //     },
+          //     child: Row(
+          //       children: [
+          //         const Icon(
+          //           Icons.exit_to_app,
+          //           color: Colors.white,
+          //         ),
+          //         SizedBox(
+          //           width: imp.getSize(context, 10),
+          //         ),
+          //         Text(
+          //           "LogOut",
+          //           style: TextStyle(color: Colors.white, fontSize: imp.getSize(context, 20)),
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
