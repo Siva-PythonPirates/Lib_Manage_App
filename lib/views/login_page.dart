@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lib_management/dataservices.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/view_model/app_provider.dart';
@@ -157,9 +158,15 @@ class _LoginState extends State<Login> {
                                           await context
                                               .read<MyModel>()
                                               .getMailId(mail.text);
+                                          print("mail");
                                           await context
                                               .read<MyModel>()
                                               .updateLogin(true);
+                                          print("login");
+                                          await context
+                                              .read<MyModel>()
+                                              .getlocations();
+                                          print("Yes");
                                           Navigator.pushAndRemoveUntil(
                                             context,
                                             MaterialPageRoute(

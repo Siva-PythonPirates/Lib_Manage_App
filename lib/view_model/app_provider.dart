@@ -23,81 +23,6 @@ class Changes extends StatelessWidget {
 class MyModel extends StateNotifier<Appstate> with LocatorMixin {
   MyModel() : super(Appstate());
 
-  Future<void> getInitialBooks() async {
-    state = state.rebuild((p0) => p0.books = [
-          {
-            'title': 'The Structure of Scientific Revolutions',
-            'Author': 'Thomas S. Kuhn',
-            'Department': 'Science',
-            'image':
-                'https://images.pexels.com/photos/276743/pexels-photo-276743.jpeg'
-          },
-          {
-            'title': 'The Wealth of Nations',
-            'Author': 'Adam Smith',
-            'Department': 'Economics',
-            'image':
-                'https://images.pexels.com/photos/276792/pexels-photo-276792.jpeg'
-          },
-          {
-            'title': 'A Brief History of Time',
-            'Author': 'Stephen Hawking',
-            'Department': 'Science',
-            'image':
-                'https://images.pexels.com/photos/276943/pexels-photo-276943.jpeg'
-          },
-          {
-            'title': 'The Origin of Species',
-            'Author': 'Charles Darwin',
-            'Department': 'Science',
-            'image':
-                'https://images.pexels.com/photos/276944/pexels-photo-276944.jpeg'
-          },
-          {
-            'title': 'The Elements of Style',
-            'Author': 'William Strunk Jr. and E.B. White',
-            'Department': 'Language and Writing',
-            'image':
-                'https://images.pexels.com/photos/276757/pexels-photo-276757.jpeg'
-          },
-          {
-            'title': 'Principles of Economics',
-            'Author': 'N. Gregory Mankiw',
-            'Department': 'Economics',
-            'image':
-                'https://images.pexels.com/photos/276761/pexels-photo-276761.jpeg'
-          },
-          {
-            'title': 'The Selfish Gene',
-            'Author': 'Richard Dawkins',
-            'Department': 'Science',
-            'image':
-                'https://images.pexels.com/photos/276942/pexels-photo-276942.jpeg'
-          },
-          {
-            'title': 'The Republic',
-            'Author': 'Plato',
-            'Department': 'Philosophy',
-            'image':
-                'https://images.pexels.com/photos/276947/pexels-photo-276947.jpeg'
-          },
-          {
-            'title': 'The Interpretation of Dreams',
-            'Author': 'Sigmund Freud',
-            'Department': 'Psychology',
-            'image':
-                'https://images.pexels.com/photos/276799/pexels-photo-276799.jpeg'
-          },
-          {
-            'title': 'The Social Contract',
-            'Author': 'Jean-Jacques Rousseau',
-            'Department': 'Political Science',
-            'image':
-                'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
-          },
-        ]);
-  }
-
   List<String> _favorites = [];
 
   List<String> get favorites => _favorites;
@@ -115,7 +40,7 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
   Future<void> getBookDetails(BuiltList<Location> books) async {
     AppServices imp = AppServiceImp();
     BuiltList<Location> books1 = imp.applyBooksFilter(books);
-    state = state.rebuild((p0) => p0.books = books1);
+    state = state.rebuild((p0) => p0.books = books1.toBuilder());
   }
 
   Future<void> getMailId(String mail) async {

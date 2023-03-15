@@ -27,6 +27,17 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
+    Future<void> getget() async {
+      await context.read<MyModel>().getlocations();
+    }
+
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      getget();
+      print("books");
+    }
     AppServices imp = AppServiceImp();
     BuiltList<Location> books = context.read<MyModel>().state.locations!;
     BuiltList<Location> favoriteBooks = books
