@@ -31,7 +31,7 @@ abstract class Location implements Built<Location, LocationBuilder> {
   int? get PRICE_INR;
   String? get P;
   String? get ISBN;
-/*String? get name;
+  /*String? get name;
   String? get img;
   int? get price;
   int? get people;

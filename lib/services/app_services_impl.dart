@@ -1,4 +1,6 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -79,79 +81,84 @@ class AppServiceImp implements AppServices {
 
 //         BOOK SORTING           //
 
-  void createtempbooks() {
-    for (var i in books) {
-      tempBooks.add(i);
-    }
+  void createtempbooks(BuiltList<Location> books) {
+    /*for (var i in books) {
+      tempBooks.(i);
+    }*/
+    tempBooks = books;
   }
 
   @override
-  void sortBooksTitle() {
+  void sortBooksTitle(BuiltList<Location> books) {
+    // print(books);
     if (tempBooks.isEmpty) {
-      createtempbooks();
+      createtempbooks(books);
     }
-    books.sort(
+    var books1 = books;
+    books1.toList().sort(
       (a, b) {
-        return a['title']!.compareTo(b['title']!);
+        print(a.TITLE!.compareTo(b.TITLE!));
+        return a.TITLE!.compareTo(b.TITLE!);
+      },
+    );
+    print(books1);
+  }
+
+  @override
+  void sortBooksTitleDesc(BuiltList<Location> books) {
+    sortBooksTitle(books);
+    books = books.reversed.toBuiltList();
+  }
+
+  @override
+  void sortBooksAuthor(BuiltList<Location> books) {
+    if (tempBooks.isEmpty) {
+      createtempbooks(books);
+    }
+    books.toList().sort(
+      (a, b) {
+        return a.AUTHORS!.compareTo(b.AUTHORS!);
       },
     );
   }
 
   @override
-  void sortBooksTitleDesc() {
-    sortBooksTitle();
-    books = books.reversed.toList();
+  void sortBooksAuthorDesc(BuiltList<Location> books) {
+    sortBooksAuthor(books);
+    books = books..reversed.toList();
   }
 
   @override
-  void sortBooksAuthor() {
+  void sortBooksDept(BuiltList<Location> books) {
     if (tempBooks.isEmpty) {
-      createtempbooks();
+      createtempbooks(books);
     }
-    books.sort(
+    books.toList().sort(
       (a, b) {
-        return a['Author']!.compareTo(b['Author']!);
+        return a.PUBLISHER!.compareTo(b.PUBLISHER!);
       },
     );
   }
 
   @override
-  void sortBooksAuthorDesc() {
-    sortBooksAuthor();
-    books = books.reversed.toList();
+  void sortBooksDeptDesc(BuiltList<Location> books) {
+    sortBooksDept(books);
+    books = books.reversed.toBuiltList();
   }
 
   @override
-  void sortBooksDept() {
-    if (tempBooks.isEmpty) {
-      createtempbooks();
-    }
-    books.sort(
-      (a, b) {
-        return a['Department']!.compareTo(b['Department']!);
-      },
-    );
-  }
-
-  @override
-  void sortBooksDeptDesc() {
-    sortBooksDept();
-    books = books.reversed.toList();
-  }
-
-  @override
-  void resetBookSort() {
+  void resetBookSort(BuiltList<Location> books) {
     if (tempBooks.isNotEmpty) books = tempBooks;
   }
 
   //             BOOK FILTERING         //
 
   @override
-  List<Map<String, String>> applyBooksFilter() {
+  BuiltList<Location> applyBooksFilter(BuiltList<Location> books) {
     if (tempBooks.isEmpty) {
-      createtempbooks();
+      createtempbooks(books);
     }
-    filteredBooks = [];
+    BuiltList<Location> filteredBooks = BuiltList();
     if (bookFilterSelected.isNotEmpty) {
       for (var category in booksFilterCategory) {
         // List<Map<String,String>> tempFilteredBooks=[];
@@ -159,9 +166,9 @@ class AppServiceImp implements AppServices {
           print(query);
           filteredBooks = [
             ...books.where((element) {
-              return element[category]!.contains(query) && (!filteredBooks.contains(element));
+              return element.TITLE!.contains(query) && (!filteredBooks.contains(element));
             }).toList()
-          ];
+          ].toBuiltList();
         }
       }
       books = filteredBooks;
@@ -169,11 +176,11 @@ class AppServiceImp implements AppServices {
       print(books.length);
       return books;
     }
-    return [];
+    return BuiltList();
   }
 
   @override
-  void resetBooksFilter() {
+  void resetBooksFilter(BuiltList<Location> books) {
     if (tempBooks.isNotEmpty) {
       books = tempBooks;
       print(tempBooks);

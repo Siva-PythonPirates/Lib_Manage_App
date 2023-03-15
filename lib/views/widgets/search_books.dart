@@ -1,7 +1,10 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/view_model/app_provider.dart';
+import 'package:provider/provider.dart';
 
-import '../../services/app_constants.dart';
 import '../../services/app_services.dart';
 
 class BookCustomDelegate extends SearchDelegate {
@@ -33,10 +36,11 @@ class BookCustomDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+    BuiltList<Location> books = context.read<MyModel>().state.locations!;
     final results = books.where((book) =>
-        book['title']!.toLowerCase().contains(query.toLowerCase()) ||
-        book['Author']!.toLowerCase().contains(query.toLowerCase()) ||
-        book['Department']!.toLowerCase().contains(query.toLowerCase()));
+        book.TITLE!.toLowerCase().contains(query.toLowerCase()) ||
+        book.AUTHORS!.toLowerCase().contains(query.toLowerCase()) ||
+        book.PUBLISHER!.toLowerCase().contains(query.toLowerCase()));
     return ListView.builder(
       padding: EdgeInsets.all(imp.getSize(context, 8)),
       itemCount: results.length,
@@ -68,7 +72,8 @@ class BookCustomDelegate extends SearchDelegate {
                         width: imp.getSize(context, 80),
                         color: Colors.deepPurple[300],
                         child: const Image(
-                          image: NetworkImage("https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
+                          image: NetworkImage(
+                              "https://edit.org/images/cat/book-covers-big-2019101610.jpg"),
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -83,9 +88,10 @@ class BookCustomDelegate extends SearchDelegate {
                               width: imp.getSize(context, 200),
                               child: Center(
                                 child: Text(
-                                  book['title'] ?? "TITLE",
+                                  book.TITLE ?? "TITLE",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -95,11 +101,11 @@ class BookCustomDelegate extends SearchDelegate {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    'Author: ${book['Author']}  ',
+                                    'Author: ${book.AUTHORS}  ',
                                     textAlign: TextAlign.center,
                                   ),
                                   Text(
-                                    'Dept: ${book['Department']}',
+                                    'Publisher: ${book.PUBLISHER}',
                                     textAlign: TextAlign.center,
                                   ),
                                 ],

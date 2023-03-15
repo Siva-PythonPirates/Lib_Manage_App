@@ -20,11 +20,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // int selectedPage = 0;
   DataServices obj = DataServices();
   Future<void> getget() async {
     await context.read<MyModel>().getlocations();
-    print(context.read<MyModel>().state.locations);
   }
 
   @override
@@ -32,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getget();
+    print("books");
   }
 
   int bottomSelectedIndex = 0;

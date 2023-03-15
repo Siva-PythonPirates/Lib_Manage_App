@@ -1,4 +1,6 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/widgets/book_filter_cat_opt.dart';
@@ -22,20 +24,11 @@ class _BooksState extends State<Books> {
   int selectedcat = 0;
   int selectedSortOpt = 0;
   AppServices imp = AppServiceImp();
-  Future<void> func() async {
-    await context.read<MyModel>().getInitialBooks();
-    books = context.read<MyModel>().state.books!;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    func();
-  }
 
   @override
   Widget build(BuildContext context) {
-    print(books);
+    BuiltList<Location> books = context.read<MyModel>().state.locations!;
+    print(books.length);
     return Scaffold(
       body: DecoratedBox(
         decoration: const BoxDecoration(
@@ -133,7 +126,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitle();
+                                      imp.sortBooksTitle(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 1;
@@ -157,7 +150,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitleDesc();
+                                      imp.sortBooksTitleDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 2;
@@ -181,7 +174,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthor();
+                                      imp.sortBooksAuthor(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 3;
@@ -205,7 +198,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthorDesc();
+                                      imp.sortBooksAuthorDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 4;
@@ -229,7 +222,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDept();
+                                      imp.sortBooksDept(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 5;
@@ -253,7 +246,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDeptDesc();
+                                      imp.sortBooksDeptDesc(books);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 6;
@@ -276,7 +269,7 @@ class _BooksState extends State<Books> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () {
-                                      imp.resetBookSort();
+                                      imp.resetBookSort(books);
                                       Navigator.pop(context);
 
                                       setState(() {
@@ -415,7 +408,7 @@ class _BooksState extends State<Books> {
                                       children: [
                                         ElevatedButton(
                                           onPressed: () {
-                                            imp.resetBooksFilter();
+                                            imp.resetBooksFilter(books);
                                             setState(() {
                                               books;
                                             });
@@ -433,7 +426,7 @@ class _BooksState extends State<Books> {
                                         ),
                                         ElevatedButton(
                                           onPressed: () async {
-                                            await context.read<MyModel>().getBookDetails();
+                                            await context.read<MyModel>().getBookDetails(books);
                                             setState(() {
                                               books;
                                               print(books);
@@ -487,7 +480,7 @@ class _BooksState extends State<Books> {
                 color: bgColor,
                 onRefresh: () {
                   if (tempBooks.isNotEmpty) {
-                    books = tempBooks;
+                    //books = tempBooks;
                   }
                   bookFilterSelected = {'Department': [], 'Author': []};
                   filteredBooks = [];
@@ -597,7 +590,7 @@ class _BooksState extends State<Books> {
                                           width: imp.getSize(context, 200),
                                           child: Center(
                                             child: Text(
-                                              books[index]['title'] ?? "BOOK TITLE",
+                                              books[index].TITLE ?? "BOOK TITLE",
                                               textAlign: TextAlign.center,
                                               style: const TextStyle(fontWeight: FontWeight.bold),
                                             ),
@@ -611,11 +604,11 @@ class _BooksState extends State<Books> {
                                               // mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'AUTHOR: ${books[index]['Author'] ?? "XXX"}',
+                                                  'AUTHOR: ${books[index].AUTHORS ?? "XXX"}',
                                                   textAlign: TextAlign.center,
                                                 ),
                                                 Text(
-                                                  'DEPT: ${books[index]['Department'] ?? "XXX"}',
+                                                  'PUBLISHER: ${books[index].PUBLISHER ?? "XXX"}',
                                                   textAlign: TextAlign.center,
                                                 ),
                                               ],

@@ -12,6 +12,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Location.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Location)]),
+          () => new ListBuilder<Location>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Location)]),
           () => new ListBuilder<Location>()))
     .build();
 

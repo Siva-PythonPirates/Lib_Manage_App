@@ -1,8 +1,13 @@
 import 'dart:ui';
 
+import 'package:built_collection/built_collection.dart';
+import 'package:lib_management/models/location.dart';
+
 //final readModel = context.read<MyModel>().state;
 
 Color bgColor = const Color.fromRGBO(34, 4, 88, 1);
+List<Location> historyBooks = [];
+
 List<String> quotes = [
   '"Books are a uniquely portable magic." – Stephen King',
   '"Share your knowledge. It is a way to achieve immortality —Dalai Lama"',
@@ -126,6 +131,7 @@ Map<String, List<String>> booksFilterCatOptions = {
   'Author': [...booksFilterCategoryAuthorOptions],
 };
 
+/*
 List<Map<String, String>> books = [
   {
     'title': 'The Structure of Scientific Revolutions',
@@ -188,13 +194,14 @@ List<Map<String, String>> books = [
     'image': 'https://images.pexels.com/photos/276741/pexels-photo-276741.jpeg'
   },
 ];
+*/
 
 Map<String, List<String>> bookFilterSelected = {
   'Department': [],
   'Author': [],
 };
 
-List<Map<String, String>> tempBooks = [];
+BuiltList<Location> tempBooks = BuiltList();
 
 List<Map<String, String>> filteredBooks = [];
 

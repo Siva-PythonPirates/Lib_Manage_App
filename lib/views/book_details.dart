@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/view_model/app_provider.dart';
+import 'package:lib_management/views/pre_book.dart';
 import 'package:provider/provider.dart';
 
 class BookDetails extends StatefulWidget {
-  final Map<String, dynamic> book;
+  final Location book;
 
   const BookDetails({Key? key, required this.book}) : super(key: key);
 
@@ -90,7 +92,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '${widget.book['title'] ?? 'BOOK TITLE'}',
+                                        widget.book.TITLE ?? 'BOOK TITLE',
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -116,7 +118,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '${widget.book['Author'] ?? 'Author'}',
+                                        widget.book.AUTHORS ?? 'Author',
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -142,7 +144,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '3',
+                                        "${widget.book.EDITION ?? "Not Available"}",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -168,7 +170,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        'Har Chand Publications',
+                                        widget.book.PUBLISHER ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -194,7 +196,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '3100',
+                                        widget.book.PAGES ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -220,7 +222,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        '61-219-0611-3',
+                                        widget.book.ISBN ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -246,7 +248,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        'Rs.175',
+                                        "${widget.book.PRICE_INR ?? "Not Available"}",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -284,7 +286,7 @@ class _BookDetailsState extends State<BookDetails> {
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Text(
-                        '${widget.book['title'] ?? 'BOOK TITLE'}',
+                        widget.book.TITLE ?? 'BOOK TITLE',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: imp.getSize(context, 34), color: bgColor, fontWeight: FontWeight.bold),
                       ),
@@ -294,7 +296,7 @@ class _BookDetailsState extends State<BookDetails> {
                 Positioned(
                   top: imp.getSize(context, 200),
                   child: IconButton(
-                    icon: context.read<MyModel>().favorites.contains(widget.book['title'])
+                    icon: context.read<MyModel>().favorites.contains(widget.book.TITLE)
                         ? Icon(
                             Icons.favorite,
                             color: Colors.red,
@@ -305,10 +307,10 @@ class _BookDetailsState extends State<BookDetails> {
                             size: imp.getSize(context, 40),
                           ),
                     onPressed: () {
-                      if (context.read<MyModel>().favorites.contains(widget.book['title'])) {
-                        context.read<MyModel>().removeFromFavorites(widget.book['title']);
+                      if (context.read<MyModel>().favorites.contains(widget.book.TITLE)) {
+                        context.read<MyModel>().removeFromFavorites(widget.book.TITLE!);
                       } else {
-                        context.read<MyModel>().addToFavorites(widget.book['title']);
+                        context.read<MyModel>().addToFavorites(widget.book.TITLE!);
                       }
                       setState(() {});
                     },
@@ -318,7 +320,14 @@ class _BookDetailsState extends State<BookDetails> {
             ),
             floatingActionButton: MaterialButton(
               color: const Color.fromARGB(255, 255, 112, 159),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PreBookPage(book: widget.book),
+                  ),
+                );
+              },
               child: Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: imp.getSize(context, 16)),

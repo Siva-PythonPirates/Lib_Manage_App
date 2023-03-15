@@ -1,20 +1,21 @@
 import 'dart:developer' show log;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
+import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/view_model/app_provider.dart';
 import 'package:lib_management/views/book_details.dart';
 import 'package:lib_management/views/books_page.dart';
 import 'package:lib_management/views/favorites_page.dart';
+import 'package:lib_management/views/history.dart';
+import 'package:lib_management/views/journals_page.dart';
 import 'package:lib_management/views/profile_page.dart';
 import 'package:lib_management/views/widgets/alert_dialog.dart';
 import 'package:lib_management/views/widgets/carousel.dart';
-import 'package:lib_management/views/journals_page.dart';
-import 'package:lib_management/view_model/app_provider.dart';
 import 'package:provider/provider.dart';
-
-import 'package:lib_management/views/history.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -26,8 +27,21 @@ class DashBoard extends StatefulWidget {
 class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
+    Future<void> getget() async {
+      Future.delayed(const Duration(seconds: 1));
+    }
+
+    @override
+    void initState() {
+      // TODO: implement initState
+      super.initState();
+      getget();
+      print("books");
+    }
+
     AppServices imp = AppServiceImp();
-    List<Map<String, String>> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+    BuiltList<Location> books = context.read<MyModel>().state.locations ?? BuiltList();
+    BuiltList<Location> favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
 
     // setState(() {
     // books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
@@ -44,7 +58,7 @@ class _DashBoardState extends State<DashBoard> {
             padding: EdgeInsets.all(imp.getSize(context, 10)),
             child: InkWell(
               onTap: () {
-                Navigator.push(
+                /*  Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => BookDetails(
@@ -60,7 +74,7 @@ class _DashBoardState extends State<DashBoard> {
                       // context.read<MyModel>().loadFavorites();
                     });
                   },
-                );
+                );*/
               },
               child: Container(
                 width: imp.getSize(context, 130),
@@ -132,7 +146,7 @@ class _DashBoardState extends State<DashBoard> {
                   ).then(
                     (value) {
                       setState(() {
-                        favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                        favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
                         log(favoriteBooks.toString());
 
                         // context.read<MyModel>().loadFavorites();
@@ -173,7 +187,7 @@ class _DashBoardState extends State<DashBoard> {
                             child: Padding(
                               padding: EdgeInsets.all(imp.getSize(context, 3)),
                               child: Text(
-                                favoriteBooks[i]['title']!,
+                                favoriteBooks[i].TITLE!,
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -197,7 +211,7 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ).then((value) {
                 setState(() {
-                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
                   log(favoriteBooks.toString());
 
                   // context.read<MyModel>().loadFavorites();
@@ -234,7 +248,7 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ).then((value) {
                 setState(() {
-                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
+                  favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
                   log(favoriteBooks.toString());
 
                   // context.read<MyModel>().loadFavorites();
@@ -515,8 +529,10 @@ class _DashBoardState extends State<DashBoard> {
                                   borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                   elevation: 20,
                                   child: InkWell(
-                                    onTap: () {},
-                                    borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
+                                    onTap: () {
+                                      imp.launchURLto('https://discovery1.delnet.in/');
+                                    },
+                                    borderRadius: BorderRadius.circular(imp.getSize(context, 16)),
                                     child: Ink(
                                       height: imp.getSize(context, 100),
                                       decoration: BoxDecoration(
@@ -528,10 +544,10 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          'E-Books',
+                                          'E-Resources',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontSize: imp.getSize(context, 20),
+                                            fontSize: imp.getSize(context, 16),
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -539,6 +555,66 @@ class _DashBoardState extends State<DashBoard> {
                                     ),
                                   ),
                                 ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: imp.getSize(context, 20),
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(imp.getSize(context, 10)),
+                              child: Column(
+                                // mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'My Favourites',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: imp.getSize(context, 25),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => const MyFavoritesPage(),
+                                            ),
+                                          ).then((value) {
+                                            setState(() {
+                                              favoriteBooks =
+                                                  books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
+                                              log(favoriteBooks.toString());
+
+                                              // context.read<MyModel>().loadFavorites();
+                                            });
+                                          });
+                                        },
+                                        icon: Icon(
+                                          Icons.arrow_forward,
+                                          color: Colors.white,
+                                          size: imp.getSize(context, 25),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: imp.getSize(context, 10),
+                                  ),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: createFavouriteBooksChildren(),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
@@ -580,66 +656,6 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          height: imp.getSize(context, 20),
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.all(imp.getSize(context, 10)),
-                              child: Column(
-                                // mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        'My Favourites',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: imp.getSize(context, 25),
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => const MyFavoritesPage(),
-                                            ),
-                                          ).then((value) {
-                                            setState(() {
-                                              favoriteBooks =
-                                                  books.where((book) => context.read<MyModel>().favorites.contains(book["title"])).toList();
-                                              log(favoriteBooks.toString());
-
-                                              // context.read<MyModel>().loadFavorites();
-                                            });
-                                          });
-                                        },
-                                        icon: Icon(
-                                          Icons.arrow_forward,
-                                          color: Colors.white,
-                                          size: imp.getSize(context, 25),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: imp.getSize(context, 10),
-                                  ),
-                                  SingleChildScrollView(
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: createFavouriteBooksChildren(),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        )
                       ],
                     ),
                   ),
