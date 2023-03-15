@@ -19,49 +19,83 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.name;
+    value = object.SLNO;
     if (value != null) {
       result
-        ..add('name')
+        ..add('SLNO')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.AUTHORS;
+    if (value != null) {
+      result
+        ..add('AUTHORS')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.img;
+    value = object.TITLE;
     if (value != null) {
       result
-        ..add('img')
+        ..add('TITLE')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.price;
+    value = object.EDITION;
     if (value != null) {
       result
-        ..add('price')
+        ..add('EDITION')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.people;
+    value = object.YEAR;
     if (value != null) {
       result
-        ..add('people')
+        ..add('YEAR')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.stars;
+    value = object.PUBLISHER;
     if (value != null) {
       result
-        ..add('stars')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.description;
-    if (value != null) {
-      result
-        ..add('description')
+        ..add('PUBLISHER')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.location;
+    value = object.SERIES;
     if (value != null) {
       result
-        ..add('location')
+        ..add('SERIES')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.PAGES;
+    if (value != null) {
+      result
+        ..add('PAGES')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.PRICE_FOREIGN;
+    if (value != null) {
+      result
+        ..add('PRICE_FOREIGN')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.PRICE_INR;
+    if (value != null) {
+      result
+        ..add('PRICE_INR')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.P;
+    if (value != null) {
+      result
+        ..add('P')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.ISBN;
+    if (value != null) {
+      result
+        ..add('ISBN')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -79,32 +113,52 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'name':
-          result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'img':
-          result.img = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'price':
-          result.price = serializers.deserialize(value,
+        case 'SLNO':
+          result.SLNO = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'people':
-          result.people = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'stars':
-          result.stars = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'description':
-          result.description = serializers.deserialize(value,
+        case 'AUTHORS':
+          result.AUTHORS = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'location':
-          result.location = serializers.deserialize(value,
+        case 'TITLE':
+          result.TITLE = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'EDITION':
+          result.EDITION = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'YEAR':
+          result.YEAR = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'PUBLISHER':
+          result.PUBLISHER = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'SERIES':
+          result.SERIES = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'PAGES':
+          result.PAGES = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'PRICE_FOREIGN':
+          result.PRICE_FOREIGN = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'PRICE_INR':
+          result.PRICE_INR = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'P':
+          result.P = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'ISBN':
+          result.ISBN = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
       }
@@ -116,31 +170,46 @@ class _$LocationSerializer implements StructuredSerializer<Location> {
 
 class _$Location extends Location {
   @override
-  final String? name;
+  final int? SLNO;
   @override
-  final String? img;
+  final String? AUTHORS;
   @override
-  final int? price;
+  final String? TITLE;
   @override
-  final int? people;
+  final int? EDITION;
   @override
-  final int? stars;
+  final int? YEAR;
   @override
-  final String? description;
+  final String? PUBLISHER;
   @override
-  final String? location;
+  final String? SERIES;
+  @override
+  final String? PAGES;
+  @override
+  final String? PRICE_FOREIGN;
+  @override
+  final int? PRICE_INR;
+  @override
+  final String? P;
+  @override
+  final String? ISBN;
 
   factory _$Location([void Function(LocationBuilder)? updates]) =>
       (new LocationBuilder()..update(updates))._build();
 
   _$Location._(
-      {this.name,
-      this.img,
-      this.price,
-      this.people,
-      this.stars,
-      this.description,
-      this.location})
+      {this.SLNO,
+      this.AUTHORS,
+      this.TITLE,
+      this.EDITION,
+      this.YEAR,
+      this.PUBLISHER,
+      this.SERIES,
+      this.PAGES,
+      this.PRICE_FOREIGN,
+      this.PRICE_INR,
+      this.P,
+      this.ISBN})
       : super._();
 
   @override
@@ -154,25 +223,35 @@ class _$Location extends Location {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is Location &&
-        name == other.name &&
-        img == other.img &&
-        price == other.price &&
-        people == other.people &&
-        stars == other.stars &&
-        description == other.description &&
-        location == other.location;
+        SLNO == other.SLNO &&
+        AUTHORS == other.AUTHORS &&
+        TITLE == other.TITLE &&
+        EDITION == other.EDITION &&
+        YEAR == other.YEAR &&
+        PUBLISHER == other.PUBLISHER &&
+        SERIES == other.SERIES &&
+        PAGES == other.PAGES &&
+        PRICE_FOREIGN == other.PRICE_FOREIGN &&
+        PRICE_INR == other.PRICE_INR &&
+        P == other.P &&
+        ISBN == other.ISBN;
   }
 
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, name.hashCode);
-    _$hash = $jc(_$hash, img.hashCode);
-    _$hash = $jc(_$hash, price.hashCode);
-    _$hash = $jc(_$hash, people.hashCode);
-    _$hash = $jc(_$hash, stars.hashCode);
-    _$hash = $jc(_$hash, description.hashCode);
-    _$hash = $jc(_$hash, location.hashCode);
+    _$hash = $jc(_$hash, SLNO.hashCode);
+    _$hash = $jc(_$hash, AUTHORS.hashCode);
+    _$hash = $jc(_$hash, TITLE.hashCode);
+    _$hash = $jc(_$hash, EDITION.hashCode);
+    _$hash = $jc(_$hash, YEAR.hashCode);
+    _$hash = $jc(_$hash, PUBLISHER.hashCode);
+    _$hash = $jc(_$hash, SERIES.hashCode);
+    _$hash = $jc(_$hash, PAGES.hashCode);
+    _$hash = $jc(_$hash, PRICE_FOREIGN.hashCode);
+    _$hash = $jc(_$hash, PRICE_INR.hashCode);
+    _$hash = $jc(_$hash, P.hashCode);
+    _$hash = $jc(_$hash, ISBN.hashCode);
     _$hash = $jf(_$hash);
     return _$hash;
   }
@@ -180,13 +259,18 @@ class _$Location extends Location {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'Location')
-          ..add('name', name)
-          ..add('img', img)
-          ..add('price', price)
-          ..add('people', people)
-          ..add('stars', stars)
-          ..add('description', description)
-          ..add('location', location))
+          ..add('SLNO', SLNO)
+          ..add('AUTHORS', AUTHORS)
+          ..add('TITLE', TITLE)
+          ..add('EDITION', EDITION)
+          ..add('YEAR', YEAR)
+          ..add('PUBLISHER', PUBLISHER)
+          ..add('SERIES', SERIES)
+          ..add('PAGES', PAGES)
+          ..add('PRICE_FOREIGN', PRICE_FOREIGN)
+          ..add('PRICE_INR', PRICE_INR)
+          ..add('P', P)
+          ..add('ISBN', ISBN))
         .toString();
   }
 }
@@ -194,46 +278,72 @@ class _$Location extends Location {
 class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location? _$v;
 
-  String? _name;
-  String? get name => _$this._name;
-  set name(String? name) => _$this._name = name;
+  int? _SLNO;
+  int? get SLNO => _$this._SLNO;
+  set SLNO(int? SLNO) => _$this._SLNO = SLNO;
 
-  String? _img;
-  String? get img => _$this._img;
-  set img(String? img) => _$this._img = img;
+  String? _AUTHORS;
+  String? get AUTHORS => _$this._AUTHORS;
+  set AUTHORS(String? AUTHORS) => _$this._AUTHORS = AUTHORS;
 
-  int? _price;
-  int? get price => _$this._price;
-  set price(int? price) => _$this._price = price;
+  String? _TITLE;
+  String? get TITLE => _$this._TITLE;
+  set TITLE(String? TITLE) => _$this._TITLE = TITLE;
 
-  int? _people;
-  int? get people => _$this._people;
-  set people(int? people) => _$this._people = people;
+  int? _EDITION;
+  int? get EDITION => _$this._EDITION;
+  set EDITION(int? EDITION) => _$this._EDITION = EDITION;
 
-  int? _stars;
-  int? get stars => _$this._stars;
-  set stars(int? stars) => _$this._stars = stars;
+  int? _YEAR;
+  int? get YEAR => _$this._YEAR;
+  set YEAR(int? YEAR) => _$this._YEAR = YEAR;
 
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
+  String? _PUBLISHER;
+  String? get PUBLISHER => _$this._PUBLISHER;
+  set PUBLISHER(String? PUBLISHER) => _$this._PUBLISHER = PUBLISHER;
 
-  String? _location;
-  String? get location => _$this._location;
-  set location(String? location) => _$this._location = location;
+  String? _SERIES;
+  String? get SERIES => _$this._SERIES;
+  set SERIES(String? SERIES) => _$this._SERIES = SERIES;
+
+  String? _PAGES;
+  String? get PAGES => _$this._PAGES;
+  set PAGES(String? PAGES) => _$this._PAGES = PAGES;
+
+  String? _PRICE_FOREIGN;
+  String? get PRICE_FOREIGN => _$this._PRICE_FOREIGN;
+  set PRICE_FOREIGN(String? PRICE_FOREIGN) =>
+      _$this._PRICE_FOREIGN = PRICE_FOREIGN;
+
+  int? _PRICE_INR;
+  int? get PRICE_INR => _$this._PRICE_INR;
+  set PRICE_INR(int? PRICE_INR) => _$this._PRICE_INR = PRICE_INR;
+
+  String? _P;
+  String? get P => _$this._P;
+  set P(String? P) => _$this._P = P;
+
+  String? _ISBN;
+  String? get ISBN => _$this._ISBN;
+  set ISBN(String? ISBN) => _$this._ISBN = ISBN;
 
   LocationBuilder();
 
   LocationBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _name = $v.name;
-      _img = $v.img;
-      _price = $v.price;
-      _people = $v.people;
-      _stars = $v.stars;
-      _description = $v.description;
-      _location = $v.location;
+      _SLNO = $v.SLNO;
+      _AUTHORS = $v.AUTHORS;
+      _TITLE = $v.TITLE;
+      _EDITION = $v.EDITION;
+      _YEAR = $v.YEAR;
+      _PUBLISHER = $v.PUBLISHER;
+      _SERIES = $v.SERIES;
+      _PAGES = $v.PAGES;
+      _PRICE_FOREIGN = $v.PRICE_FOREIGN;
+      _PRICE_INR = $v.PRICE_INR;
+      _P = $v.P;
+      _ISBN = $v.ISBN;
       _$v = null;
     }
     return this;
@@ -256,13 +366,18 @@ class LocationBuilder implements Builder<Location, LocationBuilder> {
   _$Location _build() {
     final _$result = _$v ??
         new _$Location._(
-            name: name,
-            img: img,
-            price: price,
-            people: people,
-            stars: stars,
-            description: description,
-            location: location);
+            SLNO: SLNO,
+            AUTHORS: AUTHORS,
+            TITLE: TITLE,
+            EDITION: EDITION,
+            YEAR: YEAR,
+            PUBLISHER: PUBLISHER,
+            SERIES: SERIES,
+            PAGES: PAGES,
+            PRICE_FOREIGN: PRICE_FOREIGN,
+            PRICE_INR: PRICE_INR,
+            P: P,
+            ISBN: ISBN);
     replace(_$result);
     return _$result;
   }

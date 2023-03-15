@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:lib_management/models/serializers.dart';
@@ -6,13 +5,12 @@ import 'package:lib_management/models/serializers.dart';
 part 'location.g.dart';
 
 abstract class Location implements Built<Location, LocationBuilder> {
-
-
   Location._();
   factory Location([void Function(LocationBuilder) updates]) = _$Location;
 
   Map<String, dynamic> toJson() {
-    return serializers.serializeWith(Location.serializer, this) as Map<String,dynamic>;
+    return serializers.serializeWith(Location.serializer, this)
+        as Map<String, dynamic>;
   }
 
   static Location fromJson(Map<String, dynamic> json) {
@@ -21,11 +19,23 @@ abstract class Location implements Built<Location, LocationBuilder> {
 
   static Serializer<Location> get serializer => _$locationSerializer;
 
-  String? get name;
+  int? get SLNO;
+  String? get AUTHORS;
+  String? get TITLE;
+  int? get EDITION;
+  int? get YEAR;
+  String? get PUBLISHER;
+  String? get SERIES;
+  String? get PAGES;
+  String? get PRICE_FOREIGN;
+  int? get PRICE_INR;
+  String? get P;
+  String? get ISBN;
+/*String? get name;
   String? get img;
   int? get price;
   int? get people;
   int? get stars;
   String? get description;
-  String? get location;
+  String? get location;*/
 }

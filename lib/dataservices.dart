@@ -7,9 +7,12 @@ import 'package:lib_management/models/location.dart';
 class DataServices {
   Future<BuiltList<Location>?> getlocations() async {
     final response =
-        await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
+        await http.get(Uri.parse('http://172.16.53.74:3000/viewbooks?page=1'));
+    print(response);
+
     try {
       if (response.statusCode == 200) {
+        print(response);
         List<dynamic> list = json.decode(response.body);
         final List<Location> l = <Location>[];
         for (final dynamic data in list) {
