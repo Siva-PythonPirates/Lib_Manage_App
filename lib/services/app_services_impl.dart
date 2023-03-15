@@ -65,12 +65,7 @@ class AppServiceImp implements AppServices {
     if (journalFilterSelected.isNotEmpty) {
       for (var query in journalFilterSelected) {
         print(query);
-        filteredJournal = [
-          ...filteredJournal,
-          ...tempjournal
-              .where((element) => element['title']!.contains(query))
-              .toList()
-        ];
+        filteredJournal = [...filteredJournal, ...tempjournal.where((element) => element['title']!.contains(query)).toList()];
       }
       journal = filteredJournal;
       print(journal);
@@ -95,14 +90,18 @@ class AppServiceImp implements AppServices {
 
   @override
   void sortBooksTitle(BuiltList<Location> books) {
+    // print(books);
     if (tempBooks.isEmpty) {
       createtempbooks(books);
     }
-    books.toList().sort(
+    var books1 = books;
+    books1.toList().sort(
       (a, b) {
+        print(a.TITLE!.compareTo(b.TITLE!));
         return a.TITLE!.compareTo(b.TITLE!);
       },
     );
+    print(books1);
   }
 
   @override
@@ -167,8 +166,7 @@ class AppServiceImp implements AppServices {
           print(query);
           filteredBooks = [
             ...books.where((element) {
-              return element.TITLE!.contains(query) &&
-                  (!filteredBooks.contains(element));
+              return element.TITLE!.contains(query) && (!filteredBooks.contains(element));
             }).toList()
           ].toBuiltList();
         }
