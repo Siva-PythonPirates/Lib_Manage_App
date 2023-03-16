@@ -33,9 +33,12 @@ class DataServices {
     try {
       final response = await http.post(
         Uri.parse('http://172.16.53.74:3000/login'),
+        headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
         body: jsonEncode(<String, String>{
           "email": email,
-          "password": password,
+          "password": password
         }),
       );
       final Map<String, dynamic> data = json.decode(response.body);

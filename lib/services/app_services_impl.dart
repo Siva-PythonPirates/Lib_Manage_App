@@ -95,13 +95,33 @@ class AppServiceImp implements AppServices {
       createtempbooks(books);
     }
     var books1 = books;
-    books1.toList().sort(
-      (a, b) {
-        print(a.TITLE!.compareTo(b.TITLE!));
-        return a.TITLE!.compareTo(b.TITLE!);
-      },
-    );
-    print(books1);
+    // books1.toList().sort(
+    //   (a, b) {
+    //     print(a.TITLE!.toLowerCase().compareTo(b.TITLE!.toLowerCase()));
+    //     return a.TITLE!.compareTo(b.TITLE!);
+    //   },
+    // );
+    List<String> title =[];
+    books1.forEach((p0) {title.add(p0.TITLE!);});
+  //  BuiltList<Location> locations = BuiltList<Location>([
+  //   Location((b) => b..TITLE = "C Programming Language"),
+  //   Location((b) => b..TITLE = "Design Patterns"),
+  //   Location((b) => b..TITLE = "Clean Code"),
+  // ]);
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((a, b) => a.compareTo(b)));
+
+  print(sortedLocations[12559]);
+    // books.rebuild((p0) => p0
+    // ..sort(
+    //    (a, b) {
+    //      print(a.TITLE!.compareTo(b.TITLE!));
+    //      return a.TITLE!.compareTo(b.TITLE!);
+    //   },
+    // )
+    // );
+    // print(sortedList);
   }
 
   @override

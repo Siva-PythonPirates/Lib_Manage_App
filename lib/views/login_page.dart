@@ -147,10 +147,7 @@ class _LoginState extends State<Login> {
                                     bool emailValid = RegExp(
                                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                         .hasMatch(mail.text);
-                                    if ((login != null && login == 1) ||
-                                        (mail.text ==
-                                                "200701155@rajalakshmi.edu.in" &&
-                                            password.text == "REC@123")) {
+                                    if ((login != null && login == 1) ) {
                                       try {
                                         await context
                                             .read<MyModel>()

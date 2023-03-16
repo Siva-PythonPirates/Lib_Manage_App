@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/view_model/app_provider.dart';
+import 'package:lib_management/views/book_details.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/app_services.dart';
@@ -39,8 +40,9 @@ class BookCustomDelegate extends SearchDelegate {
     BuiltList<Location> books = context.read<MyModel>().state.locations!;
     final results = books.where((book) =>
         book.TITLE!.toLowerCase().contains(query.toLowerCase()) ||
-        book.AUTHORS!.toLowerCase().contains(query.toLowerCase()) ||
-        book.PUBLISHER!.toLowerCase().contains(query.toLowerCase()));
+    (book.AUTHORS??" ").toLowerCase().contains(query.toLowerCase())|| 
+     (book.PUBLISHER??" ").toLowerCase().contains(query.toLowerCase())
+        );
     return ListView.builder(
       padding: EdgeInsets.all(imp.getSize(context, 8)),
       itemCount: results.length,
@@ -60,7 +62,17 @@ class BookCustomDelegate extends SearchDelegate {
               ],
             ),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetails(
+                                  book: results.toList()[index],
+                                ),
+                              ),
+                            );
+                
+              },
               child: SizedBox(
                 child: Padding(
                   padding: EdgeInsets.all(imp.getSize(context, 10)),
