@@ -7,7 +7,8 @@ import 'package:lib_management/models/location.dart';
 class DataServices {
   Future<BuiltList<Location>?> getlocations() async {
     try {
-      final response = await http.get(Uri.parse('http://172.16.53.74:3000/viewbooks?page=1'));
+      final response = await http
+          .get(Uri.parse('http://172.16.53.74:3000/viewbooks?page=1'));
       print(response);
       if (response.statusCode == 200) {
         List<dynamic> list = json.decode(response.body);
@@ -27,15 +28,18 @@ class DataServices {
   }
 
   Future<int?> logIn({required String email, required String password}) async {
+    print(email);
+    print(password);
     try {
       final response = await http.post(
         Uri.parse('http://172.16.53.74:3000/login'),
         body: jsonEncode(<String, String>{
-          'email': email,
-          'password': password,
+          "email": email,
+          "password": password,
         }),
       );
       final Map<String, dynamic> data = json.decode(response.body);
+      print(data);
       return data['message'];
     } catch (e) {
       print(e);
@@ -44,7 +48,8 @@ class DataServices {
   }
 
   fetchAlbum() async {
-    final response = await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
+    final response =
+        await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
 
     try {
       if (response.statusCode == 200) {
@@ -110,7 +115,8 @@ class DataServices {
           {
             "id": 5,
             "name": "Gaza",
-            "description": "Dome of the rock the beautiful and amazing human made architectural.",
+            "description":
+                "Dome of the rock the beautiful and amazing human made architectural.",
             "price": 10,
             "stars": 5,
             "people": 5,
