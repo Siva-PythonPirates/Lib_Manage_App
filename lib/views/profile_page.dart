@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
                         height: imp.getSize(context, 530),
                       ),
                       Text(
-                        "Student",
+                        login==1?"Student":"Staff",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: imp.getSize(context, 40),
@@ -47,7 +47,7 @@ class ProfilePage extends StatelessWidget {
                         height: imp.getSize(context, 20),
                       ),
                       Text(
-                        (context.read<MyModel>().state.mail)?.substring(0, 9)   ?? " ",
+                        login==1?((context.read<MyModel>().state.mail)?.substring(0, 9)   ?? " "):(context.read<MyModel>().state.mail ?? " "),
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: imp.getSize(context, 30),
@@ -98,7 +98,7 @@ class ProfilePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                       (context.read<MyModel>().state.mail)?.substring(0, 9)   ?? " ",
+                        login==1?((context.read<MyModel>().state.mail)?.substring(0, 9)   ?? " "):(context.read<MyModel>().state.mail ?? " "),
                         style: TextStyle(
                             color: bgColor,
                             fontSize: imp.getSize(context, 20),
@@ -130,7 +130,7 @@ class ProfilePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.all(imp.getSize(context, 8)),
                       child: Text(
-                        (context.read<MyModel>().state.mail)?.substring(0, 9)   ?? " ",
+                        login==1?((context.read<MyModel>().state.mail)   ?? " "):(context.read<MyModel>().state.mail ?? " "),
                         style: TextStyle(
                             color: bgColor,
                             fontSize: imp.getSize(context, 18),
@@ -220,7 +220,7 @@ class ProfilePage extends StatelessWidget {
                     action1: 'Yes',
                     action2: 'No');
                 if (shouldLogout) {
-                  await context.read<MyModel>().updateLogin(false);
+                  // await context.read<MyModel>().updateLogin(false);
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => const Login()),

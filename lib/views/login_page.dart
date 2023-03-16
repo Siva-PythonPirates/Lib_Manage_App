@@ -140,22 +140,22 @@ class _LoginState extends State<Login> {
                                       shape: MaterialStateProperty.all(
                                           const StadiumBorder())),
                                   onPressed: () async {
-                                    int? login = await DataServices().logIn(
+                                    login = await DataServices().logIn(
                                         email: mail.text,
                                         password: password.text);
                                     print(login);
                                     bool emailValid = RegExp(
                                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                         .hasMatch(mail.text);
-                                    if ((login != null && login == 1) ) {
+                                    if ((login != null && (login == 1 || login==2)) ) {
                                       try {
                                         await context
                                             .read<MyModel>()
                                             .getMailId(mail.text);
                                         print("mail");
-                                        await context
-                                            .read<MyModel>()
-                                            .updateLogin(true);
+                                        // await context
+                                        //     .read<MyModel>()
+                                        //     .updateLogin(true);
                                         print("login");
                                         await context
                                             .read<MyModel>()

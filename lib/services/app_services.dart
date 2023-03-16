@@ -11,13 +11,12 @@ abstract class AppServices {
   void createtempjournal();
   void applyJournalFilter();
   void resetJournalFilter();
-  void sortBooksTitle(BuiltList<Location> books);
-  void sortBooksTitleDesc(BuiltList<Location> books);
-  void sortBooksAuthor(BuiltList<Location> books);
-  void sortBooksAuthorDesc(BuiltList<Location> books);
-  void sortBooksDept(BuiltList<Location> books);
-  void sortBooksDeptDesc(BuiltList<Location> books);
-  void resetBookSort(BuiltList<Location> books);
-  BuiltList<Location> applyBooksFilter(BuiltList<Location> books);
+
+  void sortBooksTitle(BuiltList<Location> books,BuildContext context);   void sortBooksTitleDesc(BuiltList<Location> books,BuildContext context) ;
+ void sortBooksAuthor(BuiltList<Location> books,BuildContext context);
+  void sortBooksAuthorDesc(BuiltList<Location> books,BuildContext context);
+ void sortBooksDept(BuiltList<Location> books,BuildContext context) ; 
+ void sortBooksDeptDesc(BuiltList<Location> books,BuildContext context);
+  void resetBookSort(BuiltList<Location> books,BuildContext context);  BuiltList<Location> applyBooksFilter(BuiltList<Location> books);
   void resetBooksFilter(BuiltList<Location> books);
 }

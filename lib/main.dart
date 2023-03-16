@@ -50,21 +50,21 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Timer(
       const Duration(seconds: 2),
       () async {
-        if (await context.read<MyModel>().getLoginDetail()) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (_) => const HomePage(),
-            ),
-          );
-        } else {
+        // if (await context.read<MyModel>().getLoginDetail()) {
+        //   Navigator.pushReplacement(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (_) => const HomePage(),
+        //     ),
+        //   );
+        // } else {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (_) => const Login(),
             ),
           );
-        }
+        // }
       },
     );
     _animationController.forward();

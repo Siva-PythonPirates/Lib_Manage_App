@@ -41,6 +41,8 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     AppServices imp = AppServiceImp();
     BuiltList<Location> books1 = imp.applyBooksFilter(books);
     state = state.rebuild((p0) => p0.books = books1.toBuilder());
+        state = state.rebuild((p0) => p0.books = books1.toBuilder());
+
   }
 
   Future<void> getMailId(String mail) async {
@@ -81,5 +83,11 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     DataServices obj = DataServices();
     final a = await obj.getlocations();
     state = state.rebuild((p0) => p0.locations = a?.toBuilder());
+        state = state.rebuild((p0) => p0.books = a?.toBuilder());
+
+  }
+
+  Future<void> updateLocations(BuiltList<Location> books) async{
+  state = state.rebuild((p0) => p0.books = books.toBuilder());
   }
 }

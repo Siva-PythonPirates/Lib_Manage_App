@@ -32,9 +32,17 @@ abstract class Location implements Built<Location, LocationBuilder> {
   String? get P;
   String? get ISBN;
 
- compareTo(Location b) {
+ compareToTitle(Location b) {
    return this.TITLE!.compareTo(b.TITLE!);
  }
+ compareToAuthor(Location b) {
+   return (this.AUTHORS??" ").compareTo(this.AUTHORS??" ");
+ }
+ 
+ compareToDepartment(Location b) {
+   return (this.PUBLISHER??" ").compareTo(this.PUBLISHER??" ");
+ }
+ 
  
 }
 /*String? get name;

@@ -2,6 +2,8 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services.dart';
+import 'package:lib_management/view_model/app_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'app_constants.dart';
@@ -89,7 +91,7 @@ class AppServiceImp implements AppServices {
   }
 
   @override
-  void sortBooksTitle(BuiltList<Location> books) {
+  void sortBooksTitle(BuiltList<Location> books,BuildContext context) {
     // print(books);
     if (tempBooks.isEmpty) {
       createtempbooks(books);
@@ -100,9 +102,9 @@ class AppServiceImp implements AppServices {
     //     print(a.TITLE!.toLowerCase().compareTo(b.TITLE!.toLowerCase()));
     //     return a.TITLE!.compareTo(b.TITLE!);
     //   },
-    // );
-    List<String> title =[];
-    books1.forEach((p0) {title.add(p0.TITLE!);});
+    // // );
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.TITLE!);});
   //  BuiltList<Location> locations = BuiltList<Location>([
   //   Location((b) => b..TITLE = "C Programming Language"),
   //   Location((b) => b..TITLE = "Design Patterns"),
@@ -110,8 +112,8 @@ class AppServiceImp implements AppServices {
   // ]);
 
   BuiltList<Location> sortedLocations =
-      books1.rebuild((b) => b..sort((a, b) => a.compareTo(b)));
-
+      books1.rebuild((b) => b..sort((a, b) => a.compareToTitle(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
   print(sortedLocations[12559]);
     // books.rebuild((p0) => p0
     // ..sort(
@@ -125,49 +127,89 @@ class AppServiceImp implements AppServices {
   }
 
   @override
-  void sortBooksTitleDesc(BuiltList<Location> books) {
-    sortBooksTitle(books);
-    books = books.reversed.toBuiltList();
+  void sortBooksTitleDesc(BuiltList<Location> books,BuildContext context) {
+     if (tempBooks.isEmpty) {
+      createtempbooks(books);
+    }
+    var books1 = books;
+
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.TITLE!);});
+
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((b, a) => a.compareToTitle(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
+   
   }
 
   @override
-  void sortBooksAuthor(BuiltList<Location> books) {
+  void sortBooksAuthor(BuiltList<Location> books,BuildContext context) {
     if (tempBooks.isEmpty) {
       createtempbooks(books);
     }
-    books.toList().sort(
-      (a, b) {
-        return a.AUTHORS!.compareTo(b.AUTHORS!);
-      },
-    );
+    var books1 = books;
+
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.AUTHORS??"`");});
+
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((a, b) => a.compareToAuthor(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
   }
 
   @override
-  void sortBooksAuthorDesc(BuiltList<Location> books) {
-    sortBooksAuthor(books);
-    books = books..reversed.toList();
-  }
-
-  @override
-  void sortBooksDept(BuiltList<Location> books) {
+  void sortBooksAuthorDesc(BuiltList<Location> books,BuildContext context) {
     if (tempBooks.isEmpty) {
       createtempbooks(books);
     }
-    books.toList().sort(
-      (a, b) {
-        return a.PUBLISHER!.compareTo(b.PUBLISHER!);
-      },
-    );
+    var books1 = books;
+
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.AUTHORS??"`");});
+
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((b, a) => a.compareToAuthor(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
   }
 
   @override
-  void sortBooksDeptDesc(BuiltList<Location> books) {
-    sortBooksDept(books);
-    books = books.reversed.toBuiltList();
+  void sortBooksDept(BuiltList<Location> books,BuildContext context) {
+    if (tempBooks.isEmpty) {
+      createtempbooks(books);
+    }
+    var books1 = books;
+
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.PUBLISHER!);});
+
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((a, b) => a.compareToDepartment(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
   }
 
   @override
-  void resetBookSort(BuiltList<Location> books) {
+  void sortBooksDeptDesc(BuiltList<Location> books,BuildContext context) {
+    if (tempBooks.isEmpty) {
+      createtempbooks(books);
+    }
+    var books1 = books;
+
+    // List<String> title =[];
+    // books1.forEach((p0) {title.add(p0.PUBLISHER!);});
+
+
+  BuiltList<Location> sortedLocations =
+      books1.rebuild((b) => b..sort((b, a) => a.compareToAuthor(b)));
+      context.read<MyModel>().updateLocations(sortedLocations);
+  }
+
+  @override
+  void resetBookSort(BuiltList<Location> books,BuildContext context) {
+    context.read<MyModel>().updateLocations(context.read<MyModel>().state.locations!);
     if (tempBooks.isNotEmpty) books = tempBooks;
   }
 
