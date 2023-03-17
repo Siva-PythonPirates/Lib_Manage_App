@@ -7,7 +7,8 @@ import 'package:lib_management/models/location.dart';
 
 Color bgColor = const Color.fromRGBO(34, 4, 88, 1);
 List<Location> historyBooks = [];
-int? login=0;
+int? login;
+bool loading = false;
 
 List<String> quotes = [
   '"Books are a uniquely portable magic." – Stephen King',

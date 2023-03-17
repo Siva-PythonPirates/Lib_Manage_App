@@ -23,8 +23,8 @@ class _LoginState extends State<Login> {
   var using = Icons.remove_red_eye;
   AppServices imp = AppServiceImp();
   TextEditingController mail =
-      TextEditingController(text: "200701155@rajalakshmi.edu.in");
-  TextEditingController password = TextEditingController(text: "REC@123");
+      TextEditingController();
+  TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +132,7 @@ class _LoginState extends State<Login> {
                               SizedBox(
                                 width: double.infinity,
                                 height: imp.getSize(context, 54),
-                                child: ElevatedButton(
+                                child:loading==false? ElevatedButton(
                                   style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
@@ -140,14 +140,20 @@ class _LoginState extends State<Login> {
                                       shape: MaterialStateProperty.all(
                                           const StadiumBorder())),
                                   onPressed: () async {
+                                    setState(() {
+                                      loading=true;
+                                    });
                                     login = await DataServices().logIn(
                                         email: mail.text,
                                         password: password.text);
                                     print(login);
+                                    setState(() {
+                                      loading=false;
+                                    });
                                     bool emailValid = RegExp(
                                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                         .hasMatch(mail.text);
-                                    if ((login != null && (login == 1 || login==2)) ) {
+                                    if ((login != null && (login == 1 || login ==2)) ) {
                                       try {
                                         await context
                                             .read<MyModel>()
@@ -197,7 +203,7 @@ class _LoginState extends State<Login> {
                                         color: Colors.black,
                                         fontSize: imp.getSize(context, 25)),
                                   ),
-                                ),
+                                ):CircularProgressIndicator(color: Colors.white,),
                               ),
                               SizedBox(
                                 height: imp.getSize(context, 45),

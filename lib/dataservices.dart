@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:http/http.dart' as http;
@@ -8,7 +9,7 @@ class DataServices {
   Future<BuiltList<Location>?> getlocations() async {
     try {
       final response = await http
-          .get(Uri.parse('http://172.16.53.74:3000/viewbooks?page=1'));
+          .get(Uri.parse('http://14.99.10.241:3000/viewbooks?page=1'));
       print(response);
       if (response.statusCode == 200) {
         List<dynamic> list = json.decode(response.body);
@@ -32,7 +33,7 @@ class DataServices {
     print(password);
     try {
       final response = await http.post(
-        Uri.parse('http://172.16.53.74:3000/login'),
+        Uri.parse('http://14.99.10.241:3000/login'),
         headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
@@ -41,8 +42,8 @@ class DataServices {
           "password": password
         }),
       );
-      final Map<String, dynamic> data = json.decode(response.body);
-      print(data);
+      final data = json.decode(response.body);
+    print(data['message']);
       return data['message'];
     } catch (e) {
       print(e);
