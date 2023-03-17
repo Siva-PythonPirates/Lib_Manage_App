@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
           await context.read<MyModel>().getMailId(temp[1]);
           login = int.parse(temp[0]);
-
+          await context.read<MyModel>().getlocations();
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
