@@ -147,9 +147,7 @@ class _LoginState extends State<Login> {
                                         email: mail.text,
                                         password: password.text);
                                     print(login);
-                                    setState(() {
-                                      loading=false;
-                                    });
+                                    
                                     bool emailValid = RegExp(
                                             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                         .hasMatch(mail.text);
@@ -196,6 +194,10 @@ class _LoginState extends State<Login> {
                                         backgroundColor: Colors.white,
                                       ));
                                     }
+                                    setState(() {
+                                      loading=false;
+                                    });
+                                    
                                   },
                                   child: Text(
                                     'Login',
@@ -203,7 +205,13 @@ class _LoginState extends State<Login> {
                                         color: Colors.black,
                                         fontSize: imp.getSize(context, 25)),
                                   ),
-                                ):CircularProgressIndicator(color: Colors.white,),
+                                ):Center
+                                (
+                                  child: Container(
+                                    height: imp.getSize(context, 50),
+                                    width: imp.getSize(context, 50),
+                                    child: CircularProgressIndicator(color: Colors.white)),
+                                ),
                               ),
                               SizedBox(
                                 height: imp.getSize(context, 45),
