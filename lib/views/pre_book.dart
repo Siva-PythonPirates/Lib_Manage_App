@@ -3,6 +3,7 @@ import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
+import 'package:lib_management/views/history.dart';
 
 class PreBookPage extends StatefulWidget {
   final Location book;
@@ -255,15 +256,22 @@ class _PreBookPageState extends State<PreBookPage> {
 
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
+                                    backgroundColor: Colors.white,
                                     duration: Duration(seconds: 3),
-                                    content: Text('PreBook Successfull !'),
+                                    content: Text(
+                                      'PreBook Successfull !',
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                      ),
+                                    ),
                                   ),
                                 );
                                 // print(historyBooks);
                                 historyBooks.add(widget.book);
                                 // historyBooks.rebuild((p0) => p0.add(widget.book));
-                                print("hello");
-                                print(historyBooks);
+                                // print("hello");
+                                // print(historyBooks);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => History()));
                               }
                             },
                             child: Padding(

@@ -36,12 +36,7 @@ class _HomePageState extends State<HomePage> {
   int bottomSelectedIndex = 0;
   AppServices imp = AppServiceImp();
 
-  final _pageOptions = [
-    const DashBoard(),
-    const Journals(),
-    const Books(),
-    const ProfilePage()
-  ];
+  final _pageOptions = [const DashBoard(), const Journals(), const Books(), const ProfilePage()];
 
   PageController pageController = PageController(
     initialPage: 0,
@@ -84,7 +79,8 @@ class _HomePageState extends State<HomePage> {
               );
             });
           },
-          color: Colors.pink[200]!,
+          // color: Colors.pink[200]!,
+          color: Colors.white,
           backgroundColor: bgColor,
           buttonBackgroundColor: Colors.white,
           height: imp.getSize(context, 55),

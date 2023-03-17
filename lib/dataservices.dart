@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:http/http.dart' as http;
@@ -8,8 +7,8 @@ import 'package:lib_management/models/location.dart';
 class DataServices {
   Future<BuiltList<Location>?> getlocations() async {
     try {
-      final response = await http
-          .get(Uri.parse('http://14.99.10.241:3000/viewbooks?page=1'));
+      print("waiting for response...");
+      final response = await http.get(Uri.parse('http://14.99.10.241:3000/viewbooks?page=1'));
       print(response);
       if (response.statusCode == 200) {
         List<dynamic> list = json.decode(response.body);
@@ -35,15 +34,12 @@ class DataServices {
       final response = await http.post(
         Uri.parse('http://14.99.10.241:3000/login'),
         headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-        body: jsonEncode(<String, String>{
-          "email": email,
-          "password": password
-        }),
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{"email": email, "password": password}),
       );
       final data = json.decode(response.body);
-    print(data['message']);
+      print(data['message']);
       return data['message'];
     } catch (e) {
       print(e);
@@ -52,8 +48,7 @@ class DataServices {
   }
 
   fetchAlbum() async {
-    final response =
-        await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
+    final response = await http.get(Uri.parse('http://mark.bslmeiyu.com/api/getplaces'));
 
     try {
       if (response.statusCode == 200) {
@@ -119,8 +114,7 @@ class DataServices {
           {
             "id": 5,
             "name": "Gaza",
-            "description":
-                "Dome of the rock the beautiful and amazing human made architectural.",
+            "description": "Dome of the rock the beautiful and amazing human made architectural.",
             "price": 10,
             "stars": 5,
             "people": 5,

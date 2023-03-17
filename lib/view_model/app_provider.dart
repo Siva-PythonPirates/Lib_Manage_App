@@ -32,8 +32,29 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     return prefs.getBool('isLoggedIn') ?? false;
   }
 
+// //////////////////////////////////////////////////////////////////////////////////////////
+
+  Future<List<String>> getUserDetail() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList('userDetail')!;
+  }
+
+  Future<void> setUserDetail(String email, int logintype) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('userDetail', [
+      logintype.toString(),
+      email,
+    ]);
+  }
+
+  Future<void> removeUserDetail() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('userDetail');
+  }
+
   Future<void> updateLogin(bool bool) async {
     final prefs = await SharedPreferences.getInstance();
+
     prefs.setBool('isLoggedIn', bool);
   }
 
@@ -41,8 +62,7 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     AppServices imp = AppServiceImp();
     BuiltList<Location> books1 = imp.applyBooksFilter(books);
     state = state.rebuild((p0) => p0.books = books1.toBuilder());
-        state = state.rebuild((p0) => p0.books = books1.toBuilder());
-
+    state = state.rebuild((p0) => p0.books = books1.toBuilder());
   }
 
   Future<void> getMailId(String mail) async {
@@ -83,11 +103,10 @@ class MyModel extends StateNotifier<Appstate> with LocatorMixin {
     DataServices obj = DataServices();
     final a = await obj.getlocations();
     state = state.rebuild((p0) => p0.locations = a?.toBuilder());
-        state = state.rebuild((p0) => p0.books = a?.toBuilder());
-
+    state = state.rebuild((p0) => p0.books = a?.toBuilder());
   }
 
-  Future<void> updateLocations(BuiltList<Location> books) async{
-  state = state.rebuild((p0) => p0.books = books.toBuilder());
+  Future<void> updateLocations(BuiltList<Location> books) async {
+    state = state.rebuild((p0) => p0.books = books.toBuilder());
   }
 }

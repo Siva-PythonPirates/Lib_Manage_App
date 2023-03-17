@@ -241,12 +241,12 @@ class _DashBoardState extends State<DashBoard> {
         children.add(
           InkWell(
             onTap: () {
+              // Navigator.pushNamed(context, '/books')
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const Books(),
-                ),
-              ).then((value) {
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Books(),
+                  )).then((value) {
                 setState(() {
                   favoriteBooks = books.where((book) => context.read<MyModel>().favorites.contains(book.TITLE)).toBuiltList();
                   log(favoriteBooks.toString());
@@ -329,6 +329,7 @@ class _DashBoardState extends State<DashBoard> {
               const CustomCarousel(),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
                   child: Padding(
                     padding: EdgeInsets.all(imp.getSize(context, 10)),
                     child: Column(
@@ -495,6 +496,7 @@ class _DashBoardState extends State<DashBoard> {
                                           builder: (context) => const Books(),
                                         ),
                                       );
+                                      // Navigator.pushNamed(context, '/books/');
                                     },
                                     borderRadius: BorderRadius.circular(imp.getSize(context, 15)),
                                     child: Ink(

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lib_management/models/location.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/views/book_details.dart';
-import 'package:lib_management/views/widgets/book_filter_cat_opt.dart';
 import 'package:lib_management/views/widgets/search_books.dart';
 import 'package:provider/provider.dart';
 
@@ -126,7 +125,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitle(books,context);
+                                      imp.sortBooksTitle(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 1;
@@ -150,7 +149,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksTitleDesc(books,context);
+                                      imp.sortBooksTitleDesc(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 2;
@@ -174,7 +173,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthor(books,context);
+                                      imp.sortBooksAuthor(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 3;
@@ -198,7 +197,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksAuthorDesc(books,context);
+                                      imp.sortBooksAuthorDesc(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 4;
@@ -222,7 +221,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDept(books,context);
+                                      imp.sortBooksDept(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 5;
@@ -246,7 +245,7 @@ class _BooksState extends State<Books> {
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.pop(context);
-                                      imp.sortBooksDeptDesc(books,context);
+                                      imp.sortBooksDeptDesc(books, context);
                                       setState(() {
                                         books;
                                         selectedSortOpt = 6;
@@ -269,7 +268,7 @@ class _BooksState extends State<Books> {
                                 Expanded(
                                   child: InkWell(
                                     onTap: () {
-                                      imp.resetBookSort(books,context);
+                                      imp.resetBookSort(books, context);
                                       Navigator.pop(context);
 
                                       setState(() {

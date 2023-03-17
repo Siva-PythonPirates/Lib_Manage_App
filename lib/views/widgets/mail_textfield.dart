@@ -17,8 +17,8 @@ class _MailFieldState extends State<MailField> {
       style: const TextStyle(color: Colors.white),
       keyboardType: TextInputType.emailAddress,
       decoration: const InputDecoration(
-          hintText: 'Enter your e-mail address',
-          labelText: 'Enter e-mail',
+          hintText: 'Enter your e-mail/staff code',
+          labelText: 'Enter e-mail/staff code',
           labelStyle: TextStyle(color: Colors.white),
           border: OutlineInputBorder(
             borderSide: BorderSide(width: 2, color: Colors.white),

@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/view_model/app_provider.dart';
 import 'package:lib_management/views/home_page.dart';
 import 'package:lib_management/views/login_page.dart';
@@ -12,11 +13,12 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (value) => runApp(
-      const Changes(
+      Changes(
         child: MaterialApp(
           home: SplashScreen(),
           debugShowCheckedModeBanner: false,
           title: 'REC Library',
+          // routes: {'/books/': (context) => const Books()},
         ),
       ),
     ),
@@ -50,21 +52,26 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Timer(
       const Duration(seconds: 2),
       () async {
-        // if (await context.read<MyModel>().getLoginDetail()) {
-        //   Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (_) => const HomePage(),
-        //     ),
-        //   );
-        // } else {
+        if (await context.read<MyModel>().getLoginDetail()) {
+          var temp = await context.read<MyModel>().getUserDetail();
+
+          await context.read<MyModel>().getMailId(temp[1]);
+          login = int.parse(temp[0]);
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const HomePage(),
+            ),
+          );
+        } else {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (_) => const Login(),
             ),
           );
-        // }
+        }
       },
     );
     _animationController.forward();
