@@ -92,7 +92,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        widget.book.TITLE ?? 'BOOK TITLE',
+                                        widget.book.TITLE == '-1' || widget.book.TITLE == -1 ? "Not Available" : widget.book.TITLE ?? 'BOOK TITLE',
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -118,7 +118,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        widget.book.AUTHORS ?? 'Author',
+                                        widget.book.AUTHORS == '-1' || widget.book.AUTHORS == -1 ? "Not Available" : widget.book.AUTHORS ?? 'Author',
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -144,7 +144,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        "${widget.book.EDITION ?? "Not Available"}",
+                                        "${widget.book.EDITION == -1 || widget.book.EDITION == '-1' ? "Not Available" : widget.book.EDITION ?? "Not Available"}",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -170,7 +170,9 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        widget.book.PUBLISHER ?? "Not Available",
+                                        widget.book.PUBLISHER == '-1' || widget.book.PUBLISHER == -1
+                                            ? "Not Available"
+                                            : widget.book.PUBLISHER ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -196,7 +198,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        widget.book.PAGES ?? "Not Available",
+                                        widget.book.PAGES == '-1' || widget.book.PAGES == -1 ? "Not Available" : widget.book.PAGES ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -222,7 +224,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        widget.book.ISBN ?? "Not Available",
+                                        widget.book.ISBN == '-1' || widget.book.ISBN == -1 ? "Not Available" : widget.book.ISBN ?? "Not Available",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -248,7 +250,7 @@ class _BookDetailsState extends State<BookDetails> {
                                     SizedBox(
                                       width: imp.getSize(context, 200),
                                       child: Text(
-                                        "${widget.book.PRICE_INR ?? "Not Available"}",
+                                        "${widget.book.PAGES == '-1' || widget.book.PAGES == -1 ? "Not Available" : widget.book.PRICE_INR ?? "Not Available"}",
                                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                                               color: Colors.white,
                                             ),
@@ -286,7 +288,7 @@ class _BookDetailsState extends State<BookDetails> {
                     child: SingleChildScrollView(
                       physics: const BouncingScrollPhysics(),
                       child: Text(
-                        widget.book.TITLE ?? 'BOOK TITLE',
+                        widget.book.TITLE == '-1' || widget.book.TITLE == -1 ? "Not Available" : widget.book.TITLE ?? 'BOOK TITLE',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: imp.getSize(context, 34), color: bgColor, fontWeight: FontWeight.bold),
                       ),

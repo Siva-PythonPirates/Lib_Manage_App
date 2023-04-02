@@ -27,6 +27,7 @@ class _BooksState extends State<Books> {
   @override
   Widget build(BuildContext context) {
     BuiltList<Location> books = context.read<MyModel>().state.books!;
+    // books['']
     print(books.length);
     return Scaffold(
       body: DecoratedBox(

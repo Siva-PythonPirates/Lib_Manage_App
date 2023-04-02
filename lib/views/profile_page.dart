@@ -99,32 +99,34 @@ class ProfilePage extends StatelessWidget {
                   height: imp.getSize(context, 1),
                   color: bgColor,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: imp.getSize(context, 8), horizontal: imp.getSize(context, 24)),
-                      child: Icon(
-                        Icons.mail,
-                        color: bgColor,
-                        size: imp.getSize(context, 40),
+                if (login == 1)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: imp.getSize(context, 8), horizontal: imp.getSize(context, 24)),
+                        child: Icon(
+                          Icons.mail,
+                          color: bgColor,
+                          size: imp.getSize(context, 40),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(imp.getSize(context, 8)),
-                      child: Text(
-                        login == 1 ? ((context.read<MyModel>().state.mail) ?? " ") : (context.read<MyModel>().state.mail ?? " "),
-                        style: TextStyle(color: bgColor, fontSize: imp.getSize(context, 18), fontWeight: FontWeight.w400),
-                      ),
-                    )
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: imp.getSize(context, 8), horizontal: 0),
-                  width: MediaQuery.of(context).size.width,
-                  height: imp.getSize(context, 1),
-                  color: bgColor,
-                ),
+                      Padding(
+                        padding: EdgeInsets.all(imp.getSize(context, 8)),
+                        child: Text(
+                          login == 1 ? ((context.read<MyModel>().state.mail) ?? " ") : (context.read<MyModel>().state.mail ?? " "),
+                          style: TextStyle(color: bgColor, fontSize: imp.getSize(context, 18), fontWeight: FontWeight.w400),
+                        ),
+                      )
+                    ],
+                  ),
+                if (login == 1)
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: imp.getSize(context, 8), horizontal: 0),
+                    width: MediaQuery.of(context).size.width,
+                    height: imp.getSize(context, 1),
+                    color: bgColor,
+                  ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

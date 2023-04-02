@@ -8,7 +8,8 @@ class DataServices {
   Future<BuiltList<Location>?> getlocations() async {
     try {
       print("waiting for response...");
-      final response = await http.get(Uri.parse('http://14.99.10.241:3000/viewbooks?page=1'));
+      // final response = await http.get(Uri.parse('http://14.99.10.241:3000/viewbooks?page=1'));
+      final response = await http.get(Uri.parse('http://14.99.10.243:8002/api/viewbooks'));
       print(response);
       if (response.statusCode == 200) {
         List<dynamic> list = json.decode(response.body);
@@ -32,7 +33,8 @@ class DataServices {
     print(password);
     try {
       final response = await http.post(
-        Uri.parse('http://14.99.10.241:3000/login'),
+        // Uri.parse('http://14.99.10.241:3000/login'),
+        Uri.parse('http://14.99.10.243:8002/api/login'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },

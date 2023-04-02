@@ -36,8 +36,8 @@ class _CustomCarouselState extends State<CustomCarousel> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: BoxDecoration(
-                      // color: Colors.pink[200],
-                      color: Colors.white,
+                      color: Colors.pink[200],
+                      // color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [],
                     ),

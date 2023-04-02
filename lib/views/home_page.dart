@@ -79,8 +79,8 @@ class _HomePageState extends State<HomePage> {
               );
             });
           },
-          // color: Colors.pink[200]!,
-          color: Colors.white,
+          color: Colors.pink[200]!,
+          // color: Colors.white,
           backgroundColor: bgColor,
           buttonBackgroundColor: Colors.white,
           height: imp.getSize(context, 55),
