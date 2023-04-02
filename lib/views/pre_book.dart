@@ -253,7 +253,13 @@ class _PreBookPageState extends State<PreBookPage> {
                                 //   'borrowDate': "${borrowDate.day}-${borrowDate.month}-${borrowDate.year}",
                                 //   'returnDate': "${returnDate.day}-${returnDate.month}-${returnDate.year}"
                                 // };
+                                favdate.add({
+                                  'title': widget.book.TITLE!,
+                                  'borrowDate': "${borrowDate.day}/${borrowDate.month}/${borrowDate.year}",
+                                  'returnDate': "${returnDate.day}/${returnDate.month}/${returnDate.year}"
+                                });
 
+                                print("error in pre books");
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                     backgroundColor: Colors.white,

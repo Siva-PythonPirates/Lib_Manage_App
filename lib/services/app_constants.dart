@@ -10,6 +10,8 @@ List<Location> historyBooks = [];
 int? login;
 bool loading = false;
 
+List<Map<String, String>> favdate = [];
+
 List<String> quotes = [
   '"Books are a uniquely portable magic." – Stephen King',
   '"Share your knowledge. It is a way to achieve immortality —Dalai Lama"',

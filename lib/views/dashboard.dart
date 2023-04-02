@@ -3,7 +3,6 @@ import 'dart:developer' show log;
 import 'package:built_collection/built_collection.dart';
 import 'package:flutter/material.dart';
 import 'package:lib_management/models/location.dart';
-import 'package:lib_management/services/app_constants.dart';
 import 'package:lib_management/services/app_services.dart';
 import 'package:lib_management/services/app_services_impl.dart';
 import 'package:lib_management/view_model/app_provider.dart';
@@ -75,6 +74,14 @@ class _DashBoardState extends State<DashBoard> {
                     });
                   },
                 );*/
+                 Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BookDetails(
+                                  book: books[i],
+                                ),
+                              ),
+                            );
               },
               child: Container(
                 width: imp.getSize(context, 130),
@@ -101,7 +108,9 @@ class _DashBoardState extends State<DashBoard> {
                           image: const DecorationImage(
                             image: NetworkImage('https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                             fit: BoxFit.cover,
-                          )),
+                          ),
+                          
+                          ),
                     ),
                     Expanded(
                       child: Center(
@@ -110,7 +119,7 @@ class _DashBoardState extends State<DashBoard> {
                           child: Padding(
                             padding: EdgeInsets.all(imp.getSize(context, 3)),
                             child: Text(
-                              topPicksBooks[i]['title']!,
+                              books[i].TITLE!,
                               textAlign: TextAlign.center,
                             ),
                           ),

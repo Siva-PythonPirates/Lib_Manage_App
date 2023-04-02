@@ -118,15 +118,17 @@ class _HistoryState extends State<History> {
                                                 child: Column(
                                                   // mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    const Text(
-                                                      'Borrow date: 1/1/1020',
+                                                    Text(
+                                                      // 'Borrow date: 1/1/1020',
+                                                      "Borrow Date: ${favdate[index]['borrowDate']!}",
                                                       textAlign: TextAlign.center,
                                                     ),
                                                     const SizedBox(
                                                       height: 5,
                                                     ),
-                                                    const Text(
-                                                      'Return date: 2/2/2022',
+                                                    Text(
+                                                      // 'Return date: 2/2/2022',
+                                                      "Return Date: ${favdate[index]['returnDate']!}",
                                                       textAlign: TextAlign.center,
                                                     ),
                                                     const SizedBox(
